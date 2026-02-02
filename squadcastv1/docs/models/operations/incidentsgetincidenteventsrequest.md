@@ -1,0 +1,25 @@
+# IncidentsGetIncidentEventsRequest
+
+## Example Usage
+
+```typescript
+import { IncidentsGetIncidentEventsRequest } from "@solarwinds/squadcast-sdk-typescript/models/operations";
+
+let value: IncidentsGetIncidentEventsRequest = {
+  incidentID: "<id>",
+  offset: "<value>",
+  limit: "<value>",
+  sort: "<value>",
+  deduped: "<value>",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                         | Type                                                                                                                                                          | Required                                                                                                                                                      | Description                                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `incidentID`                                                                                                                                                  | *string*                                                                                                                                                      | :heavy_check_mark:                                                                                                                                            | N/A                                                                                                                                                           |
+| `offset`                                                                                                                                                      | *string*                                                                                                                                                      | :heavy_check_mark:                                                                                                                                            | non zero value                                                                                                                                                |
+| `limit`                                                                                                                                                       | *string*                                                                                                                                                      | :heavy_check_mark:                                                                                                                                            | non zero value, maximum is 10                                                                                                                                 |
+| `sort`                                                                                                                                                        | *string*                                                                                                                                                      | :heavy_check_mark:                                                                                                                                            | sort it by either asc or desc                                                                                                                                 |
+| `deduped`                                                                                                                                                     | *string*                                                                                                                                                      | :heavy_check_mark:                                                                                                                                            | if set to true, it will return only the deduped events.<br/><br/>if set to false, it will return only the non-deduped event.<br/><br/>otherwise it will return all the events |

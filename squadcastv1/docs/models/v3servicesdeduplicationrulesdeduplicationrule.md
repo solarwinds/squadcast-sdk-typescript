@@ -1,0 +1,26 @@
+# V3ServicesDeduplicationRulesDeduplicationRule
+
+## Example Usage
+
+```typescript
+import { V3ServicesDeduplicationRulesDeduplicationRule } from "@solarwinds/squadcast-sdk-typescript/models";
+
+let value: V3ServicesDeduplicationRulesDeduplicationRule = {
+  expression: "<value>",
+  timeWindow: 251234,
+  timeUnit: "minute",
+  isBasic: true,
+};
+```
+
+## Fields
+
+| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `expression`                                                                                                                       | *string*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `timeWindow`                                                                                                                       | *number*                                                                                                                           | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `timeUnit`                                                                                                                         | [models.V3ServicesDeduplicationRulesDeduplicationRuleTimeUnit](../models/v3servicesdeduplicationrulesdeduplicationruletimeunit.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `isBasic`                                                                                                                          | *boolean*                                                                                                                          | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `basicExpression`                                                                                                                  | [models.V3ServicesDeduplicationRulesExpressionBranch](../models/v3servicesdeduplicationrulesexpressionbranch.md)[]                 | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| `dependencyDeduplication`                                                                                                          | *boolean*                                                                                                                          | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| `description`                                                                                                                      | *string*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |

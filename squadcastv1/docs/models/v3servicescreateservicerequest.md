@@ -1,0 +1,27 @@
+# V3ServicesCreateServiceRequest
+
+## Example Usage
+
+```typescript
+import { V3ServicesCreateServiceRequest } from "@solarwinds/squadcast-sdk-typescript/models";
+
+let value: V3ServicesCreateServiceRequest = {
+  name: "<value>",
+  escalationPolicyId: "<id>",
+};
+```
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `name`                                                                                                   | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `escalationPolicyId`                                                                                     | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `description`                                                                                            | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `emailPrefix`                                                                                            | *string*                                                                                                 | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `maintainer`                                                                                             | [models.V3ServicesServiceMaintainer](../models/v3servicesservicemaintainer.md)                           | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `tags`                                                                                                   | [models.V3ServicesServiceTag](../models/v3servicesservicetag.md)[]                                       | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `autoPauseTransientAlertsConfig`                                                                         | [models.V3ServicesAPTAConfig](../models/v3servicesaptaconfig.md)                                         | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `intelligentAlertsGroupingConfig`                                                                        | [models.V3ServicesIAGConfig](../models/v3servicesiagconfig.md)                                           | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `delayNotificationConfig`                                                                                | [models.V3ServicesNotificationDelayConfigRequest](../models/v3servicesnotificationdelayconfigrequest.md) | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `dedupInitConfig`                                                                                        | [models.V3ServicesDedupInitConfig](../models/v3servicesdedupinitconfig.md)                               | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |

@@ -1,0 +1,809 @@
+overlay: 1.0.0
+info:
+  title: Speakeasy Suggestions - Squadcast
+  version: 0.0.1
+actions:
+  - target: $["paths"]["/v3/services/{serviceID}/apta-config"]["put"]
+    update:
+      x-speakeasy-group: services
+      x-speakeasy-name-override: updateAptaConfig
+    x-speakeasy-metadata:
+      after: sdk.services.updateAptaConfig()
+      before: sdk.services.aptaConfig.createOrUpdate()
+      type: method-name
+  - target: $["paths"]["/v3/workflows/{workflowID}/actions/reorder"]["patch"]
+    update:
+      x-speakeasy-group: workflows.actions
+      x-speakeasy-name-override: reorder
+    x-speakeasy-metadata:
+      after: sdk.workflows.actions.reorder()
+      before: sdk.Workflows.updateActionsOrder()
+      type: method-name
+  - target: $["paths"]["/v3/users/{userID}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.users.update()
+      before: sdk.Users.updateById()
+      type: method-name
+  - target: $["paths"]["/v3/workflows/{workflowID}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.workflows.get()
+      before: sdk.Workflows.getById()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}/overlays/dedup-key/{alertSource}"]["delete"]
+    update:
+      x-speakeasy-group: services
+      x-speakeasy-name-override: deleteDedupKeyOverlay
+    x-speakeasy-metadata:
+      after: sdk.services.deleteDedupKeyOverlay()
+      before: sdk.services.overlays.dedupKey.delete()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/maintenance"]["post"]
+    update:
+      x-speakeasy-group: statusPages
+      x-speakeasy-name-override: createMaintenance
+    x-speakeasy-metadata:
+      after: sdk.statusPages.createMaintenance()
+      before: sdk.maintenances.create()
+      type: method-name
+  - target: $["paths"]["/v3/workflows/{workflowID}/actions/{actionID}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.workflowActions.get()
+      before: sdk.workflowActions.getById()
+      type: method-name
+  - target: $["paths"]["/v3/workflows/{workflowID}/logs"]["get"]
+    update:
+      x-speakeasy-group: workflows
+      x-speakeasy-name-override: getLogs
+    x-speakeasy-metadata:
+      after: sdk.workflows.getLogs()
+      before: sdk.workflowLogs.get()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{incidentID}/actions/circleci/rebuild/{buildNumber}"]["post"]
+    update:
+      x-speakeasy-group: incidents
+      x-speakeasy-name-override: rebuildInCircleci
+    x-speakeasy-metadata:
+      after: sdk.incidents.rebuildInCircleci()
+      before: sdk.incidentActions.circleci.rebuild()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{incidentID}/snooze"]["put"]
+    update:
+      x-speakeasy-group: incidents
+      x-speakeasy-name-override: snooze
+    x-speakeasy-metadata:
+      after: sdk.incidents.snooze()
+      before: sdk.incidents.snooze.set()
+      type: method-name
+  - target: $["paths"]["/v3/workflows/{workflowID}/actions"]["post"]
+    update:
+      x-speakeasy-group: workflows
+      x-speakeasy-name-override: createAction
+    x-speakeasy-metadata:
+      after: sdk.workflows.createAction()
+      before: sdk.workflows.actions.create()
+      type: method-name
+  - target: $["paths"]["/v4/schedules/{scheduleID}/rotations"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.rotations.list()
+      before: sdk.rotations.getScheduleRotations()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/components/{component_id}"]["delete"]
+    update:
+      x-speakeasy-group: statusPages.components
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.statusPages.components.delete()
+      before: sdk.components.deleteById()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{incidentID}/postmortem"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.incidents.postmortems.get()
+      before: sdk.incidents.postmortems.getByIncident()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{IncidentId}/tags"]["patch"]
+    update:
+      x-speakeasy-group: incidents
+      x-speakeasy-name-override: appendTag
+    x-speakeasy-metadata:
+      after: sdk.incidents.appendTag()
+      before: sdk.incidents.tags.append()
+      type: method-name
+  - target: $["paths"]["/v3/extensions/event-webhooks/{eventWebhookID}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.webhooks.get()
+      before: sdk.webhooks.getById()
+      type: method-name
+  - target: $["paths"]["/v3/global-event-rules/{ger_id}/rulesets/{alert_source_version}/{alert_source_shortname}/rules/{rule_id}"]["delete"]
+    update:
+      x-speakeasy-group: globalEventRules.rulesets
+      x-speakeasy-name-override: deleteRule
+    x-speakeasy-metadata:
+      after: sdk.globalEventRules.rulesets.deleteRule()
+      before: sdk.rules.deleteById()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/components"]["get"]
+    update:
+      x-speakeasy-group: statusPages
+      x-speakeasy-name-override: listComponents
+    x-speakeasy-metadata:
+      after: sdk.statusPages.listComponents()
+      before: sdk.components.list()
+      type: method-name
+  - target: $["paths"]["/v3/escalation-policies/{escalationPolicyID}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.escalationPolicies.get()
+      before: sdk.escalationPolicies.getById()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{IncidentId}/communication_cards"]["get"]
+    update:
+      x-speakeasy-name-override: listCommunicationCards
+    x-speakeasy-metadata:
+      after: sdk.incidents.listCommunicationCards()
+      before: sdk.incidents.getAllCommunicationCards()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/issues/{issue_id}"]["delete"]
+    update:
+      x-speakeasy-group: statusPages
+      x-speakeasy-name-override: deleteIssue
+    x-speakeasy-metadata:
+      after: sdk.statusPages.deleteIssue()
+      before: sdk.issues.delete()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/components/{component_id}"]["get"]
+    update:
+      x-speakeasy-group: statusPages
+      x-speakeasy-name-override: getComponentById
+    x-speakeasy-metadata:
+      after: sdk.statusPages.getComponentById()
+      before: sdk.statusPages.components.getById()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/components/{component_id}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.statusPages.components.update()
+      before: sdk.statusPages.components.updateById()
+      type: method-name
+  - target: $["paths"]["/v3/extensions/event-webhooks"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.webhooks.list()
+      before: sdk.webhooks.getAll()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}/config"]["patch"]
+    update:
+      x-speakeasy-group: services
+      x-speakeasy-name-override: optinDeduplication
+    x-speakeasy-metadata:
+      after: sdk.services.optinDeduplication()
+      before: sdk.services.overlays.optinKeyBasedDeduplication()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{IncidentId}/communication_cards"]["post"]
+    update:
+      x-speakeasy-group: incidents
+      x-speakeasy-name-override: createCommunicationCard
+    x-speakeasy-metadata:
+      after: sdk.incidents.createCommunicationCard()
+      before: sdk.incidents.communicationCards.create()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{incidentID}/mark-as-non-transient"]["put"]
+    update:
+      x-speakeasy-group: incidents
+    x-speakeasy-metadata:
+      after: sdk.incidents.markAsNotTransient()
+      before: sdk.incidents.autoPauseTransientAlerts.markAsNotTransient()
+      type: method-name
+  - target: $["paths"]["/v4/schedules/{scheduleID}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.schedules.get()
+      before: sdk.schedules.getById()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}/tagging-rules"]["get"]
+    update:
+      x-speakeasy-name-override: listTaggingRules
+      x-speakeasy-group: services
+    x-speakeasy-metadata:
+      after: sdk.services.listTaggingRules()
+      before: sdk.services.taggingRules.list()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}/overlays/dedup-key/render"]["post"]
+    update:
+      x-speakeasy-name-override: render
+    x-speakeasy-metadata:
+      after: sdk.dedupKeyOverlays.render()
+      before: sdk.dedupKeyOverlays.renderTemplate()
+      type: method-name
+  - target: $["paths"]["/v3/global-event-rules/{ger_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.globalEventRules.get()
+      before: sdk.globalEventRules.getById()
+      type: method-name
+  - target: $["paths"]["/v3/global-event-rules/{ger_id}/rulesets/{alert_source_version}/{alert_source_shortname}/rules"]["post"]
+    update:
+      x-speakeasy-group: globalEventRules
+    x-speakeasy-metadata:
+      after: sdk.globalEventRules.createRule()
+      before: sdk.globalEventRules.rulesets.createRule()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{incidentID}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.incidents.get()
+      before: sdk.Incidents.getById()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{incidentID}/actions/jira/new/jira-cloud"]["post"]
+    update:
+      x-speakeasy-group: incidents.jiraCloud
+    x-speakeasy-metadata:
+      after: sdk.incidents.jiraCloud.createTicket()
+      before: sdk.incidents.actions.jiraCloud.createTicket()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/groups/{group_id}"]["get"]
+    update:
+      x-speakeasy-group: statusPages
+      x-speakeasy-name-override: getComponentGroupById
+    x-speakeasy-metadata:
+      after: sdk.statusPages.getComponentGroupById()
+      before: sdk.statusPages.componentGroups.getById()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}/routing-rules"]["get"]
+    update:
+      x-speakeasy-group: services
+      x-speakeasy-name-override: getRoutingRules
+    x-speakeasy-metadata:
+      after: sdk.services.getRoutingRules()
+      before: sdk.routingRules.get()
+      type: method-name
+  - target: $["paths"]["/v3/escalation-policies/{escalationPolicyID}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.escalationPolicies.delete()
+      before: sdk.escalationPolicies.remove()
+      type: method-name
+  - target: $["paths"]["/v3/global-event-rules/{ger_id}/rulesets/{alert_source_version}/{alert_source_shortname}/rules"]["get"]
+    update:
+      x-speakeasy-group: globalEventRules
+      x-speakeasy-name-override: listRulesetRules
+    x-speakeasy-metadata:
+      after: sdk.globalEventRules.listRulesetRules()
+      before: sdk.globalEventRules.rulesets.listRules()
+      type: method-name
+  - target: $["paths"]["/v4/squads/{squadID}/members/{memberID}"]["delete"]
+    update:
+      x-speakeasy-group: squads
+      x-speakeasy-name-override: removeMember
+    x-speakeasy-metadata:
+      after: sdk.squads.removeMember()
+      before: sdk.squads.members.remove()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/maintenance/{maintenance_id}"]["put"]
+    update:
+      x-speakeasy-name-override: updateMaintenance
+      x-speakeasy-group: statusPages
+    x-speakeasy-metadata:
+      after: sdk.statusPages.updateMaintenance()
+      before: sdk.statusPages.maintenances.updateById()
+      type: method-name
+  - target: $["paths"]["/v3/teams/{teamId}/members/{memberId}"]["delete"]
+    update:
+      x-speakeasy-group: teams
+      x-speakeasy-name-override: removeMember
+    x-speakeasy-metadata:
+      after: sdk.teams.removeMember()
+      before: sdk.teams.members.remove()
+      type: method-name
+  - target: $["paths"]["/v4/schedules/{scheduleID}/ical-link"]["delete"]
+    update:
+      x-speakeasy-group: schedules.export
+    x-speakeasy-metadata:
+      after: sdk.schedules.export.deleteICalLink()
+      before: sdk.schedule.export.deleteICalLink()
+      type: method-name
+  - target: $["paths"]["/v3/exports/{export_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.exports.get()
+      before: sdk.exports.getDetails()
+      type: method-name
+  - target: $["paths"]["/v3/runbooks/{runbookID}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.runbooks.delete()
+      before: sdk.Runbooks.remove()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/priority"]["put"]
+    update:
+      x-speakeasy-name-override: updatePriorities
+    x-speakeasy-metadata:
+      after: sdk.incidents.updatePriorities()
+      before: sdk.Incidents.bulkUpdatePriority()
+      type: method-name
+  - target: $["paths"]["/v3/refresh-token/{refreshTokenID}"]["delete"]
+    update:
+      x-speakeasy-group: tokens
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.tokens.delete()
+      before: sdk.users.removeToken()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}"]["put"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.statusPages.update()
+      before: sdk.statusPages.updateById()
+      type: method-name
+  - target: $["paths"]["/v4/squads/{squadID}/members/{memberID}"]["put"]
+    update:
+      x-speakeasy-group: squads.members
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.squads.members.update()
+      before: sdk.squads.updateMember()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/acknowledge"]["post"]
+    update:
+      x-speakeasy-group: incidents
+    x-speakeasy-metadata:
+      after: sdk.incidents.bulkAcknowledge()
+      before: sdk.incidentsV3.bulkAcknowledge()
+      type: method-name
+  - target: $["paths"]["/v3/users"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.users.create()
+      before: sdk.Users.add()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/postmortem"]["get"]
+    update:
+      x-speakeasy-group: incidents
+      x-speakeasy-name-override: listPostmortems
+    x-speakeasy-metadata:
+      after: sdk.incidents.listPostmortems()
+      before: sdk.incidents.postmortems.getAll()
+      type: method-name
+  - target: $["paths"]["/v3/teams/{teamId}/roles/{roleId}"]["put"]
+    update:
+      x-speakeasy-group: teams
+      x-speakeasy-name-override: updateRole
+    x-speakeasy-metadata:
+      after: sdk.teams.updateRole()
+      before: sdk.teams.roles.update()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}/overlays/custom-content"]["get"]
+    update:
+      x-speakeasy-name-override: listCustomContentTemplates
+    x-speakeasy-metadata:
+      after: sdk.services.listCustomContentTemplates()
+      before: sdk.services.getCustomContentTemplates()
+      type: method-name
+  - target: $["paths"]["/v3/runbooks/{runbookID}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.runbooks.get()
+      before: sdk.Runbooks.getById()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/issues/{issue_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+      x-speakeasy-group: statusPages.issues
+    x-speakeasy-metadata:
+      after: sdk.statusPages.issues.get()
+      before: sdk.statusPages.getIssueById()
+      type: method-name
+  - target: $["paths"]["/v4/schedules/{scheduleID}/ical-link"]["patch"]
+    update:
+      x-speakeasy-group: schedules
+    x-speakeasy-metadata:
+      after: sdk.schedules.refreshIcalLink()
+      before: sdk.exportSchedule.refreshIcalLink()
+      type: method-name
+  - target: $["paths"]["/v4/schedules/{scheduleID}/rotations/{rotationID}/participants"]["get"]
+    update:
+      x-speakeasy-group: schedules.rotations.participants
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.schedules.rotations.participants.get()
+      before: sdk.rotations.getParticipants()
+      type: method-name
+  - target: $["paths"]["/v4/schedules/{scheduleID}/overrides/{overrideID}"]["delete"]
+    update:
+      x-speakeasy-group: schedules.overrides
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.schedules.overrides.delete()
+      before: sdk.schedules.deleteOverride()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/groups/{group_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.statusPages.componentGroups.delete()
+      before: sdk.statusPages.componentGroups.deleteById()
+      type: method-name
+  - target: $["paths"]["/v3/teams/{teamId}/roles"]["get"]
+    update:
+      x-speakeasy-group: teams.roles
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.teams.roles.list()
+      before: sdk.Teams.getRoles()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.statusPages.get()
+      before: sdk.statusPages.getById()
+      type: method-name
+  - target: $["paths"]["/v3/squads/{squadID}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.squads.get()
+      before: sdk.squads.getById()
+      type: method-name
+  - target: $["paths"]["/v3/extensions/slack_v2/channel"]["post"]
+    update:
+      x-speakeasy-group: extensions.slack.channels
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.extensions.slack.channels.create()
+      before: sdk.communicationCards.createSlackChannel()
+      type: method-name
+  - target: $["paths"]["/v4/schedules/{scheduleID}/rotations/{rotationID}/participants"]["put"]
+    update:
+      x-speakeasy-group: schedules.rotations.participants
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.schedules.rotations.participants.update()
+      before: sdk.rotations.updateParticipants()
+      type: method-name
+  - target: $["paths"]["/v3/global-event-rules/{ger_id}/rulesets/{alert_source_version}/{alert_source_shortname}/rules/{rule_id}/priority"]["patch"]
+    update:
+      x-speakeasy-group: globalEventRules
+      x-speakeasy-name-override: reorderRuleByIndex
+    x-speakeasy-metadata:
+      after: sdk.globalEventRules.reorderRuleByIndex()
+      before: sdk.globalEventRules.rulesets.rules.reorderByIndex()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/maintenance/{maintenance_id}"]["delete"]
+    update:
+      x-speakeasy-group: statusPages.maintenances
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.statusPages.maintenances.delete()
+      before: sdk.maintenances.deleteById()
+      type: method-name
+  - target: $["paths"]["/v3/runbooks"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.runbooks.list()
+      before: sdk.Runbooks.listByTeam()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{IncidentId}/communication_cards/{communicationCardId}"]["put"]
+    update:
+      x-speakeasy-group: incidents.communicationCards
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.incidents.communicationCards.update()
+      before: sdk.incidents.updateCommunicationCard()
+      type: method-name
+  - target: $["paths"]["/v3/users/{userID}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.users.get()
+      before: sdk.Users.getById()
+      type: method-name
+  - target: $["paths"]["/v3/teams/{teamId}/members/bulk"]["post"]
+    update:
+      x-speakeasy-name-override: bulkAddMembers
+      x-speakeasy-group: teams
+    x-speakeasy-metadata:
+      after: sdk.teams.bulkAddMembers()
+      before: sdk.teams.members.bulkAdd()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}/deduplication-rules"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.deduplicationRules.get()
+      before: sdk.deduplicationRules.getRules()
+      type: method-name
+  - target: $["paths"]["/v3/teams/{teamId}/members"]["post"]
+    update:
+      x-speakeasy-group: teams
+      x-speakeasy-name-override: addMember
+    x-speakeasy-metadata:
+      after: sdk.teams.addMember()
+      before: sdk.teams.members.add()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{IncidentId}/runbooks"]["post"]
+    update:
+      x-speakeasy-group: incidents.runbooks
+      x-speakeasy-name-override: attach
+    x-speakeasy-metadata:
+      after: sdk.incidents.runbooks.attach()
+      before: sdk.incidents.attachRunbooks()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/issues/{issue_id}"]["put"]
+    update:
+      x-speakeasy-group: statusPages
+      x-speakeasy-name-override: updateIssue
+    x-speakeasy-metadata:
+      after: sdk.statusPages.updateIssue()
+      before: sdk.statusPages.issues.update()
+      type: method-name
+  - target: $["paths"]["/v3/workflows/{workflowID}/actions/{actionID}"]["delete"]
+    update:
+      x-speakeasy-group: workflows.actions
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.workflows.actions.delete()
+      before: sdk.Workflows.deleteAction()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{IncidentId}/communication_cards/{communicationCardId}"]["delete"]
+    update:
+      x-speakeasy-name-override: deleteCommunicationCard
+      x-speakeasy-group: incidents
+    x-speakeasy-metadata:
+      after: sdk.incidents.deleteCommunicationCard()
+      before: sdk.communicationCards.delete()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{IncidentId}/warroom/{NoteId}"]["delete"]
+    update:
+      x-speakeasy-group: incidents.notes
+    x-speakeasy-metadata:
+      after: sdk.incidents.notes.delete()
+      before: sdk.notes.delete()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}/overlays/custom-content/{alertSource}"]["get"]
+    update:
+      x-speakeasy-group: services
+    x-speakeasy-metadata:
+      after: sdk.services.getCustomContentTemplate()
+      before: sdk.services.overlays.getCustomContentTemplate()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/subscribers"]["get"]
+    update:
+      x-speakeasy-group: statusPages.subscribers
+    x-speakeasy-metadata:
+      after: sdk.statusPages.subscribers.list()
+      before: sdk.statusPageSubscribers.list()
+      type: method-name
+  - target: $["paths"]["/v3/refresh-token"]["get"]
+    update:
+      x-speakeasy-name-override: listTokens
+    x-speakeasy-metadata:
+      after: sdk.users.listTokens()
+      before: sdk.users.getAllTokens()
+      type: method-name
+  - target: $["paths"]["/v4/schedules/{scheduleID}/rotations/{rotationID}"]["delete"]
+    update:
+      x-speakeasy-group: schedules
+      x-speakeasy-name-override: deleteRotation
+    x-speakeasy-metadata:
+      after: sdk.schedules.deleteRotation()
+      before: sdk.rotations.delete()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/groups"]["get"]
+    update:
+      x-speakeasy-group: statusPages
+      x-speakeasy-name-override: listComponentGroups
+    x-speakeasy-metadata:
+      after: sdk.statusPages.listComponentGroups()
+      before: sdk.statusPages.componentGroups.list()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}/config"]["get"]
+    update:
+      x-speakeasy-group: services
+      x-speakeasy-name-override: getDeduplicationOptin
+    x-speakeasy-metadata:
+      after: sdk.services.getDeduplicationOptin()
+      before: sdk.services.overlay.getOptinForKeyBasedDeduplication()
+      type: method-name
+  - target: $["paths"]["/v3/escalation-policies"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.escalationPolicies.list()
+      before: sdk.escalationPolicies.listByTeam()
+      type: method-name
+  - target: $["paths"]["/v3/squads"]["post"]
+    update:
+      x-speakeasy-name-override: setUp
+    x-speakeasy-metadata:
+      after: sdk.squads.setUp()
+      before: sdk.squads.create()
+      type: method-name
+  - target: $["paths"]["/v4/squads/{squadID}"]["get"]
+    update:
+      x-speakeasy-group: squads
+    x-speakeasy-metadata:
+      after: sdk.squads.getById()
+      before: sdk.squadsV4.getById()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/groups"]["post"]
+    update:
+      x-speakeasy-group: statusPages
+      x-speakeasy-name-override: createComponentGroup
+    x-speakeasy-metadata:
+      after: sdk.statusPages.createComponentGroup()
+      before: sdk.statusPages.componentGroups.create()
+      type: method-name
+  - target: $["paths"]["/v3/global-event-rules/{ger_id}/rulesets/{alert_source_version}/{alert_source_shortname}"]["patch"]
+    update:
+      x-speakeasy-group: globalEventRules
+      x-speakeasy-name-override: updateRuleset
+    x-speakeasy-metadata:
+      after: sdk.globalEventRules.updateRuleset()
+      before: sdk.globalEventRules.rulesets.update()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/issues"]["post"]
+    update:
+      x-speakeasy-group: statusPages.issues
+    x-speakeasy-metadata:
+      after: sdk.statusPages.issues.create()
+      before: sdk.issues.create()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}/routing-rules"]["post"]
+    update:
+      x-speakeasy-group: services
+      x-speakeasy-name-override: createOrUpdateRoutingRules
+    x-speakeasy-metadata:
+      after: sdk.services.createOrUpdateRoutingRules()
+      before: sdk.routingRules.createOrUpdate()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/states"]["get"]
+    update:
+      x-speakeasy-group: statusPages
+      x-speakeasy-name-override: listStates
+    x-speakeasy-metadata:
+      after: sdk.statusPages.listStates()
+      before: sdk.issueStates.list()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.services.get()
+      before: sdk.Services.getById()
+      type: method-name
+  - target: $["paths"]["/v4/schedules/{scheduleID}/rotations/{rotationID}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.rotations.get()
+      before: sdk.rotations.getById()
+      type: method-name
+  - target: $["paths"]["/v3/teams/{teamId}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.teams.delete()
+      before: sdk.Teams.remove()
+      type: method-name
+  - target: $["paths"]["/v4/statuspages/{statuspageID}/maintenance/{maintenance_id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.statusPages.maintenances.get()
+      before: sdk.statusPages.maintenances.getById()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}/overlays/dedup-key"]["get"]
+    update:
+      x-speakeasy-group: services.overlays
+      x-speakeasy-name-override: listDedupKeys
+    x-speakeasy-metadata:
+      after: sdk.services.overlays.listDedupKeys()
+      before: sdk.overlays.getAllDedupKeysByService()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{incidentID}/additional-responders/{responderID}"]["delete"]
+    update:
+      x-speakeasy-name-override: removeResponder
+    x-speakeasy-metadata:
+      after: sdk.incidents.removeResponder()
+      before: sdk.incidents.removeAdditionalResponder()
+      type: method-name
+  - target: $["paths"]["/v3/global-event-rules/{ger_id}/rulesets/{alert_source_version}/{alert_source_shortname}/priority"]["patch"]
+    update:
+      x-speakeasy-group: globalEventRules
+      x-speakeasy-name-override: reorderRuleset
+    x-speakeasy-metadata:
+      after: sdk.globalEventRules.reorderRuleset()
+      before: sdk.globalEventRules.rulesets.reorder()
+      type: method-name
+  - target: $["paths"]["/v4/squads"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.squads.create()
+      before: sdk.squads.createV4()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}/overlays/custom-content/{alertSource}"]["put"]
+    update:
+      x-speakeasy-group: services.customContentOverlays
+    x-speakeasy-metadata:
+      after: sdk.services.customContentOverlays.createOrUpdate()
+      before: sdk.services.overlays.customContent.createOrUpdate()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}/overlays/dedup-key/{alertSource}"]["get"]
+    update:
+      x-speakeasy-group: services.dedupKeyOverlays
+    x-speakeasy-metadata:
+      after: sdk.services.dedupKeyOverlays.getForAlertSource()
+      before: sdk.dedupKeyOverlays.getForAlertSource()
+      type: method-name
+  - target: $["paths"]["/v3/extensions/msteams/config"]["post"]
+    update:
+      x-speakeasy-group: extensions
+      x-speakeasy-name-override: createOrUpdateMsteamsConfig
+    x-speakeasy-metadata:
+      after: sdk.extensions.createOrUpdateMsteamsConfig()
+      before: sdk.msteams.createOrUpdateConfiguration()
+      type: method-name
+  - target: $["paths"]["/v3/global-event-rules/{ger_id}/rulesets/{alert_source_version}/{alert_source_shortname}"]["get"]
+    update:
+      x-speakeasy-group: globalEventRules
+      x-speakeasy-name-override: getRuleset
+    x-speakeasy-metadata:
+      after: sdk.globalEventRules.getRuleset()
+      before: sdk.globalEventRules.rulesets.get()
+      type: method-name
+  - target: $["paths"]["/v3/global-event-rules/{ger_id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.globalEventRules.delete()
+      before: sdk.globalEventRules.deleteById()
+      type: method-name
+  - target: $["paths"]["/v3/services/{serviceID}/maintenance"]["post"]
+    update:
+      x-speakeasy-group: services
+      x-speakeasy-name-override: createUpdateMaintenance
+    x-speakeasy-metadata:
+      after: sdk.services.createUpdateMaintenance()
+      before: sdk.services.maintenance.createOrUpdate()
+      type: method-name
+  - target: $["paths"]["/v3/incidents/{incidentID}/events"]["get"]
+    update:
+      x-speakeasy-group: incidents
+      x-speakeasy-name-override: getEvents
+    x-speakeasy-metadata:
+      after: sdk.incidents.getEvents()
+      before: sdk.incidents.events.list()
+      type: method-name
+  - target: $["paths"]["/v3/global-event-rules/{ger_id}/rulesets/{alert_source_version}/{alert_source_shortname}"]["delete"]
+    update:
+      x-speakeasy-group: globalEventRules.rulesets
+    x-speakeasy-metadata:
+      after: sdk.globalEventRules.rulesets.deleteById()
+      before: sdk.rulesets.deleteById()
+      type: method-name

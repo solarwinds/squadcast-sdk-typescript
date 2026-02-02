@@ -1,0 +1,22 @@
+# V3IncidentsPostmortemsUpdatePostmortemRequest
+
+Request body for updating an existing postmortem.
+
+## Example Usage
+
+```typescript
+import { V3IncidentsPostmortemsUpdatePostmortemRequest } from "@solarwinds/squadcast-sdk-typescript/models";
+
+let value: V3IncidentsPostmortemsUpdatePostmortemRequest = {};
+```
+
+## Fields
+
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `ownerId`                                                                                                                    | *string*                                                                                                                     | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `postmortem`                                                                                                                 | *string*                                                                                                                     | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `followUps`                                                                                                                  | [models.V3IncidentsPostmortemsPostmortemFollowUp](../models/v3incidentspostmortemspostmortemfollowup.md)[]                   | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `newAttachments`                                                                                                             | [models.V3IncidentsPostmortemsPostmortemAttachmentRequest](../models/v3incidentspostmortemspostmortemattachmentrequest.md)[] | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `title`                                                                                                                      | *string*                                                                                                                     | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `status`                                                                                                                     | [models.V3IncidentsPostmortemsPostmortemStatus](../models/v3incidentspostmortemspostmortemstatus.md)                         | :heavy_minus_sign:                                                                                                           | Represents the status of a postmortem.                                                                                       |

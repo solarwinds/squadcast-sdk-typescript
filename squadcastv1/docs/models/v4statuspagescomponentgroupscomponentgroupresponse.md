@@ -1,0 +1,29 @@
+# V4StatusPagesComponentGroupsComponentGroupResponse
+
+## Example Usage
+
+```typescript
+import { V4StatusPagesComponentGroupsComponentGroupResponse } from "@solarwinds/squadcast-sdk-typescript/models";
+
+let value: V4StatusPagesComponentGroupsComponentGroupResponse = {
+  id: 659443,
+  type: "<value>",
+  name: "<value>",
+  allowSubscription: false,
+};
+```
+
+## Fields
+
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                           | *number*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `type`                                                                                                         | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `name`                                                                                                         | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `allowSubscription`                                                                                            | *boolean*                                                                                                      | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `description`                                                                                                  | *string*                                                                                                       | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `status`                                                                                                       | [models.V4StatusPagesComponentGroupsComponentStatus](../models/v4statuspagescomponentgroupscomponentstatus.md) | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `underMaintenance`                                                                                             | *boolean*                                                                                                      | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `statusMaintenance`                                                                                            | [models.V4StatusPagesComponentGroupsComponentStatus](../models/v4statuspagescomponentgroupscomponentstatus.md) | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `components`                                                                                                   | [models.V4StatusPagesComponentGroupsComponent](../models/v4statuspagescomponentgroupscomponent.md)[]           | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `isHidden`                                                                                                     | *boolean*                                                                                                      | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |

@@ -1,0 +1,60 @@
+# V3SloSlo
+
+## Example Usage
+
+```typescript
+import { V3SloSlo } from "@solarwinds/squadcast-sdk-typescript/models";
+
+let value: V3SloSlo = {
+  id: 223043,
+  name: "<value>",
+  timeIntervalType: "fixed",
+  serviceIds: [],
+  slis: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  targetSlo: 7638.9,
+  startTime: new Date("2025-10-08T23:19:06.731Z"),
+  endTime: new Date("2026-09-26T00:19:14.348Z"),
+  allocatedErrorBudget: 4543.54,
+  isActive: true,
+  ownerType: "<value>",
+  ownerId: "<id>",
+  orgId: "<id>",
+};
+```
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `id`                                                                                          | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `name`                                                                                        | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `description`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `timeIntervalType`                                                                            | [models.V3SLOTimeIntervalType](../models/v3slotimeintervaltype.md)                            | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `serviceIds`                                                                                  | *string*[]                                                                                    | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `slis`                                                                                        | *string*[]                                                                                    | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `targetSlo`                                                                                   | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `currentSlo`                                                                                  | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `startTime`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `endTime`                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `isHealthy`                                                                                   | *boolean*                                                                                     | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `remainingErrorBudget`                                                                        | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `allocatedErrorBudget`                                                                        | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `isActive`                                                                                    | *boolean*                                                                                     | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `tags`                                                                                        | [models.V3SLOSLOTags](../models/v3sloslotags.md)                                              | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `incidentCount`                                                                               | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `falsePositiveCount`                                                                          | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `sloMonitoringChecks`                                                                         | [models.V3SLOSLOMonitoringCheck](../models/v3sloslomonitoringcheck.md)[]                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `sloActions`                                                                                  | [models.V3SLOSLOAction](../models/v3slosloaction.md)[]                                        | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `ownerType`                                                                                   | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `ownerId`                                                                                     | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `orgId`                                                                                       | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `sloOwnerId`                                                                                  | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `sloOwnerType`                                                                                | [models.V3SLOSLOOwnerType](../models/v3slosloownertype.md)                                    | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `deletedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `durationInDays`                                                                              | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |

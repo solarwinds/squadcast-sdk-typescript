@@ -1,0 +1,17 @@
+# IncidentActionsCreateAnIncidentInServicenowRequest
+
+## Example Usage
+
+```typescript
+import { IncidentActionsCreateAnIncidentInServicenowRequest } from "@solarwinds/squadcast-sdk-typescript/models/operations";
+
+let value: IncidentActionsCreateAnIncidentInServicenowRequest = {
+  incidentID: "<id>",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `incidentID`       | *string*           | :heavy_check_mark: | N/A                |
