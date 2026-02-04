@@ -4,6 +4,10 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type WorkflowsUpdateWorkflowActionRequest = {
@@ -13,6 +17,43 @@ export type WorkflowsUpdateWorkflowActionRequest = {
     | models.V3WorkflowsActionRequestUpdate
     | undefined;
 };
+
+export const Name = {
+  SqAttachRunbooks: "sq_attach_runbooks",
+} as const;
+export type Name = ClosedEnum<typeof Name>;
+
+export type WorkflowsUpdateWorkflowActionData = {
+  runbooks: Array<models.V3WorkflowsRunbookResponse>;
+};
+
+export type SqAttachRunbooks = {
+  name: Name;
+  data: WorkflowsUpdateWorkflowActionData;
+};
+
+/**
+ * The request has succeeded.
+ */
+export type WorkflowsUpdateWorkflowActionResponse =
+  | SqAttachRunbooks
+  | models.V3WorkflowsSqMarkIncidentSLOAffecting
+  | models.V3WorkflowsSqTriggerManualWebhook
+  | models.V3WorkflowsUpdateIncidentPriority
+  | models.V3WorkflowsSqCreateStatusPageIssue
+  | models.V3WorkflowsSqAddIncidentNote
+  | models.V3WorkflowsSqAddCommunicationChannel
+  | models.V3WorkflowsSlackMessageChannel
+  | models.V3WorkflowsSlackMessageUser
+  | models.V3WorkflowsSqMakeHTTPCall
+  | models.V3WorkflowsSlackCreateIncidentChannel
+  | models.V3WorkflowsJiraCreateTicket
+  | models.V3WorkflowsMsTeamsMessageChannel
+  | models.V3WorkflowsMsTeamsMessageUser
+  | models.V3WorkflowsSqSendEmail
+  | models.V3WorkflowsSlackArchiveChannel
+  | models.V3WorkflowsMsTeamsCreateMeetingLink
+  | any;
 
 /** @internal */
 export type WorkflowsUpdateWorkflowActionRequest$Outbound = {
@@ -46,5 +87,86 @@ export function workflowsUpdateWorkflowActionRequestToJSON(
     WorkflowsUpdateWorkflowActionRequest$outboundSchema.parse(
       workflowsUpdateWorkflowActionRequest,
     ),
+  );
+}
+
+/** @internal */
+export const Name$inboundSchema: z.ZodNativeEnum<typeof Name> = z.nativeEnum(
+  Name,
+);
+
+/** @internal */
+export const WorkflowsUpdateWorkflowActionData$inboundSchema: z.ZodType<
+  WorkflowsUpdateWorkflowActionData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  runbooks: z.array(models.V3WorkflowsRunbookResponse$inboundSchema),
+});
+
+export function workflowsUpdateWorkflowActionDataFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkflowsUpdateWorkflowActionData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkflowsUpdateWorkflowActionData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkflowsUpdateWorkflowActionData' from JSON`,
+  );
+}
+
+/** @internal */
+export const SqAttachRunbooks$inboundSchema: z.ZodType<
+  SqAttachRunbooks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: Name$inboundSchema,
+  data: z.lazy(() => WorkflowsUpdateWorkflowActionData$inboundSchema),
+});
+
+export function sqAttachRunbooksFromJSON(
+  jsonString: string,
+): SafeParseResult<SqAttachRunbooks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SqAttachRunbooks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SqAttachRunbooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const WorkflowsUpdateWorkflowActionResponse$inboundSchema: z.ZodType<
+  WorkflowsUpdateWorkflowActionResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => SqAttachRunbooks$inboundSchema),
+  models.V3WorkflowsSqMarkIncidentSLOAffecting$inboundSchema,
+  models.V3WorkflowsSqTriggerManualWebhook$inboundSchema,
+  models.V3WorkflowsUpdateIncidentPriority$inboundSchema,
+  models.V3WorkflowsSqCreateStatusPageIssue$inboundSchema,
+  models.V3WorkflowsSqAddIncidentNote$inboundSchema,
+  models.V3WorkflowsSqAddCommunicationChannel$inboundSchema,
+  models.V3WorkflowsSlackMessageChannel$inboundSchema,
+  models.V3WorkflowsSlackMessageUser$inboundSchema,
+  models.V3WorkflowsSqMakeHTTPCall$inboundSchema,
+  models.V3WorkflowsSlackCreateIncidentChannel$inboundSchema,
+  models.V3WorkflowsJiraCreateTicket$inboundSchema,
+  models.V3WorkflowsMsTeamsMessageChannel$inboundSchema,
+  models.V3WorkflowsMsTeamsMessageUser$inboundSchema,
+  models.V3WorkflowsSqSendEmail$inboundSchema,
+  models.V3WorkflowsSlackArchiveChannel$inboundSchema,
+  models.V3WorkflowsMsTeamsCreateMeetingLink$inboundSchema,
+  z.any(),
+]);
+
+export function workflowsUpdateWorkflowActionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkflowsUpdateWorkflowActionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WorkflowsUpdateWorkflowActionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkflowsUpdateWorkflowActionResponse' from JSON`,
   );
 }
