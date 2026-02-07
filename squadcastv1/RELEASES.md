@@ -30,11 +30,11 @@ Based on:
 ### Releases
 - [NPM v0.2.1] https://www.npmjs.com/package/@solarwinds/squadcast-sdk-typescript/v/0.2.1 - squadcastv1
 
-## 2026-02-06 00:25:41
+## 2026-02-07 00:26:20
 ### Changes
 Based on:
 - OpenAPI Doc  
-- Speakeasy CLI 1.706.1 (2.809.2) https://github.com/speakeasy-api/speakeasy
+- Speakeasy CLI 1.708.2 (2.811.4) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [typescript v1.2.0] squadcastv1
 ### Releases
