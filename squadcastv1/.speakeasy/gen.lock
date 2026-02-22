@@ -12,8 +12,8 @@ management:
   installationURL: https://gitpkg.now.sh/solarwinds/squadcast-sdk-typescript/squadcastv1
   published: true
 persistentEdits:
-  generation_id: 320399d8-301b-4b5a-8b19-f1f1b6b6f110
-  pristine_commit_hash: a3aafd05ee6e0a0fdff3bea657915535eea7ffcd
+  generation_id: 789a47b6-f073-4a88-a102-6bce30a553f7
+  pristine_commit_hash: e5131cefda9c74cba15a2e94236a641b154d33f2
   pristine_tree_hash: 608114c5f661f71155074153fb1ea10900c69069
 features:
   typescript:
