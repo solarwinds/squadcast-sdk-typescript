@@ -3,8 +3,8 @@ id: 0ccdf4ca-5cfc-406b-b8fa-dec00364bec0
 management:
   docChecksum: b931a648834589a0e209a6d3d18292bf
   docVersion: 1.0.0
-  speakeasyVersion: 1.723.0
-  generationVersion: 2.835.2
+  speakeasyVersion: 1.725.0
+  generationVersion: 2.836.5
   releaseVersion: 1.2.0
   configChecksum: 0929875c7f781582c92530e52e19b634
   repoURL: https://github.com/solarwinds/squadcast-sdk-typescript.git
@@ -12,9 +12,9 @@ management:
   installationURL: https://gitpkg.now.sh/solarwinds/squadcast-sdk-typescript/squadcastv1
   published: true
 persistentEdits:
-  generation_id: 0df4d7e1-fae1-4466-8259-b9a0850f0a42
-  pristine_commit_hash: 42ecca8d814c1107a7bf336b34f9a8ffc968f353
-  pristine_tree_hash: 608114c5f661f71155074153fb1ea10900c69069
+  generation_id: 1e3f9f29-2385-4167-a877-90119fc5675f
+  pristine_commit_hash: 094ed3d5e6d0a4c09596618dd0d6faf852a6448b
+  pristine_tree_hash: 20fcc62dac9f3455c19087c1f5376761dbc83688
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -5684,8 +5684,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:947c61404a88232148b107240ebe9e932d8a2735
-    pristine_git_object: 2fce01422b4c055ded6140354757a7d9ca313664
+    last_write_checksum: sha1:f638ef724cd216b360e1b49c7b66e46a99e20648
+    pristine_git_object: b52182a890d8da2b3362ebd8488854fde73ed4c5
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
