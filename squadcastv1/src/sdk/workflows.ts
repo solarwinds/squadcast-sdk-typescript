@@ -172,7 +172,7 @@ export class Workflows extends ClientSDK {
   async updateAction(
     request: operations.WorkflowsUpdateWorkflowActionRequest,
     options?: RequestOptions,
-  ): Promise<models.V3WorkflowsActionResponse> {
+  ): Promise<operations.WorkflowsUpdateWorkflowActionResponse> {
     return unwrapAsync(workflowsUpdateAction(
       this,
       request,
