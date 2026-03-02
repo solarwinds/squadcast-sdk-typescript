@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'squadcastv1/docs/**'
-      - 'README.md'
+      - 'squadcastv1/*.md'
 
 jobs:
   sync-docs:
@@ -38,7 +38,8 @@ jobs:
           rm -rf "${SDK_LANG}/"
           mkdir -p "${SDK_LANG}"
           cp -r "../${DOCS_PATH}/." "${SDK_LANG}/"
-          cp ../README.md "${SDK_LANG}/"
+          SDK_ROOT=$(dirname "../${DOCS_PATH}")
+          find "${SDK_ROOT}" -maxdepth 1 -name "*.md" -exec cp {} "${SDK_LANG}/" \;
           git add .
           if git diff --staged --quiet; then
             echo "No doc changes to sync. Exiting."
