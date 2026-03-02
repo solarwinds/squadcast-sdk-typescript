@@ -58,7 +58,7 @@ jobs:
           git checkout -b "$BRANCH"
           rm -rf "${SDK_LANG}/"
           mkdir -p "${SDK_LANG}"
-          cp -r "../${DOCS_PATH}/." "${SDK_LANG}/"
+          cp -r "../${DOCS_PATH}" "${SDK_LANG}/docs"
           SDK_ROOT=$(dirname "../${DOCS_PATH}")
           find "${SDK_ROOT}" -maxdepth 1 -name "*.md" -exec cp {} "${SDK_LANG}/" \;
           git add .
