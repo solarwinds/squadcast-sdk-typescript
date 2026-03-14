@@ -243,9 +243,9 @@ export function resolveGlobalSecurity(
   return resolveSecurity(
     [
       {
-        fieldName: "Authorization",
-        type: "http:bearer",
-        value: security?.bearerAuth,
+        fieldName: "refreshToken",
+        type: "http:custom",
+        value: security?.refreshTokenAuth,
       },
     ],
   );

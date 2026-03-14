@@ -20,21 +20,24 @@ specific category of applications.
 
 ```typescript
 import { SquadcastSDKCore } from "@solarwinds/squadcast-sdk-typescript/core.js";
-import { authAuthGetAccessToken } from "@solarwinds/squadcast-sdk-typescript/funcs/authAuthGetAccessToken.js";
+import { analyticsGetOrganization } from "@solarwinds/squadcast-sdk-typescript/funcs/analyticsGetOrganization.js";
 
 // Use `SquadcastSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const squadcastSDK = new SquadcastSDKCore();
+const squadcastSDK = new SquadcastSDKCore({
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
+});
 
 async function run() {
-  const res = await authAuthGetAccessToken(squadcastSDK, {
-    xRefreshToken: "<value>",
+  const res = await analyticsGetOrganization(squadcastSDK, {
+    from: "<value>",
+    to: "<value>",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("authAuthGetAccessToken failed:", res.error);
+    console.log("analyticsGetOrganization failed:", res.error);
   }
 }
 

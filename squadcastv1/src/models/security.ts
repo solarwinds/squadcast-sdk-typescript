@@ -6,12 +6,15 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 
 export type Security = {
-  bearerAuth?: string | undefined;
+  /**
+   * Squadcast refresh token used to obtain short-lived bearer tokens.
+   */
+  refreshTokenAuth: string;
 };
 
 /** @internal */
 export type Security$Outbound = {
-  BearerAuth?: string | undefined;
+  RefreshTokenAuth: string;
 };
 
 /** @internal */
@@ -20,10 +23,10 @@ export const Security$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Security
 > = z.object({
-  bearerAuth: z.string().optional(),
+  refreshTokenAuth: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    bearerAuth: "BearerAuth",
+    refreshTokenAuth: "RefreshTokenAuth",
   });
 });
 

@@ -21,7 +21,7 @@ type RefreshTokenResponse = {
 };
 
 class TokenCache {
-  #token?: CachedToken;
+  #token: CachedToken | undefined;
 
   get(): string | undefined {
     if (!this.#token) {
