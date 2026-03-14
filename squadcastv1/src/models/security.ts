@@ -6,12 +6,12 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 
 export type Security = {
-  bearerAuth: string;
+  bearerAuth?: string | undefined;
 };
 
 /** @internal */
 export type Security$Outbound = {
-  BearerAuth: string;
+  BearerAuth?: string | undefined;
 };
 
 /** @internal */
@@ -20,7 +20,7 @@ export const Security$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Security
 > = z.object({
-  bearerAuth: z.string(),
+  bearerAuth: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     bearerAuth: "BearerAuth",

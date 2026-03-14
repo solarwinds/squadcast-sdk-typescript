@@ -5,6 +5,7 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { Analytics } from "./analytics.js";
 import { AuditLogs } from "./auditlogs.js";
+import { Auth } from "./auth.js";
 import { CommunicationCards } from "./communicationcards.js";
 import { Components } from "./components.js";
 import { DedupKeyOverlays } from "./dedupkeyoverlays.js";
@@ -50,6 +51,11 @@ import { WorkflowLogs } from "./workflowlogs.js";
 import { Workflows } from "./workflows.js";
 
 export class SquadcastSDK extends ClientSDK {
+  private _auth?: Auth;
+  get auth(): Auth {
+    return (this._auth ??= new Auth(this._options));
+  }
+
   private _analytics?: Analytics;
   get analytics(): Analytics {
     return (this._analytics ??= new Analytics(this._options));

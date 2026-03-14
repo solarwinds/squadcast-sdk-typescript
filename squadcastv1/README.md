@@ -14,7 +14,58 @@ Developer-friendly & type-safe Typescript SDK specifically catered to leverage *
 <!-- Start Summary [summary] -->
 ## Summary
 
+Squadcast: ## Overview
+The Squadcast API provides developers the capability to extend and utilize Squadcast in conjunction with other services. Our API has resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
 
+> **Note:** Customers using the V2 version of the Squadcast API would need to migrate to Squadcast API V3, as the former would be deprecated shortly.
+
+### Service Regions
+
+Squadcast allows customers to choose the geographic region of the Squadcast data centers that host their account. When signing up, you can choose the service region. Currently, the available options are the United States (US) and Europe (EU).
+
+| Service Region | API Endpoints |
+|---|---|
+| US | Authentication: https://auth.squadcast.com · Other APIs: https://api.squadcast.com |
+| EU | Authentication: https://auth.eu.squadcast.com · Other APIs: https://api.eu.squadcast.com |
+
+### Authentication
+
+In order to access the API programmatically, HTTP bearer authentication needs to be used. HTTP bearer authentication must be constructed using an `access_token`, passed as the `Authorization` header for each request, for example `Authorization: Bearer eyJleHAiOjE2MzU1OTE1OTIsImp0aSI6Im`.
+
+Steps to procure the `access_token`:
+
+1. Generate a `refresh_token` (API Token) from the Squadcast web app. More details on how to get the `refresh_token` can be found in the Squadcast support documentation.
+2. Call the authentication API with the `refresh_token` to obtain an `access_token`.
+3. Use the `access_token` as a Bearer token in the `Authorization` header for all subsequent API requests.
+
+#### Example — Generating an Access Token
+
+```bash
+curl --location --request GET 'https://auth.squadcast.com/oauth/access-token' \
+--header 'X-Refresh-Token: 0d2a1a9a454dxxxxxxxxxxxx'
+```
+
+The API response will look similar to:
+
+```json
+{
+  "data": {
+    "access_token": "eyJhbGciOiJIUxxxxx.xxxxxxxxxxxxxxx.xxxxxxxxxxxxxxx",
+    "expires_at": 1587412870,
+    "issued_at": 1587240070,
+    "refresh_token": "0d2a1a9a454dxxxxxxxxxxxx",
+    "type": "bearer"
+  }
+}
+```
+
+### Access Control
+
+There are three different types of user roles in Squadcast: `account_owner`, `stakeholder`, and `user`. Refresh tokens upon creation are mapped with one of the mentioned user roles, and access to different resources is dependent on the permissions granted to these roles. For more information, please refer to the Squadcast support documentation.
+
+### Authorization
+
+The access token authorizes users the ability to access different APIs, based on the user roles described above. Pass the access token as a Bearer token in the `Authorization` header of every request.
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -87,14 +138,11 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 ```typescript
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
-const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const squadcastSDK = new SquadcastSDK();
 
 async function run() {
-  const result = await squadcastSDK.analytics.getOrganization({
-    from: "<value>",
-    to: "<value>",
+  const result = await squadcastSDK.auth.authGetAccessToken({
+    xRefreshToken: "<value>",
   });
 
   console.log(result);
@@ -125,9 +173,8 @@ const squadcastSDK = new SquadcastSDK({
 });
 
 async function run() {
-  const result = await squadcastSDK.analytics.getOrganization({
-    from: "<value>",
-    to: "<value>",
+  const result = await squadcastSDK.auth.authGetAccessToken({
+    xRefreshToken: "<value>",
   });
 
   console.log(result);
@@ -159,6 +206,10 @@ run();
 #### [AuditLogs.ExportHistory](docs/sdks/exporthistory/README.md)
 
 * [get](docs/sdks/exporthistory/README.md#get) - Get details of Audit Logs export history by ID
+
+### [Auth](docs/sdks/auth/README.md)
+
+* [authGetAccessToken](docs/sdks/auth/README.md#authgetaccesstoken) - Get Access Token
 
 ### [CommunicationCards](docs/sdks/communicationcards/README.md)
 
@@ -636,6 +687,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`auditLogsGetById`](docs/sdks/auditlogs/README.md#getbyid) - Get audit log by ID
 - [`auditLogsList`](docs/sdks/auditlogs/README.md#list) - List all Audit Logs
 - [`auditLogsListExportHistory`](docs/sdks/auditlogs/README.md#listexporthistory) - List all Audit Logs export history
+- [`authAuthGetAccessToken`](docs/sdks/auth/README.md#authgetaccesstoken) - Get Access Token
 - [`communicationCardsCreateSlackChannel`](docs/sdks/communicationcards/README.md#createslackchannel) - Create Slack Channel in Communication Card
 - [`communicationCardsDelete`](docs/sdks/communicationcards/README.md#delete) - Delete Communication Card
 - [`componentsDeleteById`](docs/sdks/components/README.md#deletebyid) - Delete Component By ID
@@ -948,14 +1000,11 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```typescript
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
-const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const squadcastSDK = new SquadcastSDK();
 
 async function run() {
-  const result = await squadcastSDK.analytics.getOrganization({
-    from: "<value>",
-    to: "<value>",
+  const result = await squadcastSDK.auth.authGetAccessToken({
+    xRefreshToken: "<value>",
   }, {
     retries: {
       strategy: "backoff",
@@ -991,13 +1040,11 @@ const squadcastSDK = new SquadcastSDK({
     },
     retryConnectionErrors: false,
   },
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await squadcastSDK.analytics.getOrganization({
-    from: "<value>",
-    to: "<value>",
+  const result = await squadcastSDK.auth.authGetAccessToken({
+    xRefreshToken: "<value>",
   });
 
   console.log(result);
@@ -1027,15 +1074,12 @@ run();
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 import * as errors from "@solarwinds/squadcast-sdk-typescript/models/errors";
 
-const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-});
+const squadcastSDK = new SquadcastSDK();
 
 async function run() {
   try {
-    const result = await squadcastSDK.analytics.getOrganization({
-      from: "<value>",
-      to: "<value>",
+    const result = await squadcastSDK.auth.authGetAccessToken({
+      xRefreshToken: "<value>",
     });
 
     console.log(result);
@@ -1087,9 +1131,9 @@ run();
 
 
 **Inherit from [`SquadcastSDKError`](./src/models/errors/squadcastsdkerror.ts)**:
-* [`CommonV4Error`](./src/models/errors/commonv4error.ts): The server could not understand the request due to invalid syntax. Applicable to 32 of 230 methods.*
-* [`ResponseBodyError1`](./src/models/errors/responsebodyerror1.ts): Represents a CircleCI error response for a 400 status code. Status code `400`. Applicable to 1 of 230 methods.*
-* [`ResponseBodyError2`](./src/models/errors/responsebodyerror2.ts): Represents a CircleCI error response for a 400 status code. Status code `400`. Applicable to 1 of 230 methods.*
+* [`CommonV4Error`](./src/models/errors/commonv4error.ts): The server could not understand the request due to invalid syntax. Applicable to 32 of 231 methods.*
+* [`ResponseBodyError1`](./src/models/errors/responsebodyerror1.ts): Represents a CircleCI error response for a 400 status code. Status code `400`. Applicable to 1 of 231 methods.*
+* [`ResponseBodyError2`](./src/models/errors/responsebodyerror2.ts): Represents a CircleCI error response for a 400 status code. Status code `400`. Applicable to 1 of 231 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
@@ -1100,9 +1144,41 @@ run();
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
+### Select Server by Index
+
+You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| #   | Server                         | Description       |
+| --- | ------------------------------ | ----------------- |
+| 0   | `https://api.eu.squadcast.com` | production EU env |
+| 1   | `https://api.squadcast.com`    | production US env |
+
+#### Example
+
+```typescript
+import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
+
+const squadcastSDK = new SquadcastSDK({
+  serverIdx: 0,
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await squadcastSDK.analytics.getOrganization({
+    from: "<value>",
+    to: "<value>",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
 ### Override Server URL Per-Client
 
-The default server can be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
+The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
@@ -1115,6 +1191,28 @@ async function run() {
   const result = await squadcastSDK.analytics.getOrganization({
     from: "<value>",
     to: "<value>",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+### Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+```typescript
+import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
+
+const squadcastSDK = new SquadcastSDK();
+
+async function run() {
+  const result = await squadcastSDK.auth.authGetAccessToken({
+    xRefreshToken: "<value>",
+  }, {
+    serverURL: "https://auth.eu.squadcast.com",
   });
 
   console.log(result);
