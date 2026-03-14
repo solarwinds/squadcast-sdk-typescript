@@ -8,7 +8,6 @@ import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
-import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
   ConnectionError,
@@ -21,24 +20,26 @@ import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { SquadcastSDKError } from "../models/errors/squadcastsdkerror.js";
+import { AuthGetAccessTokenServerList } from "../models/operations/authgetaccesstoken.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Update Escalation Policy
+ * Get Access Token
  *
  * @remarks
- * Update organization escalation policy details.
- * Requires `access_token` as a `Bearer {{token}}` in the `Authorization` header with `user-write` scope.
+ * Get access token to make authenticated HTTP requests to the Squadcast API.
+ * Send your refresh token (obtained from the Squadcast web application) in the
+ * `X-Refresh-Token` header.
  */
-export function escalationPoliciesUpdate(
+export function authAuthGetAccessToken(
   client: SquadcastSDKCore,
-  request: operations.EscalationPoliciesUpdateEscalationPolicyRequest,
+  request: operations.AuthGetAccessTokenRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.EscalationPoliciesUpdateEscalationPolicyResponse,
+    operations.AuthGetAccessTokenResponse,
     | errors.BadRequestError
     | errors.UnauthorizedError
     | errors.PaymentRequiredError
@@ -69,12 +70,12 @@ export function escalationPoliciesUpdate(
 
 async function $do(
   client: SquadcastSDKCore,
-  request: operations.EscalationPoliciesUpdateEscalationPolicyRequest,
+  request: operations.AuthGetAccessTokenRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.EscalationPoliciesUpdateEscalationPolicyResponse,
+      operations.AuthGetAccessTokenResponse,
       | errors.BadRequestError
       | errors.UnauthorizedError
       | errors.PaymentRequiredError
@@ -100,53 +101,40 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.EscalationPoliciesUpdateEscalationPolicyRequest$outboundSchema
-        .parse(value),
+    (value) => operations.AuthGetAccessTokenRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body =
-    payload["V3.EscalationPolicies.UpdateEscalationPolicyRequest"]
-        instanceof Uint8Array
-      ? new Uint8Array(
-        payload["V3.EscalationPolicies.UpdateEscalationPolicyRequest"],
-      ).buffer
-      : payload["V3.EscalationPolicies.UpdateEscalationPolicyRequest"];
+  const body = null;
 
-  const pathParams = {
-    escalationPolicyID: encodeSimple(
-      "escalationPolicyID",
-      payload.escalationPolicyID,
-      { explode: false, charEncoding: "percent" },
-    ),
-  };
+  const baseURL = options?.serverURL
+    || pathToFunc(AuthGetAccessTokenServerList[0], {
+      charEncoding: "percent",
+    })();
 
-  const path = pathToFunc("/v3/escalation-policies/{escalationPolicyID}")(
-    pathParams,
-  );
+  const path = pathToFunc("/oauth/access-token")();
 
   const headers = new Headers(compactMap({
-    "Content-Type": "text/plain",
     Accept: "application/json",
+    "X-Refresh-Token": encodeSimple(
+      "X-Refresh-Token",
+      payload["X-Refresh-Token"],
+      { explode: false, charEncoding: "none" },
+    ),
   }));
-
-  const secConfig = await extractSecurity(client._options.bearerAuth);
-  const securityInput = secConfig == null ? {} : { bearerAuth: secConfig };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
     options: client._options,
-    baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "EscalationPolicies_updateEscalationPolicy",
+    baseURL: baseURL ?? "",
+    operationID: "Auth_getAccessToken",
     oAuth2Scopes: null,
 
-    resolvedSecurity: requestSecurity,
+    resolvedSecurity: null,
 
-    securitySource: client._options.bearerAuth,
+    securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -154,9 +142,8 @@ async function $do(
   };
 
   const requestRes = client._createRequest(context, {
-    security: requestSecurity,
-    method: "POST",
-    baseURL: options?.serverURL,
+    method: "GET",
+    baseURL: baseURL,
     path: path,
     headers: headers,
     body: body,
@@ -198,7 +185,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.EscalationPoliciesUpdateEscalationPolicyResponse,
+    operations.AuthGetAccessTokenResponse,
     | errors.BadRequestError
     | errors.UnauthorizedError
     | errors.PaymentRequiredError
@@ -219,10 +206,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(
-      200,
-      operations.EscalationPoliciesUpdateEscalationPolicyResponse$inboundSchema,
-    ),
+    M.json(200, operations.AuthGetAccessTokenResponse$inboundSchema),
     M.jsonErr(400, errors.BadRequestError$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedError$inboundSchema),
     M.jsonErr(402, errors.PaymentRequiredError$inboundSchema),
