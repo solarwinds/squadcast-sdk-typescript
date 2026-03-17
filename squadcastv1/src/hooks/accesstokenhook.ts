@@ -13,7 +13,7 @@ type RefreshTokenSecurity = {
   bearerAuth?: unknown;
 };
 
-type RefreshTokenResponse = {
+type AccessTokenResponse = {
   data?: {
     access_token?: unknown;
     expires_at?: unknown;
@@ -41,7 +41,7 @@ class TokenCache {
   }
 }
 
-export class RefreshTokenHook implements BeforeRequestHook {
+export class AccessTokenHook implements BeforeRequestHook {
   #cache = new TokenCache();
 
   async beforeRequest(
@@ -60,7 +60,7 @@ export class RefreshTokenHook implements BeforeRequestHook {
     }
 
     const refreshURL = resolveRefreshURL(hookCtx.baseURL, request.url);
-    const { token, expiry } = await fetchBearerToken(
+    const { token, expiry } = await fetchAccessToken(
       refreshURL,
       refreshToken,
       hookCtx,
@@ -135,7 +135,7 @@ function authHostForAPIHost(apiHost: string): string {
   return "auth.squadcast.com";
 }
 
-async function fetchBearerToken(
+async function fetchAccessToken(
   refreshURL: string,
   refreshToken: string,
   hookCtx: BeforeRequestContext,
@@ -158,7 +158,7 @@ async function fetchBearerToken(
     );
   }
 
-  const payload = await response.json() as RefreshTokenResponse;
+  const payload = await response.json() as AccessTokenResponse;
   const token = payload.data?.access_token;
   if (typeof token !== "string" || !token) {
     throw new Error(

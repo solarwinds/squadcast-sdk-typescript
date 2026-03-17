@@ -1,4 +1,4 @@
-import { RefreshTokenHook } from "./refreshtokenhook.js";
+import { AccessTokenHook } from "./accesstokenhook.js";
 import { Hooks } from "./types.js";
 
 /*
@@ -8,7 +8,7 @@ import { Hooks } from "./types.js";
  */
 
 export function initHooks(hooks: Hooks) {
-  // RefreshTokenHook exchanges a refresh token for a bearer token on every
+  // AccessTokenHook exchanges a refresh token for an access token on every
   // request, caching the result until it expires.
-  hooks.registerBeforeRequestHook(new RefreshTokenHook());
+  hooks.registerBeforeRequestHook(new AccessTokenHook());
 }
