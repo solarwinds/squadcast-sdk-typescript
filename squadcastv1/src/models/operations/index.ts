@@ -13,7 +13,6 @@ export * from "./auditlogsgetauditlogbyid.js";
 export * from "./auditlogsgetauditlogsexporthistorybyid.js";
 export * from "./auditlogslistauditlogs.js";
 export * from "./auditlogslistauditlogsexporthistory.js";
-export * from "./authgetaccesstoken.js";
 export * from "./communicationcardsarchiveslackchannel.js";
 export * from "./communicationcardscreatecommunicationcard.js";
 export * from "./communicationcardscreateslackchannelincommunicationcard.js";

@@ -18,7 +18,7 @@ List Issues
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -43,7 +43,7 @@ import { statusPagesIssuesList } from "@solarwinds/squadcast-sdk-typescript/func
 // Use `SquadcastSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const squadcastSDK = new SquadcastSDKCore({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -102,7 +102,7 @@ Update Issue
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -137,7 +137,7 @@ import { statusPagesIssuesUpdate } from "@solarwinds/squadcast-sdk-typescript/fu
 // Use `SquadcastSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const squadcastSDK = new SquadcastSDKCore({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {

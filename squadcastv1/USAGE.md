@@ -2,11 +2,14 @@
 ```typescript
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
-const squadcastSDK = new SquadcastSDK();
+const squadcastSDK = new SquadcastSDK({
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
+});
 
 async function run() {
-  const result = await squadcastSDK.auth.authGetAccessToken({
-    xRefreshToken: "<value>",
+  const result = await squadcastSDK.analytics.getOrganization({
+    from: "<value>",
+    to: "<value>",
   });
 
   console.log(result);

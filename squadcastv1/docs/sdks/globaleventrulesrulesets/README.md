@@ -23,7 +23,7 @@ Create a GER Ruleset.
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -52,7 +52,7 @@ import { globalEventRulesRulesetsCreate } from "@solarwinds/squadcast-sdk-typesc
 // Use `SquadcastSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const squadcastSDK = new SquadcastSDKCore({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -115,7 +115,7 @@ Get a GER Ruleset
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -142,7 +142,7 @@ import { globalEventRulesRulesetsGet } from "@solarwinds/squadcast-sdk-typescrip
 // Use `SquadcastSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const squadcastSDK = new SquadcastSDKCore({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -203,7 +203,7 @@ Update a GER Ruleset
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -231,7 +231,7 @@ import { globalEventRulesRulesetsUpdate } from "@solarwinds/squadcast-sdk-typesc
 // Use `SquadcastSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const squadcastSDK = new SquadcastSDKCore({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -293,7 +293,7 @@ Reorder rules of a GER Ruleset
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -321,7 +321,7 @@ import { globalEventRulesRulesetsReorder } from "@solarwinds/squadcast-sdk-types
 // Use `SquadcastSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const squadcastSDK = new SquadcastSDKCore({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -372,7 +372,7 @@ Get all rules of a GER Ruleset.
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -401,7 +401,7 @@ import { globalEventRulesRulesetsListRules } from "@solarwinds/squadcast-sdk-typ
 // Use `SquadcastSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const squadcastSDK = new SquadcastSDKCore({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -464,7 +464,7 @@ Create a GER Ruleset Rule.
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -498,7 +498,7 @@ import { globalEventRulesRulesetsCreateRule } from "@solarwinds/squadcast-sdk-ty
 // Use `SquadcastSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const squadcastSDK = new SquadcastSDKCore({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -566,7 +566,7 @@ Update a GER Ruleset Rule by its ID.
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -595,7 +595,7 @@ import { globalEventRulesRulesetsUpdateRule } from "@solarwinds/squadcast-sdk-ty
 // Use `SquadcastSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const squadcastSDK = new SquadcastSDKCore({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {

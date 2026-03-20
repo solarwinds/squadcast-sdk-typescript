@@ -22,7 +22,6 @@ export * from "./v3auditlogsgetauditlogexporthistorybyidresponse.js";
 export * from "./v3auditlogslistauditlogsexporthistoryresponse.js";
 export * from "./v3auditlogslistauditlogsresponse.js";
 export * from "./v3auditlogsteam.js";
-export * from "./v3authaccesstokendata.js";
 export * from "./v3escalationpoliciescreateescalationpolicyrequest.js";
 export * from "./v3escalationpoliciesescalationentity.js";
 export * from "./v3escalationpoliciesescalationpolicyresponse.js";

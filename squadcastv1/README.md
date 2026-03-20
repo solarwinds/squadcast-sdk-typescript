@@ -138,11 +138,14 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 ```typescript
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
-const squadcastSDK = new SquadcastSDK();
+const squadcastSDK = new SquadcastSDK({
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
+});
 
 async function run() {
-  const result = await squadcastSDK.auth.authGetAccessToken({
-    xRefreshToken: "<value>",
+  const result = await squadcastSDK.analytics.getOrganization({
+    from: "<value>",
+    to: "<value>",
   });
 
   console.log(result);
@@ -160,21 +163,22 @@ run();
 
 This SDK supports the following security scheme globally:
 
-| Name         | Type | Scheme      |
-| ------------ | ---- | ----------- |
-| `bearerAuth` | http | HTTP Bearer |
+| Name               | Type | Scheme      |
+| ------------------ | ---- | ----------- |
+| `refreshTokenAuth` | http | Custom HTTP |
 
-To authenticate with the API the `bearerAuth` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `refreshTokenAuth` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
-  const result = await squadcastSDK.auth.authGetAccessToken({
-    xRefreshToken: "<value>",
+  const result = await squadcastSDK.analytics.getOrganization({
+    from: "<value>",
+    to: "<value>",
   });
 
   console.log(result);
@@ -206,10 +210,6 @@ run();
 #### [AuditLogs.ExportHistory](docs/sdks/exporthistory/README.md)
 
 * [get](docs/sdks/exporthistory/README.md#get) - Get details of Audit Logs export history by ID
-
-### [Auth](docs/sdks/auth/README.md)
-
-* [authGetAccessToken](docs/sdks/auth/README.md#authgetaccesstoken) - Get Access Token
 
 ### [CommunicationCards](docs/sdks/communicationcards/README.md)
 
@@ -687,7 +687,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`auditLogsGetById`](docs/sdks/auditlogs/README.md#getbyid) - Get audit log by ID
 - [`auditLogsList`](docs/sdks/auditlogs/README.md#list) - List all Audit Logs
 - [`auditLogsListExportHistory`](docs/sdks/auditlogs/README.md#listexporthistory) - List all Audit Logs export history
-- [`authAuthGetAccessToken`](docs/sdks/auth/README.md#authgetaccesstoken) - Get Access Token
 - [`communicationCardsCreateSlackChannel`](docs/sdks/communicationcards/README.md#createslackchannel) - Create Slack Channel in Communication Card
 - [`communicationCardsDelete`](docs/sdks/communicationcards/README.md#delete) - Delete Communication Card
 - [`componentsDeleteById`](docs/sdks/components/README.md#deletebyid) - Delete Component By ID
@@ -932,7 +931,7 @@ import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 import { RFCDate } from "@solarwinds/squadcast-sdk-typescript/types";
 
 const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -972,7 +971,7 @@ import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 import { openAsBlob } from "node:fs";
 
 const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -1000,11 +999,14 @@ To change the default retry strategy for a single API call, simply provide a ret
 ```typescript
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
-const squadcastSDK = new SquadcastSDK();
+const squadcastSDK = new SquadcastSDK({
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
+});
 
 async function run() {
-  const result = await squadcastSDK.auth.authGetAccessToken({
-    xRefreshToken: "<value>",
+  const result = await squadcastSDK.analytics.getOrganization({
+    from: "<value>",
+    to: "<value>",
   }, {
     retries: {
       strategy: "backoff",
@@ -1040,11 +1042,13 @@ const squadcastSDK = new SquadcastSDK({
     },
     retryConnectionErrors: false,
   },
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
-  const result = await squadcastSDK.auth.authGetAccessToken({
-    xRefreshToken: "<value>",
+  const result = await squadcastSDK.analytics.getOrganization({
+    from: "<value>",
+    to: "<value>",
   });
 
   console.log(result);
@@ -1074,12 +1078,15 @@ run();
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 import * as errors from "@solarwinds/squadcast-sdk-typescript/models/errors";
 
-const squadcastSDK = new SquadcastSDK();
+const squadcastSDK = new SquadcastSDK({
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
+});
 
 async function run() {
   try {
-    const result = await squadcastSDK.auth.authGetAccessToken({
-      xRefreshToken: "<value>",
+    const result = await squadcastSDK.analytics.getOrganization({
+      from: "<value>",
+      to: "<value>",
     });
 
     console.log(result);
@@ -1131,9 +1138,9 @@ run();
 
 
 **Inherit from [`SquadcastSDKError`](./src/models/errors/squadcastsdkerror.ts)**:
-* [`CommonV4Error`](./src/models/errors/commonv4error.ts): The server could not understand the request due to invalid syntax. Applicable to 32 of 231 methods.*
-* [`ResponseBodyError1`](./src/models/errors/responsebodyerror1.ts): Represents a CircleCI error response for a 400 status code. Status code `400`. Applicable to 1 of 231 methods.*
-* [`ResponseBodyError2`](./src/models/errors/responsebodyerror2.ts): Represents a CircleCI error response for a 400 status code. Status code `400`. Applicable to 1 of 231 methods.*
+* [`CommonV4Error`](./src/models/errors/commonv4error.ts): The server could not understand the request due to invalid syntax. Applicable to 32 of 230 methods.*
+* [`ResponseBodyError1`](./src/models/errors/responsebodyerror1.ts): Represents a CircleCI error response for a 400 status code. Status code `400`. Applicable to 1 of 230 methods.*
+* [`ResponseBodyError2`](./src/models/errors/responsebodyerror2.ts): Represents a CircleCI error response for a 400 status code. Status code `400`. Applicable to 1 of 230 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
@@ -1160,7 +1167,7 @@ import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
   serverIdx: 0,
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -1184,35 +1191,13 @@ import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
   serverURL: "https://api.squadcast.com",
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
   const result = await squadcastSDK.analytics.getOrganization({
     from: "<value>",
     to: "<value>",
-  });
-
-  console.log(result);
-}
-
-run();
-
-```
-
-### Override Server URL Per-Operation
-
-The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
-```typescript
-import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
-
-const squadcastSDK = new SquadcastSDK();
-
-async function run() {
-  const result = await squadcastSDK.auth.authGetAccessToken({
-    xRefreshToken: "<value>",
-  }, {
-    serverURL: "https://auth.eu.squadcast.com",
   });
 
   console.log(result);

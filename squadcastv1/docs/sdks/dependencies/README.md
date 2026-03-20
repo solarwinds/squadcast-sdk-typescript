@@ -17,7 +17,7 @@ Create or Update Dependencies
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {
@@ -49,7 +49,7 @@ import { servicesDependenciesCreateOrUpdate } from "@solarwinds/squadcast-sdk-ty
 // Use `SquadcastSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const squadcastSDK = new SquadcastSDKCore({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function run() {

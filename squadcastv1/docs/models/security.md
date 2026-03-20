@@ -5,11 +5,13 @@
 ```typescript
 import { Security } from "@solarwinds/squadcast-sdk-typescript/models";
 
-let value: Security = {};
+let value: Security = {
+  refreshTokenAuth: "<value>",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `bearerAuth`       | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                             | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `refreshTokenAuth`                                                | *string*                                                          | :heavy_check_mark:                                                | Squadcast refresh token used to obtain short-lived bearer tokens. |

@@ -136,8 +136,10 @@ async function $do(
     Accept: "*/*",
   }));
 
-  const secConfig = await extractSecurity(client._options.bearerAuth);
-  const securityInput = secConfig == null ? {} : { bearerAuth: secConfig };
+  const secConfig = await extractSecurity(client._options.refreshTokenAuth);
+  const securityInput = secConfig == null
+    ? {}
+    : { refreshTokenAuth: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
@@ -148,7 +150,7 @@ async function $do(
 
     resolvedSecurity: requestSecurity,
 
-    securitySource: client._options.bearerAuth,
+    securitySource: client._options.refreshTokenAuth,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
