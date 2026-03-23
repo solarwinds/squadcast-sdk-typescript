@@ -122,7 +122,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v3/workflows/{workflowID}/actions/{actionID}")(
     pathParams,
   );

@@ -1157,8 +1157,8 @@ You can override the default server globally by passing a server index to the `s
 
 | #   | Server                         | Description       |
 | --- | ------------------------------ | ----------------- |
-| 0   | `https://api.eu.squadcast.com` | production EU env |
-| 1   | `https://api.squadcast.com`    | production US env |
+| 0   | `https://api.squadcast.com`    | production US env |
+| 1   | `https://api.eu.squadcast.com` | production EU env |
 
 #### Example
 
@@ -1190,7 +1190,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
-  serverURL: "https://api.squadcast.com",
+  serverURL: "https://api.eu.squadcast.com",
   refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 

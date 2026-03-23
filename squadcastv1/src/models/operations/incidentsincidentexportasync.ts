@@ -9,40 +9,11 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 /**
- * The body type of the operation request or response.
- */
-export type IncidentsIncidentExportAsyncBody = {
-  data: models.V3IncidentsIncidentExportAsyncResponse;
-};
-
-/**
  * The request has been accepted for processing, but processing has not yet completed.
  */
 export type IncidentsIncidentExportAsyncResponseBody = {
-  /**
-   * The body type of the operation request or response.
-   */
-  body: IncidentsIncidentExportAsyncBody;
+  data: models.V3IncidentsIncidentExportAsyncResponse;
 };
-
-/** @internal */
-export const IncidentsIncidentExportAsyncBody$inboundSchema: z.ZodType<
-  IncidentsIncidentExportAsyncBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  data: models.V3IncidentsIncidentExportAsyncResponse$inboundSchema,
-});
-
-export function incidentsIncidentExportAsyncBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<IncidentsIncidentExportAsyncBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IncidentsIncidentExportAsyncBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IncidentsIncidentExportAsyncBody' from JSON`,
-  );
-}
 
 /** @internal */
 export const IncidentsIncidentExportAsyncResponseBody$inboundSchema: z.ZodType<
@@ -50,7 +21,7 @@ export const IncidentsIncidentExportAsyncResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  body: z.lazy(() => IncidentsIncidentExportAsyncBody$inboundSchema),
+  data: models.V3IncidentsIncidentExportAsyncResponse$inboundSchema,
 });
 
 export function incidentsIncidentExportAsyncResponseBodyFromJSON(

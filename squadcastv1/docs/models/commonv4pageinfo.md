@@ -8,7 +8,7 @@ import { CommonV4PageInfo } from "@solarwinds/squadcast-sdk-typescript/models";
 let value: CommonV4PageInfo = {
   pageSize: 490075,
   hasNext: true,
-  hasPrevious: true,
+  hasPrev: true,
 };
 ```
 
@@ -18,6 +18,6 @@ let value: CommonV4PageInfo = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `pageSize`         | *number*           | :heavy_check_mark: | N/A                |
 | `hasNext`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `hasPrevious`      | *boolean*          | :heavy_check_mark: | N/A                |
+| `hasPrev`          | *boolean*          | :heavy_check_mark: | N/A                |
 | `nextCursor`       | *string*           | :heavy_minus_sign: | N/A                |
-| `previousCursor`   | *string*           | :heavy_minus_sign: | N/A                |
+| `prevCursor`       | *string*           | :heavy_minus_sign: | N/A                |

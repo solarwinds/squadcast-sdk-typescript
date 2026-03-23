@@ -16,20 +16,10 @@ export type PostmortemsCreatePostmortemRequest = {
 };
 
 /**
- * The body type of the operation request or response.
- */
-export type PostmortemsCreatePostmortemBody = {
-  data: models.V3IncidentsPostmortemsPostmortemResponse;
-};
-
-/**
  * The request has succeeded and a new resource has been created as a result.
  */
 export type PostmortemsCreatePostmortemResponse = {
-  /**
-   * The body type of the operation request or response.
-   */
-  body: PostmortemsCreatePostmortemBody;
+  data: models.V3IncidentsPostmortemsPostmortemResponse;
 };
 
 /** @internal */
@@ -66,31 +56,12 @@ export function postmortemsCreatePostmortemRequestToJSON(
 }
 
 /** @internal */
-export const PostmortemsCreatePostmortemBody$inboundSchema: z.ZodType<
-  PostmortemsCreatePostmortemBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  data: models.V3IncidentsPostmortemsPostmortemResponse$inboundSchema,
-});
-
-export function postmortemsCreatePostmortemBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<PostmortemsCreatePostmortemBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostmortemsCreatePostmortemBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostmortemsCreatePostmortemBody' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostmortemsCreatePostmortemResponse$inboundSchema: z.ZodType<
   PostmortemsCreatePostmortemResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  body: z.lazy(() => PostmortemsCreatePostmortemBody$inboundSchema),
+  data: models.V3IncidentsPostmortemsPostmortemResponse$inboundSchema,
 });
 
 export function postmortemsCreatePostmortemResponseFromJSON(

@@ -18,7 +18,7 @@ export type SquadsGetAllSquadsRequest = {
  */
 export type SquadsGetAllSquadsResponse = {
   data: Array<models.V4SquadsSquadResponse>;
-  pageInfo: models.CommonV4PageInfo;
+  pageInfo?: models.CommonV4PageInfo | undefined;
 };
 
 /** @internal */
@@ -54,7 +54,7 @@ export const SquadsGetAllSquadsResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   data: z.array(models.V4SquadsSquadResponse$inboundSchema),
-  pageInfo: models.CommonV4PageInfo$inboundSchema,
+  pageInfo: models.CommonV4PageInfo$inboundSchema.optional(),
 });
 
 export function squadsGetAllSquadsResponseFromJSON(

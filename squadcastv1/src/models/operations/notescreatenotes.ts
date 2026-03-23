@@ -18,20 +18,10 @@ export type NotesCreateNotesRequest = {
 };
 
 /**
- * The body type of the operation request or response.
- */
-export type NotesCreateNotesBody = {
-  data: models.V3IncidentsNotesNoteResponse;
-};
-
-/**
  * The request has succeeded and a new resource has been created as a result.
  */
 export type NotesCreateNotesResponse = {
-  /**
-   * The body type of the operation request or response.
-   */
-  body: NotesCreateNotesBody;
+  data: models.V3IncidentsNotesNoteResponse;
 };
 
 /** @internal */
@@ -66,31 +56,12 @@ export function notesCreateNotesRequestToJSON(
 }
 
 /** @internal */
-export const NotesCreateNotesBody$inboundSchema: z.ZodType<
-  NotesCreateNotesBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  data: models.V3IncidentsNotesNoteResponse$inboundSchema,
-});
-
-export function notesCreateNotesBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<NotesCreateNotesBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => NotesCreateNotesBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'NotesCreateNotesBody' from JSON`,
-  );
-}
-
-/** @internal */
 export const NotesCreateNotesResponse$inboundSchema: z.ZodType<
   NotesCreateNotesResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  body: z.lazy(() => NotesCreateNotesBody$inboundSchema),
+  data: models.V3IncidentsNotesNoteResponse$inboundSchema,
 });
 
 export function notesCreateNotesResponseFromJSON(

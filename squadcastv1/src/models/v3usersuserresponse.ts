@@ -28,7 +28,7 @@ export type V3UsersUserResponse = {
   timeZone: string;
   title: string;
   bio: string;
-  notificationRules: Array<V3UsersNotificationRule>;
+  notificationRules: Array<V3UsersNotificationRule> | null;
   userImage: boolean;
   roleId?: string | undefined;
   role?: string | undefined;
@@ -51,7 +51,9 @@ export const V3UsersUserResponse$inboundSchema: z.ZodType<
   time_zone: z.string(),
   title: z.string(),
   bio: z.string(),
-  notification_rules: z.array(V3UsersNotificationRule$inboundSchema),
+  notification_rules: z.nullable(
+    z.array(V3UsersNotificationRule$inboundSchema),
+  ),
   user_image: z.boolean(),
   role_id: z.string().optional(),
   role: z.string().optional(),

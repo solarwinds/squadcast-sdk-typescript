@@ -2301,17 +2301,10 @@ paths:
               schema:
                 type: "object"
                 required:
-                  - "body"
+                  - "data"
                 properties:
-                  body:
-                    type: "object"
-                    required:
-                      - "data"
-                    properties:
-                      data:
-                        $ref: "#/components/schemas/V3.Extensions.Webhooks.WebhookResponse"
-                    description: "The body type of the operation request or response."
-                description: ""
+                  data:
+                    $ref: "#/components/schemas/V3.Extensions.Webhooks.WebhookResponse"
         "400":
           description: "The server could not understand the request due to invalid syntax."
           content:
@@ -6861,17 +6854,10 @@ paths:
               schema:
                 type: "object"
                 required:
-                  - "body"
+                  - "data"
                 properties:
-                  body:
-                    type: "object"
-                    required:
-                      - "data"
-                    properties:
-                      data:
-                        $ref: "#/components/schemas/V3.Incidents.IncidentExportAsyncResponse"
-                    description: "The body type of the operation request or response."
-                description: ""
+                  data:
+                    $ref: "#/components/schemas/V3.Incidents.IncidentExportAsyncResponse"
         "400":
           description: "The server could not understand the request due to invalid syntax."
           content:
@@ -8572,17 +8558,10 @@ paths:
               schema:
                 type: "object"
                 required:
-                  - "body"
+                  - "data"
                 properties:
-                  body:
-                    type: "object"
-                    required:
-                      - "data"
-                    properties:
-                      data:
-                        $ref: "#/components/schemas/V3.Incidents.Notes.NoteResponse"
-                    description: "The body type of the operation request or response."
-                description: ""
+                  data:
+                    $ref: "#/components/schemas/V3.Incidents.Notes.NoteResponse"
         "400":
           description: "The server could not understand the request due to invalid syntax."
           content:
@@ -11629,17 +11608,10 @@ paths:
               schema:
                 type: "object"
                 required:
-                  - "body"
+                  - "data"
                 properties:
-                  body:
-                    type: "object"
-                    required:
-                      - "data"
-                    properties:
-                      data:
-                        $ref: "#/components/schemas/V3.Incidents.Postmortems.PostmortemResponse"
-                    description: "The body type of the operation request or response."
-                description: ""
+                  data:
+                    $ref: "#/components/schemas/V3.Incidents.Postmortems.PostmortemResponse"
         "400":
           description: "The server could not understand the request due to invalid syntax."
           content:
@@ -14202,17 +14174,10 @@ paths:
               schema:
                 type: "object"
                 required:
-                  - "body"
+                  - "data"
                 properties:
-                  body:
-                    type: "object"
-                    required:
-                      - "data"
-                    properties:
-                      data:
-                        $ref: "#/components/schemas/V3.Services.ServiceResponse"
-                    description: "The body type of the operation request or response."
-                description: ""
+                  data:
+                    $ref: "#/components/schemas/V3.Services.ServiceResponse"
         "400":
           description: "The server could not understand the request due to invalid syntax."
           content:
@@ -26513,7 +26478,6 @@ paths:
                 type: "object"
                 required:
                   - "data"
-                  - "pageInfo"
                 properties:
                   data:
                     type: "array"
@@ -27719,7 +27683,6 @@ paths:
                 type: "object"
                 required:
                   - "data"
-                  - "pageInfo"
                 properties:
                   data:
                     type: "array"
@@ -28202,9 +28165,11 @@ paths:
                 type: "object"
                 properties:
                   data:
-                    type: "array"
-                    items:
-                      $ref: "#/components/schemas/V4.RotationResponse"
+                    anyOf:
+                      - type: "array"
+                        items:
+                          $ref: "#/components/schemas/V4.RotationResponse"
+                      - type: "null"
                 required:
                   - "data"
         "400":
@@ -28883,7 +28848,6 @@ paths:
                 type: "object"
                 required:
                   - "data"
-                  - "pageInfo"
                 properties:
                   data:
                     type: "array"
@@ -33981,18 +33945,18 @@ components:
       required:
         - "pageSize"
         - "hasNext"
-        - "hasPrevious"
+        - "hasPrev"
       properties:
         pageSize:
           type: "integer"
           format: "int32"
         hasNext:
           type: "boolean"
-        hasPrevious:
+        hasPrev:
           type: "boolean"
         nextCursor:
           type: "string"
-        previousCursor:
+        prevCursor:
           type: "string"
     V3.Analytics.AnalyticsResponse:
       type: "object"
@@ -38830,9 +38794,6 @@ components:
           type: "string"
         overlay_template_type:
           type: "string"
-          enum:
-            - "message"
-            - "description"
         overlay:
           $ref: "#/components/schemas/V3.Services.Overlay.CustomContent"
         created_by:
@@ -40055,9 +40016,11 @@ components:
         bio:
           type: "string"
         notification_rules:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/V3.Users.NotificationRule"
+          anyOf:
+            - type: "array"
+              items:
+                $ref: "#/components/schemas/V3.Users.NotificationRule"
+            - type: "null"
         user_image:
           type: "boolean"
         role_id:
@@ -43837,9 +43800,9 @@ components:
           required:
             - refreshToken
 servers:
-  - url: "https://api.eu.squadcast.com"
-    description: "production EU env"
-    variables: {}
   - url: "https://api.squadcast.com"
     description: "production US env"
+    variables: {}
+  - url: "https://api.eu.squadcast.com"
+    description: "production EU env"
     variables: {}

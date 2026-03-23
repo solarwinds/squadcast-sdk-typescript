@@ -118,7 +118,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v3/audit-logs/export/history/{id}")(pathParams);
 
   const headers = new Headers(compactMap({

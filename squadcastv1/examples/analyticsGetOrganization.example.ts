@@ -14,12 +14,14 @@ dotenv.config();
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
-  serverURL: "https://api.squadcast.com",
-  refreshTokenAuth: "17618c502d31d615a024d89f60ab16ea0d774adc2c30c249cb5ee0b9178541a722d8fe8bd71ddeecde127151c3e7fa6e1b56ab7ddeb873f83b2aaadb9965add4",
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 
 async function main() {
-  const result = await squadcastSDK.users.getAllTokens();
+  const result = await squadcastSDK.analytics.getOrganization({
+    from: "<value>",
+    to: "<value>",
+  });
 
   console.log(result);
 }

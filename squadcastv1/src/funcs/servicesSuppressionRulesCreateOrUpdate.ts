@@ -120,7 +120,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v3/services/{serviceID}/suppression-rules")(
     pathParams,
   );

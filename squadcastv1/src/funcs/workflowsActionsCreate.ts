@@ -117,7 +117,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v3/workflows/{workflowID}/actions")(pathParams);
 
   const headers = new Headers(compactMap({

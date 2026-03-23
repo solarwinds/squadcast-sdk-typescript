@@ -9,11 +9,6 @@ import { OverridesListOverridesResponse } from "@solarwinds/squadcast-sdk-typesc
 
 let value: OverridesListOverridesResponse = {
   data: [],
-  pageInfo: {
-    pageSize: 808332,
-    hasNext: false,
-    hasPrevious: true,
-  },
 };
 ```
 
@@ -22,4 +17,4 @@ let value: OverridesListOverridesResponse = {
 | Field                                                             | Type                                                              | Required                                                          | Description                                                       |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | `data`                                                            | [models.V4OverrideResponse](../../models/v4overrideresponse.md)[] | :heavy_check_mark:                                                | N/A                                                               |
-| `pageInfo`                                                        | [models.CommonV4PageInfo](../../models/commonv4pageinfo.md)       | :heavy_check_mark:                                                | N/A                                                               |
+| `pageInfo`                                                        | [models.CommonV4PageInfo](../../models/commonv4pageinfo.md)       | :heavy_minus_sign:                                                | N/A                                                               |

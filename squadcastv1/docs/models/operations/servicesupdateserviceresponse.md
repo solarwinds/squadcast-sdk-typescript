@@ -12,11 +12,11 @@ let value: ServicesUpdateServiceResponse = {
     id: "<id>",
     name: "<value>",
     slug: "<value>",
-    email: "Joaquin92@hotmail.com",
+    email: "Clint.Morissette@hotmail.com",
     escalationPolicyId: "<id>",
     organizationId: "<id>",
     apiKey: "<value>",
-    description: "bravely ah including weatherize or finally amidst marathon",
+    description: "wherever especially massage",
     owner: {
       id: "<id>",
       type: "team",
@@ -33,20 +33,20 @@ let value: ServicesUpdateServiceResponse = {
     ],
     autoPauseTransientAlertsConfig: {
       isEnabled: true,
-      timeoutInMins: 8994.69,
+      timeoutInMins: 6913.62,
     },
     intelligentAlertsGroupingConfig: {
       isEnabled: false,
-      rollingWindowInMins: 2937.46,
+      rollingWindowInMins: 1556,
     },
     delayNotificationConfig: {
-      isEnabled: true,
+      isEnabled: false,
     },
     config: {
       dedupKeyEnabled: false,
     },
-    createdAt: new Date("2025-04-24T06:25:25.509Z"),
-    updatedAt: new Date("2025-03-29T13:45:23.308Z"),
+    createdAt: new Date("2026-03-11T11:02:47.936Z"),
+    updatedAt: new Date("2024-05-10T18:15:06.919Z"),
   },
 };
 ```

@@ -10,9 +10,9 @@ import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 export type CommonV4PageInfo = {
   pageSize: number;
   hasNext: boolean;
-  hasPrevious: boolean;
+  hasPrev: boolean;
   nextCursor?: string | undefined;
-  previousCursor?: string | undefined;
+  prevCursor?: string | undefined;
 };
 
 /** @internal */
@@ -23,9 +23,9 @@ export const CommonV4PageInfo$inboundSchema: z.ZodType<
 > = z.object({
   pageSize: z.number().int(),
   hasNext: z.boolean(),
-  hasPrevious: z.boolean(),
+  hasPrev: z.boolean(),
   nextCursor: z.string().optional(),
-  previousCursor: z.string().optional(),
+  prevCursor: z.string().optional(),
 });
 
 export function commonV4PageInfoFromJSON(

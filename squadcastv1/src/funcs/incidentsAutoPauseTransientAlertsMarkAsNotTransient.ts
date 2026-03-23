@@ -112,7 +112,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v3/incidents/{incidentID}/mark-as-non-transient")(
     pathParams,
   );

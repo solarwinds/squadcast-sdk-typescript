@@ -5,23 +5,12 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 import {
   V3ServicesOverlayCustomContent,
   V3ServicesOverlayCustomContent$inboundSchema,
 } from "./v3servicesoverlaycustomcontent.js";
-
-export const V3ServicesOverlayCustomContentOverlayResponseOverlayTemplateType =
-  {
-    Message: "message",
-    Description: "description",
-  } as const;
-export type V3ServicesOverlayCustomContentOverlayResponseOverlayTemplateType =
-  ClosedEnum<
-    typeof V3ServicesOverlayCustomContentOverlayResponseOverlayTemplateType
-  >;
 
 export type V3ServicesOverlayCustomContentOverlayResponse = {
   createdAt: Date;
@@ -31,21 +20,12 @@ export type V3ServicesOverlayCustomContentOverlayResponse = {
   serviceId: string;
   alertSourceVersion: string;
   alertSourceShortname: string;
-  overlayTemplateType:
-    V3ServicesOverlayCustomContentOverlayResponseOverlayTemplateType;
+  overlayTemplateType: string;
   overlay: V3ServicesOverlayCustomContent;
   createdBy: string;
   updatedBy: string;
   alertSourceType: string;
 };
-
-/** @internal */
-export const V3ServicesOverlayCustomContentOverlayResponseOverlayTemplateType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof V3ServicesOverlayCustomContentOverlayResponseOverlayTemplateType
-  > = z.nativeEnum(
-    V3ServicesOverlayCustomContentOverlayResponseOverlayTemplateType,
-  );
 
 /** @internal */
 export const V3ServicesOverlayCustomContentOverlayResponse$inboundSchema:
@@ -67,8 +47,7 @@ export const V3ServicesOverlayCustomContentOverlayResponse$inboundSchema:
     service_id: z.string(),
     alert_source_version: z.string(),
     alert_source_shortname: z.string(),
-    overlay_template_type:
-      V3ServicesOverlayCustomContentOverlayResponseOverlayTemplateType$inboundSchema,
+    overlay_template_type: z.string(),
     overlay: V3ServicesOverlayCustomContent$inboundSchema,
     created_by: z.string(),
     updated_by: z.string(),

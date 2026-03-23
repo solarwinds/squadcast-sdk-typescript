@@ -123,7 +123,6 @@ async function $do(
       { explode: false, charEncoding: "percent" },
     ),
   };
-
   const path = pathToFunc(
     "/v3/incidents/{IncidentId}/communication_cards/{communicationCardId}",
   )(pathParams);

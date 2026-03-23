@@ -121,7 +121,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/v3/incidents/{incidentID}/actions/circleci/rebuild/{buildNumber}",
   )(pathParams);

@@ -119,7 +119,6 @@ async function $do(
       { explode: false, charEncoding: "percent" },
     ),
   };
-
   const path = pathToFunc("/v3/escalation-policies/{escalationPolicyID}")(
     pathParams,
   );

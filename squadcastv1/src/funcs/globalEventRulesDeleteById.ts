@@ -117,7 +117,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v3/global-event-rules/{ger_id}")(pathParams);
 
   const headers = new Headers(compactMap({
