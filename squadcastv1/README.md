@@ -1,20 +1,17 @@
-# Squadcast SDK for TypeScript
+# Incident Response SDK for TypeScript
 
-Developer-friendly & type-safe Typescript SDK specifically catered to leverage *openapi* API.
+Developer-friendly & type-safe TypeScript SDK specifically catered to leverage *Incident Response* API.
 
 <div align="left">
-    <a href="https://www.speakeasy.com/?utm_source=openapi&utm_campaign=typescript"><img src="https://www.speakeasy.com/assets/badges/built-by-speakeasy.svg" /></a>
+    <a href="https://www.speakeasy.com/?utm_source=squadcast-sdk&utm_campaign=typescript"><img src="https://www.speakeasy.com/assets/badges/built-by-speakeasy.svg" /></a>
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
     </a>
 </div>
 
-<!-- End Summary [summary] -->
-
 <!-- Start Summary [summary] -->
 ## Summary
 
-Squadcast: ## Overview
 The Squadcast API provides developers the capability to extend and utilize Squadcast in conjunction with other services. Our API has resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
 
 > **Note:** Customers using the V2 version of the Squadcast API would need to migrate to Squadcast API V3, as the former would be deprecated shortly.
@@ -71,7 +68,7 @@ The access token authorizes users the ability to access different APIs, based on
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [Squadcast SDK for TypeScript](#squadcast-sdk-for-typescript)
+* [Incident Response SDK for TypeScript](#incident-response-sdk-for-typescript)
   * [SDK Installation](#sdk-installation)
   * [Requirements](#requirements)
   * [SDK Example Usage](#sdk-example-usage)
@@ -1293,4 +1290,4 @@ looking for the latest version.
 While we value open-source contributions to this SDK, this library is generated programmatically. Any manual changes added to internal files will be overwritten on the next generation. 
 We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release. 
 
-### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=openapi&utm_campaign=typescript)
+### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=squadcast-sdk&utm_campaign=typescript)
