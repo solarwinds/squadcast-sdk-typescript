@@ -12,13 +12,13 @@ import { Params, pathToFunc } from "./url.js";
  */
 export const ServerList = [
   /**
-   * production EU env
-   */
-  "https://api.eu.squadcast.com",
-  /**
    * production US env
    */
   "https://api.squadcast.com",
+  /**
+   * production EU env
+   */
+  "https://api.eu.squadcast.com",
 ] as const;
 
 export type SDKOptions = {
@@ -65,8 +65,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "1.0.0",
-  sdkVersion: "1.4.0",
-  genVersion: "2.865.2",
+  sdkVersion: "1.4.1",
+  genVersion: "2.869.10",
   userAgent:
-    "speakeasy-sdk/typescript 1.4.0 2.865.2 1.0.0 @solarwinds/squadcast-sdk-typescript",
+    "speakeasy-sdk/typescript 1.4.1 2.869.10 1.0.0 @solarwinds/squadcast-sdk-typescript",
 } as const;

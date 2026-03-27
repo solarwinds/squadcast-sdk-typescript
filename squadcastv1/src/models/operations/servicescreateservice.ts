@@ -15,20 +15,10 @@ export type ServicesCreateServiceRequest = {
 };
 
 /**
- * The body type of the operation request or response.
- */
-export type ServicesCreateServiceBody = {
-  data: models.V3ServicesServiceResponse;
-};
-
-/**
  * The request has succeeded and a new resource has been created as a result.
  */
 export type ServicesCreateServiceResponse = {
-  /**
-   * The body type of the operation request or response.
-   */
-  body: ServicesCreateServiceBody;
+  data: models.V3ServicesServiceResponse;
 };
 
 /** @internal */
@@ -65,31 +55,12 @@ export function servicesCreateServiceRequestToJSON(
 }
 
 /** @internal */
-export const ServicesCreateServiceBody$inboundSchema: z.ZodType<
-  ServicesCreateServiceBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  data: models.V3ServicesServiceResponse$inboundSchema,
-});
-
-export function servicesCreateServiceBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<ServicesCreateServiceBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ServicesCreateServiceBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ServicesCreateServiceBody' from JSON`,
-  );
-}
-
-/** @internal */
 export const ServicesCreateServiceResponse$inboundSchema: z.ZodType<
   ServicesCreateServiceResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  body: z.lazy(() => ServicesCreateServiceBody$inboundSchema),
+  data: models.V3ServicesServiceResponse$inboundSchema,
 });
 
 export function servicesCreateServiceResponseFromJSON(

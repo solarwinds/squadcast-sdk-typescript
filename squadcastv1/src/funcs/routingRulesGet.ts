@@ -112,7 +112,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v3/services/{serviceID}/routing-rules")(pathParams);
 
   const headers = new Headers(compactMap({

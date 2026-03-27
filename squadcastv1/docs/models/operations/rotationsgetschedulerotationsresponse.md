@@ -8,7 +8,20 @@ The request has succeeded.
 import { RotationsGetScheduleRotationsResponse } from "@solarwinds/squadcast-sdk-typescript/models/operations";
 
 let value: RotationsGetScheduleRotationsResponse = {
-  data: [],
+  data: [
+    {
+      id: 785981,
+      name: "<value>",
+      scheduleID: 70966,
+      color: "ivory",
+      startDate: "<value>",
+      period: "<value>",
+      changeParticipantsFrequency: 31515,
+      changeParticipantsUnit: "<value>",
+      createdAt: "1709992519502",
+      updatedAt: "1735612619897",
+    },
+  ],
 };
 ```
 

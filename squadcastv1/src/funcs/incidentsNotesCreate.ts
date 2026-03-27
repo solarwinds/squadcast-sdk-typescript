@@ -115,7 +115,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v3/incidents/{IncidentId}/warroom")(pathParams);
 
   const headers = new Headers(compactMap({

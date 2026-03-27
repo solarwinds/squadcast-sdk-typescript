@@ -118,7 +118,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v3/extensions/event-webhooks/{eventWebhookID}")(
     pathParams,
   );

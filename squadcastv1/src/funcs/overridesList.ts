@@ -92,7 +92,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/v4/schedules/{scheduleID}/overrides")(pathParams);
 
   const query = encodeFormQuery({
