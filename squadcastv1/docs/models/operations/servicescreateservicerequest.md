@@ -9,6 +9,7 @@ let value: ServicesCreateServiceRequest = {
   ownerId: "<id>",
   v3ServicesCreateServiceRequest: {
     name: "<value>",
+    ownerId: "<id>",
     escalationPolicyId: "<id>",
   },
 };

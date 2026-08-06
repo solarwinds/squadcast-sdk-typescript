@@ -26,7 +26,12 @@ let value: UsersGetAllUsersResponse = {
       timeZone: "Africa/Kampala",
       title: "<value>",
       bio: "<value>",
-      notificationRules: [],
+      notificationRules: [
+        {
+          type: "<value>",
+          time: 635001,
+        },
+      ],
       userImage: false,
     },
   ],

@@ -3,42 +3,25 @@
  */
 
 import * as z from "zod/v3";
-
-export type ReassignTo = {
-  id: string;
-  type: string;
-};
+import {
+  V3IncidentsAssignee,
+  V3IncidentsAssignee$Outbound,
+  V3IncidentsAssignee$outboundSchema,
+} from "./v3incidentsassignee.js";
 
 /**
  * Request body for reassigning an incident.
  */
 export type V3IncidentsReassignIncidentRequest = {
-  reassignTo: ReassignTo;
+  /**
+   * Assignment target for an incident.
+   */
+  reassignTo: V3IncidentsAssignee;
 };
-
-/** @internal */
-export type ReassignTo$Outbound = {
-  id: string;
-  type: string;
-};
-
-/** @internal */
-export const ReassignTo$outboundSchema: z.ZodType<
-  ReassignTo$Outbound,
-  z.ZodTypeDef,
-  ReassignTo
-> = z.object({
-  id: z.string(),
-  type: z.string(),
-});
-
-export function reassignToToJSON(reassignTo: ReassignTo): string {
-  return JSON.stringify(ReassignTo$outboundSchema.parse(reassignTo));
-}
 
 /** @internal */
 export type V3IncidentsReassignIncidentRequest$Outbound = {
-  reassignTo: ReassignTo$Outbound;
+  reassignTo: V3IncidentsAssignee$Outbound;
 };
 
 /** @internal */
@@ -47,7 +30,7 @@ export const V3IncidentsReassignIncidentRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   V3IncidentsReassignIncidentRequest
 > = z.object({
-  reassignTo: z.lazy(() => ReassignTo$outboundSchema),
+  reassignTo: V3IncidentsAssignee$outboundSchema,
 });
 
 export function v3IncidentsReassignIncidentRequestToJSON(

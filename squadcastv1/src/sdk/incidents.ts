@@ -15,6 +15,8 @@ import { incidentsGetAdditionalResponders } from "../funcs/incidentsGetAdditiona
 import { incidentsGetAllCommunicationCards } from "../funcs/incidentsGetAllCommunicationCards.js";
 import { incidentsGetById } from "../funcs/incidentsGetById.js";
 import { incidentsGetStatusByRequestIds } from "../funcs/incidentsGetStatusByRequestIds.js";
+import { incidentsIncidentsMergeIncidents } from "../funcs/incidentsIncidentsMergeIncidents.js";
+import { incidentsIncidentsUnmergeIncident } from "../funcs/incidentsIncidentsUnmergeIncident.js";
 import { incidentsMarkAsTransient } from "../funcs/incidentsMarkAsTransient.js";
 import { incidentsMarkSloFalsePositive } from "../funcs/incidentsMarkSloFalsePositive.js";
 import { incidentsReassign } from "../funcs/incidentsReassign.js";
@@ -351,6 +353,28 @@ export class Incidents extends ClientSDK {
   }
 
   /**
+   * Merge Incidents
+   *
+   * @remarks
+   * - This endpoint merges incidents under an existing parent incident or a newly created parent incident. A parent can have at most 100 child incidents in total.
+   * - All selected child incidents must belong to the team specified by `owner_id` and must not be suppressed, already merged as a child, or a parent with child incidents.
+   * - An existing parent incident must belong to the same team and must not be suppressed or already merged as a child.
+   * - When using an existing parent, the parent and child incidents must all be resolved or all be open (`triggered` or `acknowledged`).
+   * - When creating a new parent, provide at least two open child incidents and the `new_incident` details instead of `parent_incident_id`.
+   * - Requires `access_token` as a `Bearer {{token}}` in the `Authorization` header.
+   */
+  async incidentsMergeIncidents(
+    request: operations.IncidentsMergeIncidentsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.IncidentsMergeIncidentsResponse> {
+    return unwrapAsync(incidentsIncidentsMergeIncidents(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Bulk Incidents Priority Update
    *
    * @remarks
@@ -495,6 +519,27 @@ export class Incidents extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.IncidentsResolveIncidentResponse> {
     return unwrapAsync(incidentsResolve(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Unmerge Incident
+   *
+   * @remarks
+   * - This endpoint unmerges a child incident from its parent incident.
+   * - The incident must currently be a child of a parent incident, and the parent incident must not be resolved or suppressed.
+   * - `send_notification`: if `true`, sends notifications for the unmerged incident.
+   * - `assign_me`: if `true`, assigns the unmerged incident to the requesting user. If `false`, the incident keeps its last assignee, provided that assignee still exists; otherwise the request fails and `assign_me` must be set to `true`.
+   * - Requires `access_token` as a `Bearer {{token}}` in the `Authorization` header.
+   */
+  async incidentsUnmergeIncident(
+    request: operations.IncidentsUnmergeIncidentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.IncidentsUnmergeIncidentResponse> {
+    return unwrapAsync(incidentsIncidentsUnmergeIncident(
       this,
       request,
       options,

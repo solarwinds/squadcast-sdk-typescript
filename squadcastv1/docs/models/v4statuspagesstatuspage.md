@@ -10,7 +10,6 @@ let value: V4StatusPagesStatusPage = {
   name: "<value>",
   isPublic: false,
   domainName: "coarse-extension.com",
-  customDomainName: "<value>",
   timezone: "America/Recife",
   logoUrl: "https://antique-verve.info",
   components: [
@@ -51,7 +50,7 @@ let value: V4StatusPagesStatusPage = {
 | `name`                                                                                     | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `isPublic`                                                                                 | *boolean*                                                                                  | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `domainName`                                                                               | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `customDomainName`                                                                         | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `customDomainName`                                                                         | *string*                                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 | `timezone`                                                                                 | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `logoUrl`                                                                                  | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `components`                                                                               | [models.V4StatusPagesStatusPageComponent](../models/v4statuspagesstatuspagecomponent.md)[] | :heavy_check_mark:                                                                         | N/A                                                                                        |

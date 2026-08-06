@@ -23,9 +23,9 @@ let value: NotesGetAllNotesResponse = {
       ],
       user: {
         id: "<id>",
-        firstName: "Fabian",
-        lastName: "Lowe",
-        deleted: true,
+        firstName: "Everette",
+        lastName: "Fay",
+        deleted: false,
       },
       replacedMessage: "<value>",
     },

@@ -10,8 +10,8 @@ import { NotesUpdateNoteResponse } from "@solarwinds/squadcast-sdk-typescript/mo
 let value: NotesUpdateNoteResponse = {
   data: {
     id: "<id>",
-    createdAt: "1712330696044",
-    updatedAt: "1735661552383",
+    createdAt: "1705915015975",
+    updatedAt: "1735615620415",
     organizationId: "<id>",
     incidentId: "<id>",
     userId: "<id>",
@@ -19,12 +19,13 @@ let value: NotesUpdateNoteResponse = {
     type: "<value>",
     attachments: [
       "<value 1>",
+      "<value 2>",
     ],
     user: {
       id: "<id>",
-      firstName: "Fabian",
-      lastName: "Lowe",
-      deleted: true,
+      firstName: "Everette",
+      lastName: "Fay",
+      deleted: false,
     },
     replacedMessage: "<value>",
   },

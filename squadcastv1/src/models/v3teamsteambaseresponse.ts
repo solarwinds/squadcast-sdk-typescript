@@ -26,7 +26,7 @@ export type V3TeamsTeamBaseResponse = {
   description: string;
   slug: string;
   members: Array<V3TeamsTeamMember>;
-  roles: Array<V3TeamsTeamRole>;
+  roles?: Array<V3TeamsTeamRole> | undefined;
   default: boolean;
 };
 
@@ -45,7 +45,7 @@ export const V3TeamsTeamBaseResponse$inboundSchema: z.ZodType<
   description: z.string(),
   slug: z.string(),
   members: z.array(V3TeamsTeamMember$inboundSchema),
-  roles: z.array(V3TeamsTeamRole$inboundSchema),
+  roles: z.array(V3TeamsTeamRole$inboundSchema).optional(),
   default: z.boolean(),
 }).transform((v) => {
   return remap$(v, {

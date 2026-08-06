@@ -14,7 +14,6 @@ let value: StatusPagesUpdateStatusPageByIdResponse = {
     isPublic: false,
     timezone: "Pacific/Fiji",
     domainName: "tense-traditionalism.com",
-    customDomainName: "<value>",
     contactEmail: "<value>",
     themeColor: {
       primary: "<value>",

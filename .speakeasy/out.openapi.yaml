@@ -2301,17 +2301,10 @@ paths:
               schema:
                 type: "object"
                 required:
-                  - "body"
+                  - "data"
                 properties:
-                  body:
-                    type: "object"
-                    required:
-                      - "data"
-                    properties:
-                      data:
-                        $ref: "#/components/schemas/V3.Extensions.Webhooks.WebhookResponse"
-                    description: "The body type of the operation request or response."
-                description: ""
+                  data:
+                    $ref: "#/components/schemas/V3.Extensions.Webhooks.WebhookResponse"
         "400":
           description: "The server could not understand the request due to invalid syntax."
           content:
@@ -6861,17 +6854,10 @@ paths:
               schema:
                 type: "object"
                 required:
-                  - "body"
+                  - "data"
                 properties:
-                  body:
-                    type: "object"
-                    required:
-                      - "data"
-                    properties:
-                      data:
-                        $ref: "#/components/schemas/V3.Incidents.IncidentExportAsyncResponse"
-                    description: "The body type of the operation request or response."
-                description: ""
+                  data:
+                    $ref: "#/components/schemas/V3.Incidents.IncidentExportAsyncResponse"
         "400":
           description: "The server could not understand the request due to invalid syntax."
           content:
@@ -7002,6 +6988,155 @@ paths:
             schema:
               $ref: "#/components/schemas/V3.Incidents.IncidentExportAsyncRequest"
       x-speakeasy-name-override: exportAsync
+  /v3/incidents/merge:
+    post:
+      operationId: "Incidents_mergeIncidents"
+      summary: "Merge Incidents"
+      description: "- This endpoint merges incidents under an existing parent incident or a newly created parent incident. A parent can have at most 100 child incidents in total.\n- All selected child incidents must belong to the team specified by `owner_id` and must not be suppressed, already merged as a child, or a parent with child incidents.\n- An existing parent incident must belong to the same team and must not be suppressed or already merged as a child.\n- When using an existing parent, the parent and child incidents must all be resolved or all be open (`triggered` or `acknowledged`).\n- When creating a new parent, provide at least two open child incidents and the `new_incident` details instead of `parent_incident_id`.\n- Requires `access_token` as a `Bearer {{token}}` in the `Authorization` header."
+      parameters: []
+      responses:
+        "200":
+          description: "The request has succeeded."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                required:
+                  - "data"
+                properties:
+                  data:
+                    $ref: "#/components/schemas/V3.Incidents.MergeIncidentsResponse"
+        "400":
+          description: "The server could not understand the request due to invalid syntax."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "401":
+          description: "Access is unauthorized."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "402":
+          description: "Client error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "403":
+          description: "Access is forbidden."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "404":
+          description: "The server cannot find the requested resource."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "409":
+          description: "The request conflicts with the current state of the server."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "422":
+          description: "Client error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "502":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "503":
+          description: "Service unavailable."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "504":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+      tags:
+        - "Incidents"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              anyOf:
+                - $ref: "#/components/schemas/V3.Incidents.MergeIntoExistingParentRequest"
+                - $ref: "#/components/schemas/V3.Incidents.MergeIntoNewParentRequest"
   /v3/incidents/postmortem:
     get:
       operationId: "Postmortems_getAllPostmortems"
@@ -8572,17 +8707,10 @@ paths:
               schema:
                 type: "object"
                 required:
-                  - "body"
+                  - "data"
                 properties:
-                  body:
-                    type: "object"
-                    required:
-                      - "data"
-                    properties:
-                      data:
-                        $ref: "#/components/schemas/V3.Incidents.Notes.NoteResponse"
-                    description: "The body type of the operation request or response."
-                description: ""
+                  data:
+                    $ref: "#/components/schemas/V3.Incidents.Notes.NoteResponse"
         "400":
           description: "The server could not understand the request due to invalid syntax."
           content:
@@ -11629,17 +11757,10 @@ paths:
               schema:
                 type: "object"
                 required:
-                  - "body"
+                  - "data"
                 properties:
-                  body:
-                    type: "object"
-                    required:
-                      - "data"
-                    properties:
-                      data:
-                        $ref: "#/components/schemas/V3.Incidents.Postmortems.PostmortemResponse"
-                    description: "The body type of the operation request or response."
-                description: ""
+                  data:
+                    $ref: "#/components/schemas/V3.Incidents.Postmortems.PostmortemResponse"
         "400":
           description: "The server could not understand the request due to invalid syntax."
           content:
@@ -12536,6 +12657,158 @@ paths:
               $ref: "#/components/schemas/V3.Incidents.SnoozeNotifications.SnoozeIncidentRequest"
       x-speakeasy-group: incidents.snooze
       x-speakeasy-name-override: set
+  /v3/incidents/{incidentID}/unmerge:
+    put:
+      operationId: "Incidents_unmergeIncident"
+      summary: "Unmerge Incident"
+      description: "- This endpoint unmerges a child incident from its parent incident.\n- The incident must currently be a child of a parent incident, and the parent incident must not be resolved or suppressed.\n- `send_notification`: if `true`, sends notifications for the unmerged incident.\n- `assign_me`: if `true`, assigns the unmerged incident to the requesting user. If `false`, the incident keeps its last assignee, provided that assignee still exists; otherwise the request fails and `assign_me` must be set to `true`.\n- Requires `access_token` as a `Bearer {{token}}` in the `Authorization` header."
+      parameters:
+        - name: "incidentID"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "The request has succeeded."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                required:
+                  - "data"
+                properties:
+                  data:
+                    $ref: "#/components/schemas/V3.Incidents.UnmergeIncidentResponse"
+        "400":
+          description: "The server could not understand the request due to invalid syntax."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "401":
+          description: "Access is unauthorized."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "402":
+          description: "Client error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "403":
+          description: "Access is forbidden."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "404":
+          description: "The server cannot find the requested resource."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "409":
+          description: "The request conflicts with the current state of the server."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "422":
+          description: "Client error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "502":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "503":
+          description: "Service unavailable."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "504":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+      tags:
+        - "Incidents"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/V3.Incidents.UnmergeIncidentRequest"
   /v3/incidents/{incidentID}/unsnooze:
     put:
       operationId: "SnoozeNotifications_unsnoozeIncidentNotifications"
@@ -14202,17 +14475,10 @@ paths:
               schema:
                 type: "object"
                 required:
-                  - "body"
+                  - "data"
                 properties:
-                  body:
-                    type: "object"
-                    required:
-                      - "data"
-                    properties:
-                      data:
-                        $ref: "#/components/schemas/V3.Services.ServiceResponse"
-                    description: "The body type of the operation request or response."
-                description: ""
+                  data:
+                    $ref: "#/components/schemas/V3.Services.ServiceResponse"
         "400":
           description: "The server could not understand the request due to invalid syntax."
           content:
@@ -26513,7 +26779,6 @@ paths:
                 type: "object"
                 required:
                   - "data"
-                  - "pageInfo"
                 properties:
                   data:
                     type: "array"
@@ -27719,7 +27984,6 @@ paths:
                 type: "object"
                 required:
                   - "data"
-                  - "pageInfo"
                 properties:
                   data:
                     type: "array"
@@ -28202,9 +28466,11 @@ paths:
                 type: "object"
                 properties:
                   data:
-                    type: "array"
-                    items:
-                      $ref: "#/components/schemas/V4.RotationResponse"
+                    anyOf:
+                      - type: "array"
+                        items:
+                          $ref: "#/components/schemas/V4.RotationResponse"
+                      - type: "null"
                 required:
                   - "data"
         "400":
@@ -28883,7 +29149,6 @@ paths:
                 type: "object"
                 required:
                   - "data"
-                  - "pageInfo"
                 properties:
                   data:
                     type: "array"
@@ -33720,6 +33985,156 @@ paths:
         - "Status Pages/Subscribers"
       x-speakeasy-group: statusPageSubscribers
       x-speakeasy-name-override: list
+  /v4/statuspages/{statuspageID}/subscribers/{subscriberID}:
+    delete:
+      operationId: "StatusPages_deleteSubscriberById"
+      summary: "Delete Subscriber By ID"
+      parameters:
+        - name: "statuspageID"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "subscriberID"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "The request has succeeded."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                required:
+                  - "data"
+                properties:
+                  data:
+                    $ref: "#/components/schemas/V4.StatusPages.DeleteSubscriberByIdResponse"
+        "400":
+          description: "The server could not understand the request due to invalid syntax."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "401":
+          description: "Access is unauthorized."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "402":
+          description: "Client error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "403":
+          description: "Access is forbidden."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "404":
+          description: "The server cannot find the requested resource."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "409":
+          description: "The request conflicts with the current state of the server."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "422":
+          description: "Client error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "502":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "503":
+          description: "Service unavailable."
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+        "504":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  meta:
+                    $ref: "#/components/schemas/Common.V3.ErrorMeta"
+                required:
+                  - "meta"
+      tags:
+        - "Status Pages/Subscribers"
 security:
   - RefreshTokenAuth: []
 components:
@@ -33981,18 +34396,18 @@ components:
       required:
         - "pageSize"
         - "hasNext"
-        - "hasPrevious"
+        - "hasPrev"
       properties:
         pageSize:
           type: "integer"
           format: "int32"
         hasNext:
           type: "boolean"
-        hasPrevious:
+        hasPrev:
           type: "boolean"
         nextCursor:
           type: "string"
-        previousCursor:
+        prevCursor:
           type: "string"
     V3.Analytics.AnalyticsResponse:
       type: "object"
@@ -35705,6 +36120,21 @@ components:
         reason:
           type: "string"
       description: "Schema for an assigned entity in an incident."
+    V3.Incidents.Assignee:
+      type: "object"
+      required:
+        - "id"
+        - "type"
+      properties:
+        id:
+          type: "string"
+        type:
+          type: "string"
+          enum:
+            - "user"
+            - "escalationpolicy"
+            - "squad"
+      description: "Assignment target for an incident."
     V3.Incidents.AttachedRunbook:
       type: "object"
       required:
@@ -36414,6 +36844,17 @@ components:
             - "start_time"
             - "stop_time"
       description: "Represents the response structure for rebuilding a project in CircleCI."
+    V3.Incidents.IncidentActions.EventWebhookTrigger:
+      type: "object"
+      required:
+        - "event_class"
+        - "event_type"
+      properties:
+        event_class:
+          type: "string"
+        event_type:
+          type: "string"
+      description: "Represents a webhook trigger with event class and type."
     V3.Incidents.IncidentActions.IncidentActionErrorMeta:
       type: "object"
       required:
@@ -36499,7 +36940,7 @@ components:
         triggers:
           type: "array"
           items:
-            type: "string"
+            $ref: "#/components/schemas/V3.Incidents.IncidentActions.EventWebhookTrigger"
         urls:
           type: "array"
           items:
@@ -36756,6 +37197,80 @@ components:
         id:
           type: "string"
       description: "Reference to a merged incident entity."
+    V3.Incidents.MergeIncidentsResponse:
+      type: "object"
+      required:
+        - "message"
+        - "parent_incident_id"
+        - "children"
+      properties:
+        message:
+          type: "string"
+        parent_incident_id:
+          type: "string"
+        children:
+          type: "array"
+          items:
+            type: "string"
+      description: "Result of merging incidents."
+    V3.Incidents.MergeIntoExistingParentRequest:
+      type: "object"
+      required:
+        - "owner_id"
+        - "parent_incident_id"
+        - "children"
+      properties:
+        owner_id:
+          type: "string"
+        parent_incident_id:
+          type: "string"
+        children:
+          type: "array"
+          items:
+            type: "string"
+          minItems: 1
+          maxItems: 100
+      description: "Request body for merging incidents into an existing parent incident."
+    V3.Incidents.MergeIntoNewParentRequest:
+      type: "object"
+      required:
+        - "owner_id"
+        - "children"
+        - "new_incident"
+      properties:
+        owner_id:
+          type: "string"
+        children:
+          type: "array"
+          items:
+            type: "string"
+          minItems: 2
+          maxItems: 100
+        new_incident:
+          $ref: "#/components/schemas/V3.Incidents.MergeNewParentIncidentRequest"
+      description: "Request body for merging incidents under a newly created parent incident."
+    V3.Incidents.MergeNewParentIncidentRequest:
+      type: "object"
+      required:
+        - "message"
+        - "assignee"
+        - "service_id"
+      properties:
+        message:
+          type: "string"
+        description:
+          type: "string"
+        priority:
+          $ref: "#/components/schemas/V3.Incidents.IncidentPriority"
+        tags:
+          type: "object"
+          unevaluatedProperties:
+            $ref: "#/components/schemas/V3.Incidents.TagConfigObject"
+        assignee:
+          $ref: "#/components/schemas/V3.Incidents.Assignee"
+        service_id:
+          type: "string"
+      description: "Details used to create a new parent incident while merging incidents."
     V3.Incidents.Notes.CreateNoteRequest:
       type: "object"
       required:
@@ -37108,15 +37623,7 @@ components:
         - "reassignTo"
       properties:
         reassignTo:
-          type: "object"
-          properties:
-            id:
-              type: "string"
-            type:
-              type: "string"
-          required:
-            - "id"
-            - "type"
+          $ref: "#/components/schemas/V3.Incidents.Assignee"
       description: "Request body for reassigning an incident."
     V3.Incidents.RelevantPeopleLog:
       type: "object"
@@ -37850,6 +38357,25 @@ components:
           type: "string"
           format: "date-time"
       description: "Represents a single task within an incident."
+    V3.Incidents.UnmergeIncidentRequest:
+      type: "object"
+      required:
+        - "send_notification"
+        - "assign_me"
+      properties:
+        send_notification:
+          type: "boolean"
+        assign_me:
+          type: "boolean"
+      description: "Request body for unmerging a child incident from its parent."
+    V3.Incidents.UnmergeIncidentResponse:
+      type: "object"
+      required:
+        - "message"
+      properties:
+        message:
+          type: "string"
+      description: "Result of unmerging an incident."
     V3.Runbooks.CreateRunbookRequest:
       type: "object"
       required:
@@ -38375,10 +38901,14 @@ components:
       type: "object"
       required:
         - "name"
+        - "owner_id"
         - "escalation_policy_id"
       properties:
         name:
           type: "string"
+        owner_id:
+          type: "string"
+          description: "The owner_id is required for POST operations"
         escalation_policy_id:
           type: "string"
         description:
@@ -38830,9 +39360,6 @@ components:
           type: "string"
         overlay_template_type:
           type: "string"
-          enum:
-            - "message"
-            - "description"
         overlay:
           $ref: "#/components/schemas/V3.Services.Overlay.CustomContent"
         created_by:
@@ -38898,8 +39425,6 @@ components:
           type: "string"
         overlay_template_type:
           type: "string"
-          enum:
-            - "dedup_key"
         overlay:
           $ref: "#/components/schemas/V3.Services.Overlay.DedupKeyOverlay"
         created_by:
@@ -39720,7 +40245,6 @@ components:
         - "description"
         - "slug"
         - "members"
-        - "roles"
         - "default"
       properties:
         id:
@@ -39810,7 +40334,6 @@ components:
         - "description"
         - "slug"
         - "members"
-        - "roles"
         - "default"
         - "organization"
       properties:
@@ -40055,9 +40578,11 @@ components:
         bio:
           type: "string"
         notification_rules:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/V3.Users.NotificationRule"
+          anyOf:
+            - type: "array"
+              items:
+                $ref: "#/components/schemas/V3.Users.NotificationRule"
+            - type: "null"
         user_image:
           type: "boolean"
         role_id:
@@ -41909,11 +42434,11 @@ components:
       type: "object"
       required:
         - "rotationID"
-        - "participants"
+        - "participantGroups"
       properties:
         rotationID:
           type: "integer"
-        participants:
+        participantGroups:
           type: "array"
           items:
             $ref: "#/components/schemas/V4.ParticipantGroup"
@@ -42721,6 +43246,22 @@ components:
           type: "string"
         teamID:
           type: "string"
+    V4.StatusPages.DeleteSubscriberByIdResponse:
+      type: "object"
+      required:
+        - "id"
+        - "type"
+        - "emailID"
+        - "webhookURL"
+      properties:
+        id:
+          type: "integer"
+        type:
+          type: "string"
+        emailID:
+          type: "string"
+        webhookURL:
+          type: "string"
     V4.StatusPages.GetStatusPageByIdResponse:
       type: "object"
       required:
@@ -42730,7 +43271,6 @@ components:
         - "isPublic"
         - "timezone"
         - "domainName"
-        - "customDomainName"
         - "contactEmail"
         - "themeColor"
         - "allowComponentsSubscription"
@@ -43415,7 +43955,6 @@ components:
         - "name"
         - "isPublic"
         - "domainName"
-        - "customDomainName"
         - "timezone"
         - "logoUrl"
         - "components"
@@ -43672,7 +44211,6 @@ components:
         - "isPublic"
         - "timezone"
         - "domainName"
-        - "customDomainName"
         - "contactEmail"
         - "themeColor"
         - "allowComponentsSubscription"
@@ -43837,9 +44375,9 @@ components:
           required:
             - refreshToken
 servers:
-  - url: "https://api.eu.squadcast.com"
-    description: "production EU env"
-    variables: {}
   - url: "https://api.squadcast.com"
     description: "production US env"
+    variables: {}
+  - url: "https://api.eu.squadcast.com"
+    description: "production EU env"
     variables: {}

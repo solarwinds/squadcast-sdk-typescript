@@ -5,20 +5,12 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 import {
   V3ServicesOverlayDedupKeyOverlay,
   V3ServicesOverlayDedupKeyOverlay$inboundSchema,
 } from "./v3servicesoverlaydedupkeyoverlay.js";
-
-export const V3ServicesOverlayOverlayResponseOverlayTemplateType = {
-  DedupKey: "dedup_key",
-} as const;
-export type V3ServicesOverlayOverlayResponseOverlayTemplateType = ClosedEnum<
-  typeof V3ServicesOverlayOverlayResponseOverlayTemplateType
->;
 
 export type V3ServicesOverlayOverlayResponse = {
   createdAt: Date;
@@ -28,17 +20,12 @@ export type V3ServicesOverlayOverlayResponse = {
   serviceId: string;
   alertSourceVersion: string;
   alertSourceShortname: string;
-  overlayTemplateType: V3ServicesOverlayOverlayResponseOverlayTemplateType;
+  overlayTemplateType: string;
   overlay: V3ServicesOverlayDedupKeyOverlay;
   createdBy: string;
   updatedBy: string;
   alertSourceType: string;
 };
-
-/** @internal */
-export const V3ServicesOverlayOverlayResponseOverlayTemplateType$inboundSchema:
-  z.ZodNativeEnum<typeof V3ServicesOverlayOverlayResponseOverlayTemplateType> =
-    z.nativeEnum(V3ServicesOverlayOverlayResponseOverlayTemplateType);
 
 /** @internal */
 export const V3ServicesOverlayOverlayResponse$inboundSchema: z.ZodType<
@@ -55,8 +42,7 @@ export const V3ServicesOverlayOverlayResponse$inboundSchema: z.ZodType<
   service_id: z.string(),
   alert_source_version: z.string(),
   alert_source_shortname: z.string(),
-  overlay_template_type:
-    V3ServicesOverlayOverlayResponseOverlayTemplateType$inboundSchema,
+  overlay_template_type: z.string(),
   overlay: V3ServicesOverlayDedupKeyOverlay$inboundSchema,
   created_by: z.string(),
   updated_by: z.string(),

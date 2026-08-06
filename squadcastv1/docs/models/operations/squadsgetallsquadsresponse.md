@@ -9,11 +9,6 @@ import { SquadsGetAllSquadsResponse } from "@solarwinds/squadcast-sdk-typescript
 
 let value: SquadsGetAllSquadsResponse = {
   data: [],
-  pageInfo: {
-    pageSize: 808332,
-    hasNext: false,
-    hasPrevious: true,
-  },
 };
 ```
 
@@ -22,4 +17,4 @@ let value: SquadsGetAllSquadsResponse = {
 | Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | `data`                                                                  | [models.V4SquadsSquadResponse](../../models/v4squadssquadresponse.md)[] | :heavy_check_mark:                                                      | N/A                                                                     |
-| `pageInfo`                                                              | [models.CommonV4PageInfo](../../models/commonv4pageinfo.md)             | :heavy_check_mark:                                                      | N/A                                                                     |
+| `pageInfo`                                                              | [models.CommonV4PageInfo](../../models/commonv4pageinfo.md)             | :heavy_minus_sign:                                                      | N/A                                                                     |

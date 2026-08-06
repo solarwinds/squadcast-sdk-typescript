@@ -10,13 +10,13 @@ import { V3IncidentsReassignIncidentRequest } from "@solarwinds/squadcast-sdk-ty
 let value: V3IncidentsReassignIncidentRequest = {
   reassignTo: {
     id: "<id>",
-    type: "<value>",
+    type: "user",
   },
 };
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `reassignTo`                                 | [models.ReassignTo](../models/reassignto.md) | :heavy_check_mark:                           | N/A                                          |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `reassignTo`                                                   | [models.V3IncidentsAssignee](../models/v3incidentsassignee.md) | :heavy_check_mark:                                             | Assignment target for an incident.                             |

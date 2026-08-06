@@ -16,7 +16,7 @@ export type RotationsGetScheduleRotationsRequest = {
  * The request has succeeded.
  */
 export type RotationsGetScheduleRotationsResponse = {
-  data: Array<models.V4RotationResponse>;
+  data: Array<models.V4RotationResponse> | null;
 };
 
 /** @internal */
@@ -49,7 +49,7 @@ export const RotationsGetScheduleRotationsResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.array(models.V4RotationResponse$inboundSchema),
+  data: z.nullable(z.array(models.V4RotationResponse$inboundSchema)),
 });
 
 export function rotationsGetScheduleRotationsResponseFromJSON(

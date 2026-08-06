@@ -37,6 +37,10 @@ import {
 
 export type V3ServicesCreateServiceRequest = {
   name: string;
+  /**
+   * The owner_id is required for POST operations
+   */
+  ownerId: string;
   escalationPolicyId: string;
   description?: string | undefined;
   emailPrefix?: string | undefined;
@@ -53,6 +57,7 @@ export type V3ServicesCreateServiceRequest = {
 /** @internal */
 export type V3ServicesCreateServiceRequest$Outbound = {
   name: string;
+  owner_id: string;
   escalation_policy_id: string;
   description?: string | undefined;
   email_prefix?: string | undefined;
@@ -75,6 +80,7 @@ export const V3ServicesCreateServiceRequest$outboundSchema: z.ZodType<
   V3ServicesCreateServiceRequest
 > = z.object({
   name: z.string(),
+  ownerId: z.string(),
   escalationPolicyId: z.string(),
   description: z.string().optional(),
   emailPrefix: z.string().optional(),
@@ -89,6 +95,7 @@ export const V3ServicesCreateServiceRequest$outboundSchema: z.ZodType<
   dedupInitConfig: V3ServicesDedupInitConfig$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
+    ownerId: "owner_id",
     escalationPolicyId: "escalation_policy_id",
     emailPrefix: "email_prefix",
     autoPauseTransientAlertsConfig: "auto_pause_transient_alerts_config",

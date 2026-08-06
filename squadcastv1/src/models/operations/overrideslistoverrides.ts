@@ -22,7 +22,7 @@ export type OverridesListOverridesRequest = {
  */
 export type OverridesListOverridesResponse = {
   data: Array<models.V4OverrideResponse>;
-  pageInfo: models.CommonV4PageInfo;
+  pageInfo?: models.CommonV4PageInfo | undefined;
 };
 
 /** @internal */
@@ -66,7 +66,7 @@ export const OverridesListOverridesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   data: z.array(models.V4OverrideResponse$inboundSchema),
-  pageInfo: models.CommonV4PageInfo$inboundSchema,
+  pageInfo: models.CommonV4PageInfo$inboundSchema.optional(),
 });
 
 export function overridesListOverridesResponseFromJSON(

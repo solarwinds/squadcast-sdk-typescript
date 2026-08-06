@@ -22,7 +22,6 @@ let value: TeamsCreateTeamResponse = {
         userId: "<id>",
       },
     ],
-    roles: [],
     default: true,
     organization: {
       id: "<id>",

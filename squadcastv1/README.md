@@ -12,6 +12,7 @@ Developer-friendly & type-safe TypeScript SDK specifically catered to leverage *
 <!-- Start Summary [summary] -->
 ## Summary
 
+Squadcast: ## Overview
 The Squadcast API provides developers the capability to extend and utilize Squadcast in conjunction with other services. Our API has resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
 
 > **Note:** Customers using the V2 version of the Squadcast API would need to migrate to Squadcast API V3, as the former would be deprecated shortly.
@@ -304,6 +305,7 @@ run();
 * [unsnoozeNotifications](docs/sdks/incidents/README.md#unsnoozenotifications) - Unsnooze Incident Notifications
 * [export](docs/sdks/incidents/README.md#export) - Incident Export
 * [exportAsync](docs/sdks/incidents/README.md#exportasync) - Incident Export Async
+* [incidentsMergeIncidents](docs/sdks/incidents/README.md#incidentsmergeincidents) - Merge Incidents
 * [bulkUpdatePriority](docs/sdks/incidents/README.md#bulkupdatepriority) - Bulk Incidents Priority Update
 * [bulkResolve](docs/sdks/incidents/README.md#bulkresolve) - Bulk Resolve Incidents
 * [getById](docs/sdks/incidents/README.md#getbyid) - Get Incident by ID
@@ -312,6 +314,7 @@ run();
 * [updatePriority](docs/sdks/incidents/README.md#updatepriority) - Incident Priority Update
 * [reassign](docs/sdks/incidents/README.md#reassign) - Reassign Incident
 * [resolve](docs/sdks/incidents/README.md#resolve) - Resolve Incident
+* [incidentsUnmergeIncident](docs/sdks/incidents/README.md#incidentsunmergeincident) - Unmerge Incident
 * [getStatusByRequestIds](docs/sdks/incidents/README.md#getstatusbyrequestids) - Get Incidents Status By RequestIDs
 
 #### [Incidents.Actions.JiraCloud](docs/sdks/jiracloud/README.md)
@@ -542,6 +545,10 @@ run();
 * [getById](docs/sdks/squadsv4/README.md#getbyid) - Get Squad By ID
 * [update](docs/sdks/squadsv4/README.md#update) - Update Squad
 
+### [StatusPagesSubscribers](docs/sdks/statuspagessubscribers/README.md)
+
+* [statusPagesDeleteSubscriberById](docs/sdks/statuspagessubscribers/README.md#statuspagesdeletesubscriberbyid) - Delete Subscriber By ID
+
 ### [StatusPages](docs/sdks/statuspages/README.md)
 
 * [list](docs/sdks/statuspages/README.md#list) - List Status Pages
@@ -740,6 +747,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`incidentsGetAllCommunicationCards`](docs/sdks/incidents/README.md#getallcommunicationcards) - Get All Communication Card
 - [`incidentsGetById`](docs/sdks/incidents/README.md#getbyid) - Get Incident by ID
 - [`incidentsGetStatusByRequestIds`](docs/sdks/incidents/README.md#getstatusbyrequestids) - Get Incidents Status By RequestIDs
+- [`incidentsIncidentsMergeIncidents`](docs/sdks/incidents/README.md#incidentsmergeincidents) - Merge Incidents
+- [`incidentsIncidentsUnmergeIncident`](docs/sdks/incidents/README.md#incidentsunmergeincident) - Unmerge Incident
 - [`incidentsMarkAsTransient`](docs/sdks/incidents/README.md#markastransient) - Mark as Transient
 - [`incidentsMarkSloFalsePositive`](docs/sdks/incidents/README.md#markslofalsepositive) - Mark Incident SLO False Positive
 - [`incidentsNotesCreate`](docs/sdks/incidentsnotes/README.md#create) - Create Notes
@@ -859,6 +868,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`statusPagesMaintenancesGetById`](docs/sdks/statuspagesmaintenances/README.md#getbyid) - Get Maintenance By ID
 - [`statusPagesMaintenancesList`](docs/sdks/statuspagesmaintenances/README.md#list) - List Maintenances
 - [`statusPagesMaintenancesUpdateById`](docs/sdks/statuspagesmaintenances/README.md#updatebyid) - Update Maintenance By ID
+- [`statusPagesSubscribersStatusPagesDeleteSubscriberById`](docs/sdks/statuspagessubscribers/README.md#statuspagesdeletesubscriberbyid) - Delete Subscriber By ID
 - [`statusPageSubscribersList`](docs/sdks/statuspagesubscribers/README.md#list) - List Subscribers
 - [`statusPagesUpdateById`](docs/sdks/statuspages/README.md#updatebyid) - Update Status Page By ID
 - [`teamsCreate`](docs/sdks/teams/README.md#create) - Create Team
@@ -1135,9 +1145,9 @@ run();
 
 
 **Inherit from [`SquadcastSDKError`](./src/models/errors/squadcastsdkerror.ts)**:
-* [`CommonV4Error`](./src/models/errors/commonv4error.ts): The server could not understand the request due to invalid syntax. Applicable to 32 of 230 methods.*
-* [`ResponseBodyError1`](./src/models/errors/responsebodyerror1.ts): Represents a CircleCI error response for a 400 status code. Status code `400`. Applicable to 1 of 230 methods.*
-* [`ResponseBodyError2`](./src/models/errors/responsebodyerror2.ts): Represents a CircleCI error response for a 400 status code. Status code `400`. Applicable to 1 of 230 methods.*
+* [`CommonV4Error`](./src/models/errors/commonv4error.ts): The server could not understand the request due to invalid syntax. Applicable to 32 of 233 methods.*
+* [`ResponseBodyError1`](./src/models/errors/responsebodyerror1.ts): Represents a CircleCI error response for a 400 status code. Status code `400`. Applicable to 1 of 233 methods.*
+* [`ResponseBodyError2`](./src/models/errors/responsebodyerror2.ts): Represents a CircleCI error response for a 400 status code. Status code `400`. Applicable to 1 of 233 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
@@ -1154,8 +1164,8 @@ You can override the default server globally by passing a server index to the `s
 
 | #   | Server                         | Description       |
 | --- | ------------------------------ | ----------------- |
-| 0   | `https://api.eu.squadcast.com` | production EU env |
-| 1   | `https://api.squadcast.com`    | production US env |
+| 0   | `https://api.squadcast.com`    | production US env |
+| 1   | `https://api.eu.squadcast.com` | production EU env |
 
 #### Example
 
@@ -1187,7 +1197,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
 
 const squadcastSDK = new SquadcastSDK({
-  serverURL: "https://api.squadcast.com",
+  serverURL: "https://api.eu.squadcast.com",
   refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
 });
 

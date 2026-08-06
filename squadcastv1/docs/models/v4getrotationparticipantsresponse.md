@@ -7,7 +7,7 @@ import { V4GetRotationParticipantsResponse } from "@solarwinds/squadcast-sdk-typ
 
 let value: V4GetRotationParticipantsResponse = {
   rotationID: 313861,
-  participants: [
+  participantGroups: [
     {
       participants: [
         {
@@ -25,4 +25,4 @@ let value: V4GetRotationParticipantsResponse = {
 | Field                                                          | Type                                                           | Required                                                       | Description                                                    |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
 | `rotationID`                                                   | *number*                                                       | :heavy_check_mark:                                             | N/A                                                            |
-| `participants`                                                 | [models.V4ParticipantGroup](../models/v4participantgroup.md)[] | :heavy_check_mark:                                             | N/A                                                            |
+| `participantGroups`                                            | [models.V4ParticipantGroup](../models/v4participantgroup.md)[] | :heavy_check_mark:                                             | N/A                                                            |

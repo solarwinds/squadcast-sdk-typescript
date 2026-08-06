@@ -31,11 +31,6 @@ let value: SchedulesListSchedulesResponseBody = {
       updatedAt: "1735682750479",
     },
   ],
-  pageInfo: {
-    pageSize: 808332,
-    hasNext: false,
-    hasPrevious: true,
-  },
 };
 ```
 
@@ -44,4 +39,4 @@ let value: SchedulesListSchedulesResponseBody = {
 | Field                                                             | Type                                                              | Required                                                          | Description                                                       |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | `data`                                                            | [models.V4ScheduleResponse](../../models/v4scheduleresponse.md)[] | :heavy_check_mark:                                                | N/A                                                               |
-| `pageInfo`                                                        | [models.CommonV4PageInfo](../../models/commonv4pageinfo.md)       | :heavy_check_mark:                                                | N/A                                                               |
+| `pageInfo`                                                        | [models.CommonV4PageInfo](../../models/commonv4pageinfo.md)       | :heavy_minus_sign:                                                | N/A                                                               |

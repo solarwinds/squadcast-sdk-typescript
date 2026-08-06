@@ -9,40 +9,11 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 /**
- * The body type of the operation request or response.
- */
-export type WebhooksCreateWebhookBody = {
-  data: models.V3ExtensionsWebhooksWebhookResponse;
-};
-
-/**
  * The request has succeeded and a new resource has been created as a result.
  */
 export type WebhooksCreateWebhookResponse = {
-  /**
-   * The body type of the operation request or response.
-   */
-  body: WebhooksCreateWebhookBody;
+  data: models.V3ExtensionsWebhooksWebhookResponse;
 };
-
-/** @internal */
-export const WebhooksCreateWebhookBody$inboundSchema: z.ZodType<
-  WebhooksCreateWebhookBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  data: models.V3ExtensionsWebhooksWebhookResponse$inboundSchema,
-});
-
-export function webhooksCreateWebhookBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<WebhooksCreateWebhookBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => WebhooksCreateWebhookBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'WebhooksCreateWebhookBody' from JSON`,
-  );
-}
 
 /** @internal */
 export const WebhooksCreateWebhookResponse$inboundSchema: z.ZodType<
@@ -50,7 +21,7 @@ export const WebhooksCreateWebhookResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  body: z.lazy(() => WebhooksCreateWebhookBody$inboundSchema),
+  data: models.V3ExtensionsWebhooksWebhookResponse$inboundSchema,
 });
 
 export function webhooksCreateWebhookResponseFromJSON(

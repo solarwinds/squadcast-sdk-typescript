@@ -16,7 +16,7 @@ let value: OverlayGetDedupKeyOverlayForAlertSourceResponse = {
     serviceId: "<id>",
     alertSourceVersion: "<value>",
     alertSourceShortname: "<value>",
-    overlayTemplateType: "dedup_key",
+    overlayTemplateType: "<value>",
     overlay: {
       template: "<value>",
       duration: 519447,

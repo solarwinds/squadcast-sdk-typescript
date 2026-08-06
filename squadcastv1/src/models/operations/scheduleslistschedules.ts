@@ -30,7 +30,7 @@ export type SchedulesListSchedulesRequest = {
  */
 export type SchedulesListSchedulesResponseBody = {
   data: Array<models.V4ScheduleResponse>;
-  pageInfo: models.CommonV4PageInfo;
+  pageInfo?: models.CommonV4PageInfo | undefined;
 };
 
 export type SchedulesListSchedulesResponse = {
@@ -92,7 +92,7 @@ export const SchedulesListSchedulesResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   data: z.array(models.V4ScheduleResponse$inboundSchema),
-  pageInfo: models.CommonV4PageInfo$inboundSchema,
+  pageInfo: models.CommonV4PageInfo$inboundSchema.optional(),
 });
 
 export function schedulesListSchedulesResponseBodyFromJSON(

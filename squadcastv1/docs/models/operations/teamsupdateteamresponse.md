@@ -22,7 +22,6 @@ let value: TeamsUpdateTeamResponse = {
         userId: "<id>",
       },
     ],
-    roles: [],
     default: true,
     organization: {
       id: "<id>",

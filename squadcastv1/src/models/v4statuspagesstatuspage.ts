@@ -31,7 +31,7 @@ export type V4StatusPagesStatusPage = {
   name: string;
   isPublic: boolean;
   domainName: string;
-  customDomainName: string;
+  customDomainName?: string | undefined;
   timezone: string;
   logoUrl: string;
   components: Array<V4StatusPagesStatusPageComponent>;
@@ -122,7 +122,7 @@ export const V4StatusPagesStatusPage$inboundSchema: z.ZodType<
   name: z.string(),
   isPublic: z.boolean(),
   domainName: z.string(),
-  customDomainName: z.string(),
+  customDomainName: z.string().optional(),
   timezone: z.string(),
   logoUrl: z.string(),
   components: z.array(

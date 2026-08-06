@@ -31,14 +31,14 @@ let value: V3ServicesServiceResponse = {
   ],
   autoPauseTransientAlertsConfig: {
     isEnabled: true,
-    timeoutInMins: 8994.69,
+    timeoutInMins: 6913.62,
   },
   intelligentAlertsGroupingConfig: {
     isEnabled: false,
-    rollingWindowInMins: 2937.46,
+    rollingWindowInMins: 1556,
   },
   delayNotificationConfig: {
-    isEnabled: true,
+    isEnabled: false,
   },
   config: {
     dedupKeyEnabled: false,

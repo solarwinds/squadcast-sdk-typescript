@@ -18,7 +18,6 @@ let value: TeamsUpdateTeamRoleResponse = {
     description: "rudely abnormally ribbon save pity phew duh",
     slug: "<value>",
     members: [],
-    roles: [],
     default: true,
   },
 };

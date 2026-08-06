@@ -32,7 +32,7 @@ export type V3TeamsTeamResponse = {
   description: string;
   slug: string;
   members: Array<V3TeamsTeamMember>;
-  roles: Array<V3TeamsTeamRole>;
+  roles?: Array<V3TeamsTeamRole> | undefined;
   default: boolean;
   organization: Organization;
 };
@@ -73,7 +73,7 @@ export const V3TeamsTeamResponse$inboundSchema: z.ZodType<
   description: z.string(),
   slug: z.string(),
   members: z.array(V3TeamsTeamMember$inboundSchema),
-  roles: z.array(V3TeamsTeamRole$inboundSchema),
+  roles: z.array(V3TeamsTeamRole$inboundSchema).optional(),
   default: z.boolean(),
   organization: z.lazy(() => Organization$inboundSchema),
 }).transform((v) => {

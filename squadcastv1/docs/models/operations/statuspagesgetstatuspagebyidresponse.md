@@ -15,7 +15,6 @@ let value: StatusPagesGetStatusPageByIdResponse = {
     isPublic: false,
     timezone: "America/Yakutat",
     domainName: "coordinated-pocket-watch.biz",
-    customDomainName: "<value>",
     contactEmail: "<value>",
     themeColor: {
       primary: "<value>",
