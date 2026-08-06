@@ -18,6 +18,7 @@
 * [unsnoozeNotifications](#unsnoozenotifications) - Unsnooze Incident Notifications
 * [export](#export) - Incident Export
 * [exportAsync](#exportasync) - Incident Export Async
+* [merge](#merge) - Merge Incidents
 * [bulkUpdatePriority](#bulkupdatepriority) - Bulk Incidents Priority Update
 * [bulkResolve](#bulkresolve) - Bulk Resolve Incidents
 * [getById](#getbyid) - Get Incident by ID
@@ -26,6 +27,7 @@
 * [updatePriority](#updatepriority) - Incident Priority Update
 * [reassign](#reassign) - Reassign Incident
 * [resolve](#resolve) - Resolve Incident
+* [unmerge](#unmerge) - Unmerge Incident
 * [getStatusByRequestIds](#getstatusbyrequestids) - Get Incidents Status By RequestIDs
 
 ## archiveSlackChannel
@@ -1367,6 +1369,119 @@ run();
 | errors.GatewayTimeoutError      | 504                             | application/json                |
 | errors.SDKDefaultError          | 4XX, 5XX                        | \*/\*                           |
 
+## merge
+
+- This endpoint merges incidents under an existing parent incident or a newly created parent incident. A parent can have at most 100 child incidents in total.
+- All selected child incidents must belong to the team specified by `owner_id` and must not be suppressed, already merged as a child, or a parent with child incidents.
+- An existing parent incident must belong to the same team and must not be suppressed or already merged as a child.
+- When using an existing parent, the parent and child incidents must all be resolved or all be open (`triggered` or `acknowledged`).
+- When creating a new parent, provide at least two open child incidents and the `new_incident` details instead of `parent_incident_id`.
+- Requires `access_token` as a `Bearer {{token}}` in the `Authorization` header.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="Incidents_mergeIncidents" method="post" path="/v3/incidents/merge" -->
+```typescript
+import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
+
+const squadcastSDK = new SquadcastSDK({
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
+});
+
+async function run() {
+  const result = await squadcastSDK.incidents.merge({
+    ownerId: "<id>",
+    children: [
+      "<value 1>",
+      "<value 2>",
+    ],
+    newIncident: {
+      message: "<value>",
+      assignee: {
+        id: "<id>",
+        type: "escalationpolicy",
+      },
+      serviceId: "<id>",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SquadcastSDKCore } from "@solarwinds/squadcast-sdk-typescript/core.js";
+import { incidentsMerge } from "@solarwinds/squadcast-sdk-typescript/funcs/incidentsMerge.js";
+
+// Use `SquadcastSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const squadcastSDK = new SquadcastSDKCore({
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
+});
+
+async function run() {
+  const res = await incidentsMerge(squadcastSDK, {
+    ownerId: "<id>",
+    children: [
+      "<value 1>",
+      "<value 2>",
+    ],
+    newIncident: {
+      message: "<value>",
+      assignee: {
+        id: "<id>",
+        type: "escalationpolicy",
+      },
+      serviceId: "<id>",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("incidentsMerge failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.IncidentsMergeIncidentsRequest](../../models/operations/incidentsmergeincidentsrequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.IncidentsMergeIncidentsResponse](../../models/operations/incidentsmergeincidentsresponse.md)\>**
+
+### Errors
+
+| Error Type                      | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.BadRequestError          | 400                             | application/json                |
+| errors.UnauthorizedError        | 401                             | application/json                |
+| errors.PaymentRequiredError     | 402                             | application/json                |
+| errors.ForbiddenError           | 403                             | application/json                |
+| errors.NotFoundError            | 404                             | application/json                |
+| errors.ConflictError            | 409                             | application/json                |
+| errors.UnprocessableEntityError | 422                             | application/json                |
+| errors.InternalServerError      | 500                             | application/json                |
+| errors.BadGatewayError          | 502                             | application/json                |
+| errors.ServiceUnavailableError  | 503                             | application/json                |
+| errors.GatewayTimeoutError      | 504                             | application/json                |
+| errors.SDKDefaultError          | 4XX, 5XX                        | \*/\*                           |
+
 ## bulkUpdatePriority
 
 - This endpoint is used to bulk update incident priority.
@@ -1912,7 +2027,7 @@ async function run() {
     v3IncidentsReassignIncidentRequest: {
       reassignTo: {
         id: "<id>",
-        type: "<value>",
+        type: "escalationpolicy",
       },
     },
   });
@@ -1943,7 +2058,7 @@ async function run() {
     v3IncidentsReassignIncidentRequest: {
       reassignTo: {
         id: "<id>",
-        type: "<value>",
+        type: "escalationpolicy",
       },
     },
   });
@@ -2068,6 +2183,102 @@ run();
 ### Response
 
 **Promise\<[operations.IncidentsResolveIncidentResponse](../../models/operations/incidentsresolveincidentresponse.md)\>**
+
+### Errors
+
+| Error Type                      | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.BadRequestError          | 400                             | application/json                |
+| errors.UnauthorizedError        | 401                             | application/json                |
+| errors.PaymentRequiredError     | 402                             | application/json                |
+| errors.ForbiddenError           | 403                             | application/json                |
+| errors.NotFoundError            | 404                             | application/json                |
+| errors.ConflictError            | 409                             | application/json                |
+| errors.UnprocessableEntityError | 422                             | application/json                |
+| errors.InternalServerError      | 500                             | application/json                |
+| errors.BadGatewayError          | 502                             | application/json                |
+| errors.ServiceUnavailableError  | 503                             | application/json                |
+| errors.GatewayTimeoutError      | 504                             | application/json                |
+| errors.SDKDefaultError          | 4XX, 5XX                        | \*/\*                           |
+
+## unmerge
+
+- This endpoint unmerges a child incident from its parent incident.
+- The incident must currently be a child of a parent incident, and the parent incident must not be resolved or suppressed.
+- `send_notification`: if `true`, sends notifications for the unmerged incident.
+- `assign_me`: if `true`, assigns the unmerged incident to the requesting user. If `false`, the incident keeps its last assignee, provided that assignee still exists; otherwise the request fails and `assign_me` must be set to `true`.
+- Requires `access_token` as a `Bearer {{token}}` in the `Authorization` header.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="Incidents_unmergeIncident" method="put" path="/v3/incidents/{incidentID}/unmerge" -->
+```typescript
+import { SquadcastSDK } from "@solarwinds/squadcast-sdk-typescript";
+
+const squadcastSDK = new SquadcastSDK({
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
+});
+
+async function run() {
+  const result = await squadcastSDK.incidents.unmerge({
+    incidentID: "<id>",
+    v3IncidentsUnmergeIncidentRequest: {
+      sendNotification: false,
+      assignMe: true,
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { SquadcastSDKCore } from "@solarwinds/squadcast-sdk-typescript/core.js";
+import { incidentsUnmerge } from "@solarwinds/squadcast-sdk-typescript/funcs/incidentsUnmerge.js";
+
+// Use `SquadcastSDKCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const squadcastSDK = new SquadcastSDKCore({
+  refreshTokenAuth: "<YOUR_REFRESH_TOKEN_AUTH_HERE>",
+});
+
+async function run() {
+  const res = await incidentsUnmerge(squadcastSDK, {
+    incidentID: "<id>",
+    v3IncidentsUnmergeIncidentRequest: {
+      sendNotification: false,
+      assignMe: true,
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("incidentsUnmerge failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.IncidentsUnmergeIncidentRequest](../../models/operations/incidentsunmergeincidentrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.IncidentsUnmergeIncidentResponse](../../models/operations/incidentsunmergeincidentresponse.md)\>**
 
 ### Errors
 

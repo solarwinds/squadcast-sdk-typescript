@@ -17,11 +17,10 @@ let value: OverlayGetAllCustomContentTemplateOverlayByServiceResponse = {
       serviceId: "<id>",
       alertSourceVersion: "<value>",
       alertSourceShortname: "<value>",
-      overlayTemplateType: "description",
+      overlayTemplateType: "<value>",
       overlay: {
         message: "<value>",
-        description:
-          "hotfoot frenetically bandwidth puzzled boohoo nippy psst lay embossing",
+        description: "formula cake consequently refute why prime how vanish",
       },
       createdBy: "<value>",
       updatedBy: "<value>",

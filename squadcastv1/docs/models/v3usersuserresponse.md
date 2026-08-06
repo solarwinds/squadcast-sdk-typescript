@@ -24,7 +24,12 @@ let value: V3UsersUserResponse = {
   timeZone: "Europe/Sofia",
   title: "<value>",
   bio: "<value>",
-  notificationRules: [],
+  notificationRules: [
+    {
+      type: "<value>",
+      time: 635001,
+    },
+  ],
   userImage: false,
 };
 ```

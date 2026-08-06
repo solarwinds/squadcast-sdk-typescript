@@ -118,6 +118,7 @@ async function run() {
     ownerId: "<id>",
     v3ServicesCreateServiceRequest: {
       name: "<value>",
+      ownerId: "<id>",
       escalationPolicyId: "<id>",
     },
   });
@@ -147,6 +148,7 @@ async function run() {
     ownerId: "<id>",
     v3ServicesCreateServiceRequest: {
       name: "<value>",
+      ownerId: "<id>",
       escalationPolicyId: "<id>",
     },
   });

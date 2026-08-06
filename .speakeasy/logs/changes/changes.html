@@ -98,7 +98,100 @@
 <body><h2 id="typescript-sdk-changes">Typescript SDK Changes:</h2>
 
 <ul>
-<li><code>squadcastsdk.auth.authGetAccessToken()</code>: <strong>Added</strong></li>
+<li><code>squadcastsdk.services.overlays.customContent.createOrUpdate()</code>:  <code>response.data.overlayTemplateType</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>squadcastsdk.overlays.getAllDedupKeysByService()</code>:  <code>response.data[].overlayTemplateType</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>squadcastsdk.squads.list()</code>: <code>response.pageInfo</code> <strong>Changed</strong> (Breaking ⚠️)
+
+<ul>
+<li><code>hasPrev</code> <strong>Added</strong></li>
+<li><code>hasPrevious</code> <strong>Removed</strong> (Breaking ⚠️)</li>
+<li><code>prevCursor</code> <strong>Added</strong></li>
+<li><code>previousCursor</code> <strong>Removed</strong> (Breaking ⚠️)</li>
+</ul></li>
+<li><code>squadcastsdk.extensions.webhooks.create()</code>: <code>response</code> <strong>Changed</strong> (Breaking ⚠️)
+
+<ul>
+<li><code>body</code> <strong>Removed</strong> (Breaking ⚠️)</li>
+<li><code>data</code> <strong>Added</strong></li>
+</ul></li>
+<li><code>squadcastsdk.incidents.triggerWebhook()</code>:  <code>response.data.triggers[]</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>squadcastsdk.incidents.exportAsync()</code>: <code>response.union(ResponseBody)</code> <strong>Changed</strong> (Breaking ⚠️)
+
+<ul>
+<li><code>body</code> <strong>Removed</strong> (Breaking ⚠️)</li>
+<li><code>data</code> <strong>Added</strong></li>
+</ul></li>
+<li><code>squadcastsdk.incidents.reassign()</code>:
+
+<ul>
+<li><code>request.v3.incidents.reassignIncidentRequest.reassignTo.type</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+</ul></li>
+<li><code>squadcastsdk.incidents.postmortems.create()</code>: <code>response</code> <strong>Changed</strong> (Breaking ⚠️)
+
+<ul>
+<li><code>body</code> <strong>Removed</strong> (Breaking ⚠️)</li>
+<li><code>data</code> <strong>Added</strong></li>
+</ul></li>
+<li><code>squadcastsdk.incidents.notes.create()</code>: <code>response</code> <strong>Changed</strong> (Breaking ⚠️)
+
+<ul>
+<li><code>body</code> <strong>Removed</strong> (Breaking ⚠️)</li>
+<li><code>data</code> <strong>Added</strong></li>
+</ul></li>
+<li><code>squadcastsdk.users.list()</code>:  <code>response.data[].notificationRules</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>squadcastsdk.dedupKeyOverlays.getForAlertSource()</code>:  <code>response.data.overlayTemplateType</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>squadcastsdk.users.getById()</code>:  <code>response.data.notificationRules</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>squadcastsdk.users.updateById()</code>:  <code>response.data.notificationRules</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>squadcastsdk.services.create()</code>:
+
+<ul>
+<li><code>request.v3.services.createServiceRequest.ownerId</code> <strong>Added</strong> (Breaking ⚠️)</li>
+<li><code>response</code> <strong>Changed</strong> (Breaking ⚠️)
+
+<ul>
+<li><code>body</code> <strong>Removed</strong> (Breaking ⚠️)</li>
+<li><code>data</code> <strong>Added</strong></li>
+</ul></li>
+</ul></li>
+<li><code>squadcastsdk.services.getCustomContentTemplates()</code>:  <code>response.data[].overlayTemplateType</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>squadcastsdk.services.overlays.getCustomContentTemplate()</code>:  <code>response.data.overlayTemplateType</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>squadcastsdk.rotations.getParticipants()</code>: <code>response.data</code> <strong>Changed</strong> (Breaking ⚠️)
+
+<ul>
+<li><code>participantGroups</code> <strong>Added</strong></li>
+<li><code>participants</code> <strong>Removed</strong> (Breaking ⚠️)</li>
+</ul></li>
+<li><code>squadcastsdk.rotations.getScheduleRotations()</code>:  <code>response.data</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>squadcastsdk.users.add()</code>:  <code>response.data.notificationRules</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>squadcastsdk.dedupKeyOverlays.update()</code>:  <code>response.union(class (0)).data.overlayTemplateType</code> <strong>Changed</strong> (Breaking ⚠️)</li>
+<li><code>squadcastsdk.overrides.list()</code>: <code>response.pageInfo</code> <strong>Changed</strong> (Breaking ⚠️)
+
+<ul>
+<li><code>hasPrev</code> <strong>Added</strong></li>
+<li><code>hasPrevious</code> <strong>Removed</strong> (Breaking ⚠️)</li>
+<li><code>prevCursor</code> <strong>Added</strong></li>
+<li><code>previousCursor</code> <strong>Removed</strong> (Breaking ⚠️)</li>
+</ul></li>
+<li><code>squadcastsdk.schedules.list()</code>: <code>response.pageInfo</code> <strong>Changed</strong> (Breaking ⚠️)
+
+<ul>
+<li><code>hasPrev</code> <strong>Added</strong></li>
+<li><code>hasPrevious</code> <strong>Removed</strong> (Breaking ⚠️)</li>
+<li><code>prevCursor</code> <strong>Added</strong></li>
+<li><code>previousCursor</code> <strong>Removed</strong> (Breaking ⚠️)</li>
+</ul></li>
+<li><code>squadcastsdk.teams.getById()</code>:  <code>response.data.roles</code> <strong>Changed</strong></li>
+<li><code>squadcastsdk.teams.update()</code>:  <code>response.data.roles</code> <strong>Changed</strong></li>
+<li><code>squadcastsdk.teams.roles.create()</code>:  <code>response.data.roles</code> <strong>Changed</strong></li>
+<li><code>squadcastsdk.teams.roles.update()</code>:  <code>response.data.roles</code> <strong>Changed</strong></li>
+<li><code>squadcastsdk.teams.create()</code>:  <code>response.data.roles</code> <strong>Changed</strong></li>
+<li><code>squadcastsdk.teams.list()</code>:  <code>response.data[].roles</code> <strong>Changed</strong></li>
+<li><code>squadcastsdk.incidents.incidentsMergeIncidents()</code>: <strong>Added</strong></li>
+<li><code>squadcastsdk.incidents.incidentsUnmergeIncident()</code>: <strong>Added</strong></li>
+<li><code>squadcastsdk.statusPages/subscribers.statusPagesDeleteSubscriberById()</code>: <strong>Added</strong></li>
+<li><code>squadcastsdk.statusPages.list()</code>:  <code>response.data[].customDomainName</code> <strong>Changed</strong></li>
+<li><code>squadcastsdk.statusPages.getById()</code>:  <code>response.data.customDomainName</code> <strong>Changed</strong></li>
+<li><code>squadcastsdk.statusPages.updateById()</code>:  <code>response.data.customDomainName</code> <strong>Changed</strong></li>
 </ul>
 </body>
 </html>

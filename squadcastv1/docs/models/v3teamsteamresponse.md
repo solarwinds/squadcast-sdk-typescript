@@ -15,15 +15,7 @@ let value: V3TeamsTeamResponse = {
   description: "duh swanling requite wherever",
   slug: "<value>",
   members: [],
-  roles: [
-    {
-      id: "<id>",
-      name: "<value>",
-      slug: "<value>",
-      default: true,
-    },
-  ],
-  default: true,
+  default: false,
   organization: {
     id: "<id>",
     name: "<value>",
@@ -45,6 +37,6 @@ let value: V3TeamsTeamResponse = {
 | `description`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
 | `slug`                                                       | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
 | `members`                                                    | [models.V3TeamsTeamMember](../models/v3teamsteammember.md)[] | :heavy_check_mark:                                           | N/A                                                          |
-| `roles`                                                      | [models.V3TeamsTeamRole](../models/v3teamsteamrole.md)[]     | :heavy_check_mark:                                           | N/A                                                          |
+| `roles`                                                      | [models.V3TeamsTeamRole](../models/v3teamsteamrole.md)[]     | :heavy_minus_sign:                                           | N/A                                                          |
 | `default`                                                    | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          |
 | `organization`                                               | [models.Organization](../models/organization.md)             | :heavy_check_mark:                                           | N/A                                                          |

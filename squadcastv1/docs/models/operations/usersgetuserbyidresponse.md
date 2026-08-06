@@ -23,12 +23,7 @@ let value: UsersGetUserByIdResponse = {
     timeZone: "Atlantic/Canary",
     title: "<value>",
     bio: "<value>",
-    notificationRules: [
-      {
-        type: "<value>",
-        time: 289405,
-      },
-    ],
+    notificationRules: [],
     userImage: false,
   },
 };

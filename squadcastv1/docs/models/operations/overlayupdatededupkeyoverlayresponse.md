@@ -17,7 +17,7 @@ const value: operations.ResponseBody1 = {
     serviceId: "<id>",
     alertSourceVersion: "<value>",
     alertSourceShortname: "<value>",
-    overlayTemplateType: "dedup_key",
+    overlayTemplateType: "<value>",
     overlay: {
       template: "<value>",
       duration: 519447,
@@ -41,7 +41,7 @@ const value: operations.ResponseBody2 = {
     serviceId: "<id>",
     alertSourceVersion: "<value>",
     alertSourceShortname: "<value>",
-    overlayTemplateType: "dedup_key",
+    overlayTemplateType: "<value>",
     overlay: {
       template: "<value>",
       duration: 519447,

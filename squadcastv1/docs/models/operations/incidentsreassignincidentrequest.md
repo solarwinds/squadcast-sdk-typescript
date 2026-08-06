@@ -10,7 +10,7 @@ let value: IncidentsReassignIncidentRequest = {
   v3IncidentsReassignIncidentRequest: {
     reassignTo: {
       id: "<id>",
-      type: "<value>",
+      type: "user",
     },
   },
 };

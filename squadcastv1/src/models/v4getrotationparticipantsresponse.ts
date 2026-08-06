@@ -13,7 +13,7 @@ import {
 
 export type V4GetRotationParticipantsResponse = {
   rotationID: number;
-  participants: Array<V4ParticipantGroup>;
+  participantGroups: Array<V4ParticipantGroup>;
 };
 
 /** @internal */
@@ -23,7 +23,7 @@ export const V4GetRotationParticipantsResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   rotationID: z.number().int(),
-  participants: z.array(V4ParticipantGroup$inboundSchema),
+  participantGroups: z.array(V4ParticipantGroup$inboundSchema),
 });
 
 export function v4GetRotationParticipantsResponseFromJSON(

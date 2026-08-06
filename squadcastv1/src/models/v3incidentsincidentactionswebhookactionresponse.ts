@@ -7,6 +7,10 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
+import {
+  V3IncidentsIncidentActionsEventWebhookTrigger,
+  V3IncidentsIncidentActionsEventWebhookTrigger$inboundSchema,
+} from "./v3incidentsincidentactionseventwebhooktrigger.js";
 
 export type Url = {
   url?: string | undefined;
@@ -30,7 +34,7 @@ export type V3IncidentsIncidentActionsWebhookActionResponse = {
   name: string;
   slug: string;
   description: string;
-  triggers: Array<string>;
+  triggers: Array<V3IncidentsIncidentActionsEventWebhookTrigger>;
   urls: Array<Url>;
   teams: Array<string>;
   isAllTeamsConfigured: boolean;
@@ -108,7 +112,9 @@ export const V3IncidentsIncidentActionsWebhookActionResponse$inboundSchema:
     name: z.string(),
     slug: z.string(),
     description: z.string(),
-    triggers: z.array(z.string()),
+    triggers: z.array(
+      V3IncidentsIncidentActionsEventWebhookTrigger$inboundSchema,
+    ),
     urls: z.array(z.lazy(() => Url$inboundSchema)),
     teams: z.array(z.string()),
     is_all_teams_configured: z.boolean(),

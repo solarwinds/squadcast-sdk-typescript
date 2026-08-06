@@ -22,7 +22,6 @@ let value: TeamsGetTeamByIdResponse = {
         userId: "<id>",
       },
     ],
-    roles: [],
     default: true,
     organization: {
       id: "<id>",

@@ -10,7 +10,7 @@ import { RotationsGetRotationParticipantsResponse } from "@solarwinds/squadcast-
 let value: RotationsGetRotationParticipantsResponse = {
   data: {
     rotationID: 803510,
-    participants: [],
+    participantGroups: [],
   },
 };
 ```

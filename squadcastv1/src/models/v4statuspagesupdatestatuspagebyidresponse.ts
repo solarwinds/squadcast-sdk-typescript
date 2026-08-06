@@ -20,7 +20,7 @@ export type V4StatusPagesUpdateStatusPageByIdResponse = {
   timezone: string;
   description?: string | undefined;
   domainName: string;
-  customDomainName: string;
+  customDomainName?: string | undefined;
   contactEmail: string;
   themeColor: V4StatusPagesUpdateStatusPageByIdResponseThemeColor;
   allowComponentsSubscription: boolean;
@@ -72,7 +72,7 @@ export const V4StatusPagesUpdateStatusPageByIdResponse$inboundSchema: z.ZodType<
   timezone: z.string(),
   description: z.string().optional(),
   domainName: z.string(),
-  customDomainName: z.string(),
+  customDomainName: z.string().optional(),
   contactEmail: z.string(),
   themeColor: z.lazy(() =>
     V4StatusPagesUpdateStatusPageByIdResponseThemeColor$inboundSchema
