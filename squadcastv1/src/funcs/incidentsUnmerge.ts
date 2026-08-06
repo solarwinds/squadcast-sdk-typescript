@@ -3,7 +3,7 @@
  */
 
 import { SquadcastSDKCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -27,15 +27,22 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Delete Subscriber By ID
+ * Unmerge Incident
+ *
+ * @remarks
+ * - This endpoint unmerges a child incident from its parent incident.
+ * - The incident must currently be a child of a parent incident, and the parent incident must not be resolved or suppressed.
+ * - `send_notification`: if `true`, sends notifications for the unmerged incident.
+ * - `assign_me`: if `true`, assigns the unmerged incident to the requesting user. If `false`, the incident keeps its last assignee, provided that assignee still exists; otherwise the request fails and `assign_me` must be set to `true`.
+ * - Requires `access_token` as a `Bearer {{token}}` in the `Authorization` header.
  */
-export function statusPagesSubscribersStatusPagesDeleteSubscriberById(
+export function incidentsUnmerge(
   client: SquadcastSDKCore,
-  request: operations.StatusPagesDeleteSubscriberByIdRequest,
+  request: operations.IncidentsUnmergeIncidentRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.StatusPagesDeleteSubscriberByIdResponse,
+    operations.IncidentsUnmergeIncidentResponse,
     | errors.BadRequestError
     | errors.UnauthorizedError
     | errors.PaymentRequiredError
@@ -66,12 +73,12 @@ export function statusPagesSubscribersStatusPagesDeleteSubscriberById(
 
 async function $do(
   client: SquadcastSDKCore,
-  request: operations.StatusPagesDeleteSubscriberByIdRequest,
+  request: operations.IncidentsUnmergeIncidentRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.StatusPagesDeleteSubscriberByIdResponse,
+      operations.IncidentsUnmergeIncidentResponse,
       | errors.BadRequestError
       | errors.UnauthorizedError
       | errors.PaymentRequiredError
@@ -98,32 +105,29 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.StatusPagesDeleteSubscriberByIdRequest$outboundSchema.parse(
-        value,
-      ),
+      operations.IncidentsUnmergeIncidentRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON(
+    "body",
+    payload["V3.Incidents.UnmergeIncidentRequest"],
+    { explode: true },
+  );
 
   const pathParams = {
-    statuspageID: encodeSimple("statuspageID", payload.statuspageID, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-    subscriberID: encodeSimple("subscriberID", payload.subscriberID, {
+    incidentID: encodeSimple("incidentID", payload.incidentID, {
       explode: false,
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc(
-    "/v4/statuspages/{statuspageID}/subscribers/{subscriberID}",
-  )(pathParams);
+  const path = pathToFunc("/v3/incidents/{incidentID}/unmerge")(pathParams);
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -136,7 +140,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "StatusPages_deleteSubscriberById",
+    operationID: "Incidents_unmergeIncident",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -150,7 +154,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "DELETE",
+    method: "PUT",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -180,7 +184,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.StatusPagesDeleteSubscriberByIdResponse,
+    operations.IncidentsUnmergeIncidentResponse,
     | errors.BadRequestError
     | errors.UnauthorizedError
     | errors.PaymentRequiredError
@@ -201,10 +205,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(
-      200,
-      operations.StatusPagesDeleteSubscriberByIdResponse$inboundSchema,
-    ),
+    M.json(200, operations.IncidentsUnmergeIncidentResponse$inboundSchema),
     M.jsonErr(400, errors.BadRequestError$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedError$inboundSchema),
     M.jsonErr(402, errors.PaymentRequiredError$inboundSchema),

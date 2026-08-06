@@ -15,14 +15,14 @@ import { incidentsGetAdditionalResponders } from "../funcs/incidentsGetAdditiona
 import { incidentsGetAllCommunicationCards } from "../funcs/incidentsGetAllCommunicationCards.js";
 import { incidentsGetById } from "../funcs/incidentsGetById.js";
 import { incidentsGetStatusByRequestIds } from "../funcs/incidentsGetStatusByRequestIds.js";
-import { incidentsIncidentsMergeIncidents } from "../funcs/incidentsIncidentsMergeIncidents.js";
-import { incidentsIncidentsUnmergeIncident } from "../funcs/incidentsIncidentsUnmergeIncident.js";
 import { incidentsMarkAsTransient } from "../funcs/incidentsMarkAsTransient.js";
 import { incidentsMarkSloFalsePositive } from "../funcs/incidentsMarkSloFalsePositive.js";
+import { incidentsMerge } from "../funcs/incidentsMerge.js";
 import { incidentsReassign } from "../funcs/incidentsReassign.js";
 import { incidentsRemoveAdditionalResponder } from "../funcs/incidentsRemoveAdditionalResponder.js";
 import { incidentsResolve } from "../funcs/incidentsResolve.js";
 import { incidentsTriggerWebhook } from "../funcs/incidentsTriggerWebhook.js";
+import { incidentsUnmerge } from "../funcs/incidentsUnmerge.js";
 import { incidentsUnsnoozeNotifications } from "../funcs/incidentsUnsnoozeNotifications.js";
 import { incidentsUpdateCommunicationCard } from "../funcs/incidentsUpdateCommunicationCard.js";
 import { incidentsUpdatePostmortem } from "../funcs/incidentsUpdatePostmortem.js";
@@ -363,11 +363,11 @@ export class Incidents extends ClientSDK {
    * - When creating a new parent, provide at least two open child incidents and the `new_incident` details instead of `parent_incident_id`.
    * - Requires `access_token` as a `Bearer {{token}}` in the `Authorization` header.
    */
-  async incidentsMergeIncidents(
+  async merge(
     request: operations.IncidentsMergeIncidentsRequest,
     options?: RequestOptions,
   ): Promise<operations.IncidentsMergeIncidentsResponse> {
-    return unwrapAsync(incidentsIncidentsMergeIncidents(
+    return unwrapAsync(incidentsMerge(
       this,
       request,
       options,
@@ -535,11 +535,11 @@ export class Incidents extends ClientSDK {
    * - `assign_me`: if `true`, assigns the unmerged incident to the requesting user. If `false`, the incident keeps its last assignee, provided that assignee still exists; otherwise the request fails and `assign_me` must be set to `true`.
    * - Requires `access_token` as a `Bearer {{token}}` in the `Authorization` header.
    */
-  async incidentsUnmergeIncident(
+  async unmerge(
     request: operations.IncidentsUnmergeIncidentRequest,
     options?: RequestOptions,
   ): Promise<operations.IncidentsUnmergeIncidentResponse> {
-    return unwrapAsync(incidentsIncidentsUnmergeIncident(
+    return unwrapAsync(incidentsUnmerge(
       this,
       request,
       options,

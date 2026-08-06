@@ -1,12 +1,12 @@
-# StatusPagesSubscribers
+# StatusPages.Subscribers
 
 ## Overview
 
 ### Available Operations
 
-* [statusPagesDeleteSubscriberById](#statuspagesdeletesubscriberbyid) - Delete Subscriber By ID
+* [deleteById](#deletebyid) - Delete Subscriber By ID
 
-## statusPagesDeleteSubscriberById
+## deleteById
 
 Delete Subscriber By ID
 
@@ -21,7 +21,7 @@ const squadcastSDK = new SquadcastSDK({
 });
 
 async function run() {
-  const result = await squadcastSDK.statusPagesSubscribers.statusPagesDeleteSubscriberById({
+  const result = await squadcastSDK.statusPages.subscribers.deleteById({
     statuspageID: "<id>",
     subscriberID: "<id>",
   });
@@ -38,7 +38,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SquadcastSDKCore } from "@solarwinds/squadcast-sdk-typescript/core.js";
-import { statusPagesSubscribersStatusPagesDeleteSubscriberById } from "@solarwinds/squadcast-sdk-typescript/funcs/statusPagesSubscribersStatusPagesDeleteSubscriberById.js";
+import { statusPagesSubscribersDeleteById } from "@solarwinds/squadcast-sdk-typescript/funcs/statusPagesSubscribersDeleteById.js";
 
 // Use `SquadcastSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -47,7 +47,7 @@ const squadcastSDK = new SquadcastSDKCore({
 });
 
 async function run() {
-  const res = await statusPagesSubscribersStatusPagesDeleteSubscriberById(squadcastSDK, {
+  const res = await statusPagesSubscribersDeleteById(squadcastSDK, {
     statuspageID: "<id>",
     subscriberID: "<id>",
   });
@@ -55,7 +55,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("statusPagesSubscribersStatusPagesDeleteSubscriberById failed:", res.error);
+    console.log("statusPagesSubscribersDeleteById failed:", res.error);
   }
 }
 

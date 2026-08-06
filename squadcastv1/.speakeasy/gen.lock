@@ -1,20 +1,20 @@
 lockVersion: 2.0.0
 id: 0ccdf4ca-5cfc-406b-b8fa-dec00364bec0
 management:
-  docChecksum: 82b139a91ade647d6b37adb16b487909
+  docChecksum: c004740e03a1ffab14ea7df8572d9b3f
   docVersion: 1.0.0
   speakeasyVersion: 1.791.4
   generationVersion: 2.926.8
-  releaseVersion: 1.5.0
-  configChecksum: 96a64717b31107a04abe0826d26fe4eb
+  releaseVersion: 1.5.2
+  configChecksum: 354617d8e82e1608f83159dd7d722859
   repoURL: https://github.com/solarwinds/squadcast-sdk-typescript.git
   repoSubDirectory: squadcastv1
   installationURL: https://github.com/solarwinds/squadcast-sdk-typescript
   published: true
 persistentEdits:
-  generation_id: 8edcdeba-80f2-49e7-8e74-6b74936475a4
-  pristine_commit_hash: dab54767d280524cd11ebad0d045a9ddb112d327
-  pristine_tree_hash: a210fd70547f670978cd4821ae8dddae9b3caac6
+  generation_id: 2f527ec4-91fd-40dd-929d-902e3909b3a3
+  pristine_commit_hash: 96cc1f1646c894d0b98132c8242c43a1ab9e36b3
+  pristine_tree_hash: 6cbdcea01e24dac45aeff9e335c13416987515f1
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -4525,8 +4525,8 @@ trackedFiles:
     pristine_git_object: 35f36019f99b25fa5b70479013d91b361aea9ca2
   docs/sdks/incidents/README.md:
     id: 6ce620b07518
-    last_write_checksum: sha1:5127223e12ba624e22fe004a2ae5a1e5c470c4e7
-    pristine_git_object: b0685175bbc7c211b496c5d5ca806f575ee9e16b
+    last_write_checksum: sha1:19b3ae196ddc581cb126ce0c5d588bdafe001c4b
+    pristine_git_object: fab4b80d12d4042220c0c3b1747b1f411ba680b3
   docs/sdks/incidentscommunicationcards/README.md:
     id: ab60bc9bc85c
     last_write_checksum: sha1:1f4e9c186b58a95ba6b8dce51bfb1c30a6527c11
@@ -4687,14 +4687,14 @@ trackedFiles:
     id: f2fc2702956a
     last_write_checksum: sha1:c68566d7621ab9006b70ce13acd7e91c9cfcad96
     pristine_git_object: 486a1f3bd0262a32377d115a53804ba6af5ce734
-  docs/sdks/statuspagessubscribers/README.md:
-    id: 50cb00b60e22
-    last_write_checksum: sha1:d0714b39fd70a27a407b29ffa78b6b1f1621664c
-    pristine_git_object: ef6989e533e20f2b2db6b9475150df8dbc1f5daf
   docs/sdks/statuspagesubscribers/README.md:
     id: aa96513541ad
     last_write_checksum: sha1:8b08a67884a2a2877b49fe03a3b6e067515d5261
     pristine_git_object: 6c9aca8ec4c79f2eed21c0c4a45cd0c3b2eecc99
+  docs/sdks/subscribers/README.md:
+    id: 14c599d74195
+    last_write_checksum: sha1:588bec78b7bdf4d27343c48fc843606b42f66b5b
+    pristine_git_object: 872a8d13f8be86b9a7d9bf8e3874468e20f30cb1
   docs/sdks/suppressionrules/README.md:
     id: 340b29b64030
     last_write_checksum: sha1:7ed193b02364a739515eb07a0f8c4d30bd0b4a33
@@ -4773,12 +4773,12 @@ trackedFiles:
     pristine_git_object: c0db3db30a83d5b02c389c7a566043a7729be915
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:8d56bd35350f78ed113b161c024f2232c38f5a93
-    pristine_git_object: 466e254b218f7e15782c55e711f92d3b0166df48
+    last_write_checksum: sha1:84c898f506d6c9d4cfac50e5fab471776db4ae24
+    pristine_git_object: c0c9a370491c2f70789f399456a77b6d4c3aa129
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:0f702cf8c877bcc188b79dd903314d8430d9f0c0
-    pristine_git_object: b8a977262de8fbbaac31a582e27a489390aa0a1c
+    last_write_checksum: sha1:51304315f30b247b8315728524334e7eefc38083
+    pristine_git_object: ccaa864312854053d5c2119a554ab7beb5215372
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:e53b998fb3f427fc177c4194efa76da88e8fdb5e
@@ -5035,14 +5035,6 @@ trackedFiles:
     id: 23db9a17ef95
     last_write_checksum: sha1:13b24254c1ea3d202ce6bb4f7703f701fa632194
     pristine_git_object: 1f7772af83147fa8b13dd83898d3d9e5efefc643
-  src/funcs/incidentsIncidentsMergeIncidents.ts:
-    id: 3f89a7c9ec34
-    last_write_checksum: sha1:a0f3b0b8ddaf1a6e47964ff31d4253c0ba28126e
-    pristine_git_object: 196609e4a76c87eaa87538cab1d0e7998039c3f5
-  src/funcs/incidentsIncidentsUnmergeIncident.ts:
-    id: fa6a6f87c17c
-    last_write_checksum: sha1:dd94c1d1224f0e74b323e7c0a3feb2ff331fc2eb
-    pristine_git_object: 6cb61849f1048d8207905dfededd5826d5df2135
   src/funcs/incidentsMarkAsTransient.ts:
     id: cac461bbc916
     last_write_checksum: sha1:9594fd95555fdd817358d7babc72639f4f1cc458
@@ -5051,6 +5043,10 @@ trackedFiles:
     id: 1fa27cecafb9
     last_write_checksum: sha1:557ceb3e3c5780d60b762b774b555068c373d0cf
     pristine_git_object: 576c37dc04c096a7ddf042da123d044e05fe658e
+  src/funcs/incidentsMerge.ts:
+    id: f5157ae1825d
+    last_write_checksum: sha1:f74e459f58831c47dbed0ea1453ee070365558cf
+    pristine_git_object: 8c7ea31f680d605855e6ec164f036be417dffdac
   src/funcs/incidentsNotesCreate.ts:
     id: 078acac6e042
     last_write_checksum: sha1:889349c20809a9f5c634110426426fb842adf801
@@ -5103,6 +5099,10 @@ trackedFiles:
     id: 0b4d71fe50f6
     last_write_checksum: sha1:b7ebc10e630ae9ba7a8294efad55e384c14dcb8c
     pristine_git_object: d4a2ce9449c0bb5f02dcfec2b285d1da05edaab9
+  src/funcs/incidentsUnmerge.ts:
+    id: 46f127bc66a6
+    last_write_checksum: sha1:87aab00df211ef72c7fc760460209005ffbfc181
+    pristine_git_object: cf363ca9484a7a3d4bf0b0418bcd85f6259d95b3
   src/funcs/incidentsUnsnoozeNotifications.ts:
     id: d4282930f40c
     last_write_checksum: sha1:4737745138b3e72f09ce485f83c1a53074ad54ab
@@ -5523,10 +5523,10 @@ trackedFiles:
     id: fd39bbf07168
     last_write_checksum: sha1:7375e3820cf8122807bd7cfb8852fd78e016912c
     pristine_git_object: 6720132ce1977f0df132c0436a92fb3f652c73f7
-  src/funcs/statusPagesSubscribersStatusPagesDeleteSubscriberById.ts:
-    id: 8696f40e8a7c
-    last_write_checksum: sha1:db10dc1d6c96854f4b88a861764484d69b85ca47
-    pristine_git_object: 9c9c839d90d3f813ca23ea662797aa209a0b1186
+  src/funcs/statusPagesSubscribersDeleteById.ts:
+    id: 9763f73250c3
+    last_write_checksum: sha1:9bf3111d3ca4a9640b8cb5b3598fa3876760da73
+    pristine_git_object: c5ed1a58d2f6eb57158f44ceea2424b5a75c2f35
   src/funcs/statusPagesUpdateById.ts:
     id: 9b825ea9f1a6
     last_write_checksum: sha1:48960e0abaa7036079af61f5bc86ace72a922d4d
@@ -5737,8 +5737,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:6f03c0ddbc24ed2866d1bc1dd67457b263f333ff
-    pristine_git_object: 3515381f6c055ccea8bb306502940013fd0ba6db
+    last_write_checksum: sha1:e21025740bc65f702fe9bd29f3a3965a3051f8aa
+    pristine_git_object: 2238f97ab66035f84966266d5a90d1b9cd8095ac
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:50d9b187dcfc3cca8d3bbd9fe074f865d715d2b0
@@ -8449,8 +8449,8 @@ trackedFiles:
     pristine_git_object: 5013aaeb54ce8a8a19fe79b34dd8807ba441dcc5
   src/sdk/incidents.ts:
     id: 9ec1a6709b1e
-    last_write_checksum: sha1:6d0a4325ca9f434986556215120d0b9a0ace75e8
-    pristine_git_object: ef3242fda969edc2bc337c9de10a0a45577294f5
+    last_write_checksum: sha1:ce2c60f21f6105bc22a150502507a943fba6176a
+    pristine_git_object: 3969e7c7d47009771e46e12f84744e3d34ddb6fc
   src/sdk/incidentsactions.ts:
     id: b5911459e3cd
     last_write_checksum: sha1:4c8ce0b59bed2b1a505ebe26a2ea7d6e0c2af1e3
@@ -8577,8 +8577,8 @@ trackedFiles:
     pristine_git_object: e3037d2e1743e1e86b59169b22a566fa0a6c5a47
   src/sdk/sdk.ts:
     id: 784571af2f69
-    last_write_checksum: sha1:db52f035441ccee4229947dbea1e46d96a891ef3
-    pristine_git_object: bd480eae47cab4f7365187cb17a06fa4ee0ffb08
+    last_write_checksum: sha1:526193ef0db3939086ae9ac0aa065af8dac57a11
+    pristine_git_object: a9172661e9fda26f1171cd5a40c9f4df0f264ea2
   src/sdk/services.ts:
     id: 4a8815abe25f
     last_write_checksum: sha1:6e5f897d59d1838e8ace0cc727983fd55c000827
@@ -8613,8 +8613,8 @@ trackedFiles:
     pristine_git_object: 6a5de5c60eb9cca401f645127dd96580ad635029
   src/sdk/statuspages.ts:
     id: f530403349e2
-    last_write_checksum: sha1:b75c7b2c42ed1303ea2debb3124bb0dfc8545f43
-    pristine_git_object: f7d32f716e794af64662753734939fb4107b3daf
+    last_write_checksum: sha1:385947d7d9c2caecf14e4fb91db3c8cd1b1121a7
+    pristine_git_object: a8490fa050b5248a28ffdf02c77f5db6a52a375b
   src/sdk/statuspagescomponents.ts:
     id: deec167503dc
     last_write_checksum: sha1:941cbf3be6582f4c0d8416b7f30a5c1d05f0230c
@@ -8627,14 +8627,14 @@ trackedFiles:
     id: 3c52f936f15b
     last_write_checksum: sha1:e23995834b43216154182029de44fa42e400bae8
     pristine_git_object: 45006d14f719ead85cfca8862585c7c1e0f46758
-  src/sdk/statuspagessubscribers.ts:
-    id: 475e89f15f30
-    last_write_checksum: sha1:2e6b144b3165ec2f68221dbbe9c002d73440ab9c
-    pristine_git_object: b7486766bc2b7be55a4e7530f2d0970f9914ad5e
   src/sdk/statuspagesubscribers.ts:
     id: 2a7bb3d7c2f9
     last_write_checksum: sha1:d821a8f73b13d699ecfb85f2acd4bb7aad134c69
     pristine_git_object: 22b504872841b925000aec5e5dd2eea4088a9955
+  src/sdk/subscribers.ts:
+    id: 15f2bc5eed75
+    last_write_checksum: sha1:262732af3dbef3bd2757c8e483d1171feeb7c463
+    pristine_git_object: 7041ec3bcaf0bb950290feffcfd96bef19c7ae54
   src/sdk/suppressionrules.ts:
     id: 0d408ac68ed7
     last_write_checksum: sha1:5decdba4bf0916b5d7d24662068f81acf540437d
@@ -15531,7 +15531,6 @@ examples:
         "504":
           application/json: {"meta": {"status": "<value>", "error_message": "<value>"}}
 examplesVersion: 1.0.2
-releaseNotes: "## Typescript SDK Changes:\n* `squadcastsdk.services.overlays.customContent.createOrUpdate()`:  `response.data.overlayTemplateType` **Changed** (Breaking ⚠️)\n* `squadcastsdk.overlays.getAllDedupKeysByService()`:  `response.data[].overlayTemplateType` **Changed** (Breaking ⚠️)\n* `squadcastsdk.squads.list()`:  `response.pageInfo` **Changed** (Breaking ⚠️)\n* `squadcastsdk.extensions.webhooks.create()`:  `response` **Changed** (Breaking ⚠️)\n* `squadcastsdk.incidents.triggerWebhook()`:  `response.data.triggers[]` **Changed** (Breaking ⚠️)\n* `squadcastsdk.incidents.exportAsync()`:  `response.union(ResponseBody)` **Changed** (Breaking ⚠️)\n* `squadcastsdk.incidents.reassign()`: \n  *  `request.v3.incidents.reassignIncidentRequest.reassignTo.type` **Changed** (Breaking ⚠️)\n* `squadcastsdk.incidents.postmortems.create()`:  `response` **Changed** (Breaking ⚠️)\n* `squadcastsdk.incidents.notes.create()`:  `response` **Changed** (Breaking ⚠️)\n* `squadcastsdk.users.list()`:  `response.data[].notificationRules` **Changed** (Breaking ⚠️)\n* `squadcastsdk.dedupKeyOverlays.getForAlertSource()`:  `response.data.overlayTemplateType` **Changed** (Breaking ⚠️)\n* `squadcastsdk.users.getById()`:  `response.data.notificationRules` **Changed** (Breaking ⚠️)\n* `squadcastsdk.users.updateById()`:  `response.data.notificationRules` **Changed** (Breaking ⚠️)\n* `squadcastsdk.services.create()`: \n  *  `request.v3.services.createServiceRequest.ownerId` **Added** (Breaking ⚠️)\n  *  `response` **Changed** (Breaking ⚠️)\n* `squadcastsdk.services.getCustomContentTemplates()`:  `response.data[].overlayTemplateType` **Changed** (Breaking ⚠️)\n* `squadcastsdk.services.overlays.getCustomContentTemplate()`:  `response.data.overlayTemplateType` **Changed** (Breaking ⚠️)\n* `squadcastsdk.rotations.getParticipants()`:  `response.data` **Changed** (Breaking ⚠️)\n* `squadcastsdk.rotations.getScheduleRotations()`:  `response.data` **Changed** (Breaking ⚠️)\n* `squadcastsdk.users.add()`:  `response.data.notificationRules` **Changed** (Breaking ⚠️)\n* `squadcastsdk.dedupKeyOverlays.update()`:  `response.union(class (0)).data.overlayTemplateType` **Changed** (Breaking ⚠️)\n* `squadcastsdk.overrides.list()`:  `response.pageInfo` **Changed** (Breaking ⚠️)\n* `squadcastsdk.schedules.list()`:  `response.pageInfo` **Changed** (Breaking ⚠️)\n* `squadcastsdk.teams.getById()`:  `response.data.roles` **Changed**\n* `squadcastsdk.teams.update()`:  `response.data.roles` **Changed**\n* `squadcastsdk.teams.roles.create()`:  `response.data.roles` **Changed**\n* `squadcastsdk.teams.roles.update()`:  `response.data.roles` **Changed**\n* `squadcastsdk.teams.create()`:  `response.data.roles` **Changed**\n* `squadcastsdk.teams.list()`:  `response.data[].roles` **Changed**\n* `squadcastsdk.incidents.incidentsMergeIncidents()`: **Added**\n* `squadcastsdk.incidents.incidentsUnmergeIncident()`: **Added**\n* `squadcastsdk.statusPages/subscribers.statusPagesDeleteSubscriberById()`: **Added**\n* `squadcastsdk.statusPages.list()`:  `response.data[].customDomainName` **Changed**\n* `squadcastsdk.statusPages.getById()`:  `response.data.customDomainName` **Changed**\n* `squadcastsdk.statusPages.updateById()`:  `response.data.customDomainName` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore

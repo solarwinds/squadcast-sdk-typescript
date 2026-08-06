@@ -39,7 +39,6 @@ import { Slos } from "./slos.js";
 import { Squads } from "./squads.js";
 import { SquadsV4 } from "./squadsv4.js";
 import { StatusPages } from "./statuspages.js";
-import { StatusPagesSubscribers } from "./statuspagessubscribers.js";
 import { StatusPageSubscribers } from "./statuspagesubscribers.js";
 import { Teams } from "./teams.js";
 import { Tokens } from "./tokens.js";
@@ -276,13 +275,6 @@ export class SquadcastSDK extends ClientSDK {
   private _statusPageSubscribers?: StatusPageSubscribers;
   get statusPageSubscribers(): StatusPageSubscribers {
     return (this._statusPageSubscribers ??= new StatusPageSubscribers(
-      this._options,
-    ));
-  }
-
-  private _statusPagesSubscribers?: StatusPagesSubscribers;
-  get statusPagesSubscribers(): StatusPagesSubscribers {
-    return (this._statusPagesSubscribers ??= new StatusPagesSubscribers(
       this._options,
     ));
   }

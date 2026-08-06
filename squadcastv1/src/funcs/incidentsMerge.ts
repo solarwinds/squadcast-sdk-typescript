@@ -37,7 +37,7 @@ import { Result } from "../types/fp.js";
  * - When creating a new parent, provide at least two open child incidents and the `new_incident` details instead of `parent_incident_id`.
  * - Requires `access_token` as a `Bearer {{token}}` in the `Authorization` header.
  */
-export function incidentsIncidentsMergeIncidents(
+export function incidentsMerge(
   client: SquadcastSDKCore,
   request: operations.IncidentsMergeIncidentsRequest,
   options?: RequestOptions,

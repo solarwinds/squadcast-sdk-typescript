@@ -305,7 +305,7 @@ run();
 * [unsnoozeNotifications](docs/sdks/incidents/README.md#unsnoozenotifications) - Unsnooze Incident Notifications
 * [export](docs/sdks/incidents/README.md#export) - Incident Export
 * [exportAsync](docs/sdks/incidents/README.md#exportasync) - Incident Export Async
-* [incidentsMergeIncidents](docs/sdks/incidents/README.md#incidentsmergeincidents) - Merge Incidents
+* [merge](docs/sdks/incidents/README.md#merge) - Merge Incidents
 * [bulkUpdatePriority](docs/sdks/incidents/README.md#bulkupdatepriority) - Bulk Incidents Priority Update
 * [bulkResolve](docs/sdks/incidents/README.md#bulkresolve) - Bulk Resolve Incidents
 * [getById](docs/sdks/incidents/README.md#getbyid) - Get Incident by ID
@@ -314,7 +314,7 @@ run();
 * [updatePriority](docs/sdks/incidents/README.md#updatepriority) - Incident Priority Update
 * [reassign](docs/sdks/incidents/README.md#reassign) - Reassign Incident
 * [resolve](docs/sdks/incidents/README.md#resolve) - Resolve Incident
-* [incidentsUnmergeIncident](docs/sdks/incidents/README.md#incidentsunmergeincident) - Unmerge Incident
+* [unmerge](docs/sdks/incidents/README.md#unmerge) - Unmerge Incident
 * [getStatusByRequestIds](docs/sdks/incidents/README.md#getstatusbyrequestids) - Get Incidents Status By RequestIDs
 
 #### [Incidents.Actions.JiraCloud](docs/sdks/jiracloud/README.md)
@@ -545,10 +545,6 @@ run();
 * [getById](docs/sdks/squadsv4/README.md#getbyid) - Get Squad By ID
 * [update](docs/sdks/squadsv4/README.md#update) - Update Squad
 
-### [StatusPagesSubscribers](docs/sdks/statuspagessubscribers/README.md)
-
-* [statusPagesDeleteSubscriberById](docs/sdks/statuspagessubscribers/README.md#statuspagesdeletesubscriberbyid) - Delete Subscriber By ID
-
 ### [StatusPages](docs/sdks/statuspages/README.md)
 
 * [list](docs/sdks/statuspages/README.md#list) - List Status Pages
@@ -582,6 +578,10 @@ run();
 * [list](docs/sdks/statuspagesmaintenances/README.md#list) - List Maintenances
 * [getById](docs/sdks/statuspagesmaintenances/README.md#getbyid) - Get Maintenance By ID
 * [updateById](docs/sdks/statuspagesmaintenances/README.md#updatebyid) - Update Maintenance By ID
+
+#### [StatusPages.Subscribers](docs/sdks/subscribers/README.md)
+
+* [deleteById](docs/sdks/subscribers/README.md#deletebyid) - Delete Subscriber By ID
 
 ### [StatusPageSubscribers](docs/sdks/statuspagesubscribers/README.md)
 
@@ -747,10 +747,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`incidentsGetAllCommunicationCards`](docs/sdks/incidents/README.md#getallcommunicationcards) - Get All Communication Card
 - [`incidentsGetById`](docs/sdks/incidents/README.md#getbyid) - Get Incident by ID
 - [`incidentsGetStatusByRequestIds`](docs/sdks/incidents/README.md#getstatusbyrequestids) - Get Incidents Status By RequestIDs
-- [`incidentsIncidentsMergeIncidents`](docs/sdks/incidents/README.md#incidentsmergeincidents) - Merge Incidents
-- [`incidentsIncidentsUnmergeIncident`](docs/sdks/incidents/README.md#incidentsunmergeincident) - Unmerge Incident
 - [`incidentsMarkAsTransient`](docs/sdks/incidents/README.md#markastransient) - Mark as Transient
 - [`incidentsMarkSloFalsePositive`](docs/sdks/incidents/README.md#markslofalsepositive) - Mark Incident SLO False Positive
+- [`incidentsMerge`](docs/sdks/incidents/README.md#merge) - Merge Incidents
 - [`incidentsNotesCreate`](docs/sdks/incidentsnotes/README.md#create) - Create Notes
 - [`incidentsNotesList`](docs/sdks/incidentsnotes/README.md#list) - Get All Notes
 - [`incidentsNotesUpdate`](docs/sdks/incidentsnotes/README.md#update) - Update Note
@@ -764,6 +763,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`incidentsTagsAppend`](docs/sdks/tags/README.md#append) - Append Tag
 - [`incidentsTagsUpdate`](docs/sdks/tags/README.md#update) - Update Tag
 - [`incidentsTriggerWebhook`](docs/sdks/incidents/README.md#triggerwebhook) - Trigger a Webhook Manually
+- [`incidentsUnmerge`](docs/sdks/incidents/README.md#unmerge) - Unmerge Incident
 - [`incidentsUnsnoozeNotifications`](docs/sdks/incidents/README.md#unsnoozenotifications) - Unsnooze Incident Notifications
 - [`incidentsUpdateCommunicationCard`](docs/sdks/incidents/README.md#updatecommunicationcard) - Update Communication Card
 - [`incidentsUpdatePostmortem`](docs/sdks/incidents/README.md#updatepostmortem) - Update Postmortem By Incident
@@ -868,7 +868,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`statusPagesMaintenancesGetById`](docs/sdks/statuspagesmaintenances/README.md#getbyid) - Get Maintenance By ID
 - [`statusPagesMaintenancesList`](docs/sdks/statuspagesmaintenances/README.md#list) - List Maintenances
 - [`statusPagesMaintenancesUpdateById`](docs/sdks/statuspagesmaintenances/README.md#updatebyid) - Update Maintenance By ID
-- [`statusPagesSubscribersStatusPagesDeleteSubscriberById`](docs/sdks/statuspagessubscribers/README.md#statuspagesdeletesubscriberbyid) - Delete Subscriber By ID
+- [`statusPagesSubscribersDeleteById`](docs/sdks/subscribers/README.md#deletebyid) - Delete Subscriber By ID
 - [`statusPageSubscribersList`](docs/sdks/statuspagesubscribers/README.md#list) - List Subscribers
 - [`statusPagesUpdateById`](docs/sdks/statuspages/README.md#updatebyid) - Update Status Page By ID
 - [`teamsCreate`](docs/sdks/teams/README.md#create) - Create Team

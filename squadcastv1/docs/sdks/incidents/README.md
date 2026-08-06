@@ -18,7 +18,7 @@
 * [unsnoozeNotifications](#unsnoozenotifications) - Unsnooze Incident Notifications
 * [export](#export) - Incident Export
 * [exportAsync](#exportasync) - Incident Export Async
-* [incidentsMergeIncidents](#incidentsmergeincidents) - Merge Incidents
+* [merge](#merge) - Merge Incidents
 * [bulkUpdatePriority](#bulkupdatepriority) - Bulk Incidents Priority Update
 * [bulkResolve](#bulkresolve) - Bulk Resolve Incidents
 * [getById](#getbyid) - Get Incident by ID
@@ -27,7 +27,7 @@
 * [updatePriority](#updatepriority) - Incident Priority Update
 * [reassign](#reassign) - Reassign Incident
 * [resolve](#resolve) - Resolve Incident
-* [incidentsUnmergeIncident](#incidentsunmergeincident) - Unmerge Incident
+* [unmerge](#unmerge) - Unmerge Incident
 * [getStatusByRequestIds](#getstatusbyrequestids) - Get Incidents Status By RequestIDs
 
 ## archiveSlackChannel
@@ -1369,7 +1369,7 @@ run();
 | errors.GatewayTimeoutError      | 504                             | application/json                |
 | errors.SDKDefaultError          | 4XX, 5XX                        | \*/\*                           |
 
-## incidentsMergeIncidents
+## merge
 
 - This endpoint merges incidents under an existing parent incident or a newly created parent incident. A parent can have at most 100 child incidents in total.
 - All selected child incidents must belong to the team specified by `owner_id` and must not be suppressed, already merged as a child, or a parent with child incidents.
@@ -1389,7 +1389,7 @@ const squadcastSDK = new SquadcastSDK({
 });
 
 async function run() {
-  const result = await squadcastSDK.incidents.incidentsMergeIncidents({
+  const result = await squadcastSDK.incidents.merge({
     ownerId: "<id>",
     children: [
       "<value 1>",
@@ -1417,7 +1417,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SquadcastSDKCore } from "@solarwinds/squadcast-sdk-typescript/core.js";
-import { incidentsIncidentsMergeIncidents } from "@solarwinds/squadcast-sdk-typescript/funcs/incidentsIncidentsMergeIncidents.js";
+import { incidentsMerge } from "@solarwinds/squadcast-sdk-typescript/funcs/incidentsMerge.js";
 
 // Use `SquadcastSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1426,7 +1426,7 @@ const squadcastSDK = new SquadcastSDKCore({
 });
 
 async function run() {
-  const res = await incidentsIncidentsMergeIncidents(squadcastSDK, {
+  const res = await incidentsMerge(squadcastSDK, {
     ownerId: "<id>",
     children: [
       "<value 1>",
@@ -1445,7 +1445,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("incidentsIncidentsMergeIncidents failed:", res.error);
+    console.log("incidentsMerge failed:", res.error);
   }
 }
 
@@ -2201,7 +2201,7 @@ run();
 | errors.GatewayTimeoutError      | 504                             | application/json                |
 | errors.SDKDefaultError          | 4XX, 5XX                        | \*/\*                           |
 
-## incidentsUnmergeIncident
+## unmerge
 
 - This endpoint unmerges a child incident from its parent incident.
 - The incident must currently be a child of a parent incident, and the parent incident must not be resolved or suppressed.
@@ -2220,7 +2220,7 @@ const squadcastSDK = new SquadcastSDK({
 });
 
 async function run() {
-  const result = await squadcastSDK.incidents.incidentsUnmergeIncident({
+  const result = await squadcastSDK.incidents.unmerge({
     incidentID: "<id>",
     v3IncidentsUnmergeIncidentRequest: {
       sendNotification: false,
@@ -2240,7 +2240,7 @@ The standalone function version of this method:
 
 ```typescript
 import { SquadcastSDKCore } from "@solarwinds/squadcast-sdk-typescript/core.js";
-import { incidentsIncidentsUnmergeIncident } from "@solarwinds/squadcast-sdk-typescript/funcs/incidentsIncidentsUnmergeIncident.js";
+import { incidentsUnmerge } from "@solarwinds/squadcast-sdk-typescript/funcs/incidentsUnmerge.js";
 
 // Use `SquadcastSDKCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2249,7 +2249,7 @@ const squadcastSDK = new SquadcastSDKCore({
 });
 
 async function run() {
-  const res = await incidentsIncidentsUnmergeIncident(squadcastSDK, {
+  const res = await incidentsUnmerge(squadcastSDK, {
     incidentID: "<id>",
     v3IncidentsUnmergeIncidentRequest: {
       sendNotification: false,
@@ -2260,7 +2260,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("incidentsIncidentsUnmergeIncident failed:", res.error);
+    console.log("incidentsUnmerge failed:", res.error);
   }
 }
 

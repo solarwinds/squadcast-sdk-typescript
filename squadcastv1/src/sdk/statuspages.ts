@@ -18,6 +18,7 @@ import { ComponentGroups } from "./componentgroups.js";
 import { StatusPagesComponents } from "./statuspagescomponents.js";
 import { StatusPagesIssues } from "./statuspagesissues.js";
 import { StatusPagesMaintenances } from "./statuspagesmaintenances.js";
+import { Subscribers } from "./subscribers.js";
 
 export class StatusPages extends ClientSDK {
   private _components?: StatusPagesComponents;
@@ -38,6 +39,11 @@ export class StatusPages extends ClientSDK {
   private _maintenances?: StatusPagesMaintenances;
   get maintenances(): StatusPagesMaintenances {
     return (this._maintenances ??= new StatusPagesMaintenances(this._options));
+  }
+
+  private _subscribers?: Subscribers;
+  get subscribers(): Subscribers {
+    return (this._subscribers ??= new Subscribers(this._options));
   }
 
   /**
